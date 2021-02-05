@@ -173,8 +173,38 @@ body {
 .text-primary {
   color: #2b3582 !important;
 }
+
 .pred-hide {
   display: none !important;
   width: 0px;
   height: 0px;
+}
+
+.bg-holdera {
+  background-color: #ffefef;
+}
+
+.bg-holderb {
+  background-color: #ffdfe0;
+}
+
+.bg-holderc {
+  background-color: #f0d2fc;
+}
+
+.bg-holderd {
+  background-color: #e2a5f8;
+}
+
+.choosen {
+  height: 50px;
+}
+
+.choosen-holder {
+  height: 50px;
+  margin-top: 40.75px;
+  background-color: #fff;
+  width: 100%;
+  border: solid 1px;
+  border-style: dashed;
 }

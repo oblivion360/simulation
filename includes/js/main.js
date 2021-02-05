@@ -51,10 +51,13 @@ function mainPredBtn() {
     if (btn == 'multiple-predictor') {
       $('.subPred-btn').attr('disabled', false);
       $('#multi-hurdle').addClass('subBtn-active');
+      $('#compensatory').removeClass('subBtn-active');
     } else {
       $('.subPred-btn').attr('disabled', true);
       $('.subPred-btn').removeClass('subBtn-active');
     }
+
+    holderSingle();
   });
 }
 
@@ -64,12 +67,44 @@ function subPredBtn() {
     if (btn == 'compensatory') {
       $('.subPred-btn').removeClass('subBtn-active');
       $('#compensatory').addClass('subBtn-active');
+
       displayPredTable(1);
+
+      holderCompensatory();
     } else {
       $('.subPred-btn').removeClass('subBtn-active');
       $('#multi-hurdle').addClass('subBtn-active');
+
       displayPredTable(2);
+
+      holderSingle();
     }
+  });
+}
+
+function holderSingle() {
+  $.ajax({
+    type: 'GET',
+    crossDomain: true,
+    url: 'components/content/holder-single-predictor.html',
+    dataType: 'html',
+    success: function (res) {
+      // show page
+      $('#predictor-holder').html(res);
+    },
+  });
+}
+
+function holderCompensatory() {
+  $.ajax({
+    type: 'GET',
+    crossDomain: true,
+    url: 'components/content/holder-compensatory-predictor.html',
+    dataType: 'html',
+    success: function (res) {
+      // show page
+      $('#predictor-holder').html(res);
+    },
   });
 }
 
