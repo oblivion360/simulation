@@ -141,12 +141,18 @@ body {
   border-radius: 0px !important;
 }
 
-.bg-button:hover {
+.bg-button:hover,
+.drag-box:hover {
   background-color: #a737d5 !important;
   color: #fff;
 }
 
 .btn-active {
+  background-color: #a737d5 !important;
+  color: #fff;
+}
+
+.btn-stage-active {
   background-color: #a737d5 !important;
   color: #fff;
 }
@@ -205,6 +211,38 @@ body {
   margin-top: 40.75px;
   background-color: #fff;
   width: 100%;
-  border: solid 1px;
-  border-style: dashed;
+  border: dashed 1px;
+}
+
+.drag-btn {
+  display: block;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+  padding: 0px 10px;
+  margin-bottom: 10px;
+}
+
+.drag-box {
+  display: block;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  width: 100%;
+  background-color: #8f9cff;
+  color: #fff;
+  cursor: grab;
+  z-index: 1;
+}
+
+.drag-active {
+  background-color: #a737d5 !important;
+  color: #fff;
+}
+
+.drag-disabled,
+.drag-disabled:hover {
+  background-color: #8f9cff !important;
+  opacity: 0.65;
+  cursor: default !important;
 }

@@ -79,6 +79,14 @@ class Settings {
       start: 'Pass',
       end: 'Fail',
     },
+    {
+      predId: 9,
+      status: 1,
+      name: 'Drug Test',
+      type: 2,
+      start: 'Pass',
+      end: 'Fail',
+    },
   ];
 
   Stages = [
@@ -119,6 +127,71 @@ class Settings {
       status: 2,
     },
   ];
+
+  // predId, value, stage
+  Computations = [];
+
+  // candidate, predId, value
+  Candidates = [
+    {
+      candidate: 'A',
+      score: [
+        {
+          predId: 1,
+          type: 1,
+          value: 12,
+        },
+        {
+          predId: 2,
+          type: 1,
+          value: 4,
+        },
+        {
+          predId: 7,
+          type: 2,
+          value: 'Pass',
+        },
+        {
+          predId: 8,
+          type: 2,
+          value: 'Pass',
+        },
+      ],
+    },
+    {
+      candidate: 'B',
+      score: [
+        {
+          predId: 1,
+          type: 1,
+          value: 4,
+        },
+        {
+          predId: 2,
+          type: 1,
+          value: 1,
+        },
+        {
+          predId: 7,
+          type: 2,
+          value: 'Fail',
+        },
+        {
+          predId: 8,
+          type: 2,
+          value: 'Fail',
+        },
+      ],
+    },
+  ];
+}
+
+class Simulation {
+  constructor(predId, value, stage) {
+    this.predId = predId;
+    this.value = value;
+    this.stage = stage;
+  }
 }
 
 const Set = new Settings();
