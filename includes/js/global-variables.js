@@ -1,93 +1,27 @@
 class Settings {
-  Predictors = [
-    {
-      predId: 1,
-      status: 1,
-      name: 'Company Experience',
-      type: 1,
-      start: 1,
-      end: 10,
-      add: 1,
-      textSingular: 'Year',
-      testPlural: 'Years',
+  drop = '1';
+  dropped = [];
+  data = {
+    Pred: async () => {
+      fetch('includes/js/api/predictors.txt')
+        .then(response => response.json())
+        .then(data => {
+          let pred = data.Predictors;
+
+          this.Predictors.push(pred);
+        });
     },
-    {
-      predId: 2,
-      status: 1,
-      name: 'Performance Rating',
-      type: 1,
-      start: 1,
-      end: 5,
-      add: 1,
-      textSingular: 'Score',
-      testPlural: 'Scores',
+    Dropped: (a, b, c) => {
+      let drop = {
+        predId: a,
+        value: b,
+        stage: c,
+      };
+      this.dropped.push(drop);
     },
-    {
-      predId: 3,
-      status: 1,
-      name: 'Integrity Test',
-      type: 1,
-      start: 1,
-      end: 10,
-      add: 1,
-      textSingular: 'Score',
-      testPlural: 'Score',
-    },
-    {
-      predId: 4,
-      status: 1,
-      name: 'Cognitive Ability test',
-      type: 1,
-      start: 5,
-      end: 100,
-      add: 5,
-      textSingular: '%',
-      testPlural: '%',
-    },
-    {
-      predId: 5,
-      status: 1,
-      name: 'Interview Rating',
-      type: 1,
-      start: 5,
-      end: 100,
-      add: 5,
-      textSingular: '%',
-      testPlural: '%',
-    },
-    {
-      predId: 6,
-      status: 1,
-      name: 'University Degree',
-      type: 2,
-      start: 'Yes',
-      end: 'No',
-    },
-    {
-      predId: 7,
-      status: 1,
-      name: 'Background Check',
-      type: 2,
-      start: 'Pass',
-      end: 'Fail',
-    },
-    {
-      predId: 8,
-      status: 1,
-      name: 'Drug Test',
-      type: 2,
-      start: 'Pass',
-      end: 'Fail',
-    },
-    {
-      predId: 9,
-      status: 1,
-      name: 'Drug Test',
-      type: 2,
-      start: 'Pass',
-      end: 'Fail',
-    },
-  ];
+  };
+
+  Predictors = [];
 
   Stages = [
     {
@@ -186,12 +120,6 @@ class Settings {
   ];
 }
 
-class Simulation {
-  constructor(predId, value, stage) {
-    this.predId = predId;
-    this.value = value;
-    this.stage = stage;
-  }
-}
-
 const Set = new Settings();
+
+Set.data.Pred();

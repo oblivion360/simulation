@@ -12,8 +12,12 @@ let holderSingle = () => {
         accept: '.draggable',
         drop: function (event, ui) {
           let predId = ui.draggable[0].dataset['drag'];
-          Set.Predictors[predId - 1].status = 2;
+
+          Set.Predictors[0][predId - 1].status = 2;
+
           addPredictors(ui.draggable);
+          Set.drop = '1';
+          $('#multiple-predictor').attr('disabled', true);
         },
       });
     },
@@ -28,7 +32,8 @@ function addPredictors($item) {
       : $('<div class="choosen-holder"/>').html($trash);
 
     $item.appendTo($list).show(function () {
-      $item.removeClass('col-md-6');
+      $item.removeClass('col-md-6 drag-btn');
+      $item.addClass('drop-btn');
       displayPredTable('');
       $item.find('.drag-box').animate({ height: '48px' });
     });

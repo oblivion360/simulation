@@ -9,7 +9,7 @@ let mainPredBtn = () => {
     $('.btn').removeClass('btn-active');
     $('#' + btn).addClass('btn-active');
 
-    displayPredTable(2);
+    displayPredTable(3);
 
     if (btn == 'multiple-predictor') {
       $('.subPred-btn').attr('disabled', false);

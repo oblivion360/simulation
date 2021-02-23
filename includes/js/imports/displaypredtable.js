@@ -1,6 +1,7 @@
 let displayPredTable = val => {
   $('#predictors-table').html('');
-  Set.Predictors.map(({ name, type, status, predId }) => {
+
+  Set.Predictors[0].map(({ name, type, status, predId }) => {
     let x = val,
       state = '',
       drag = '',
@@ -15,7 +16,12 @@ let displayPredTable = val => {
       state = '';
     }
 
-    if (x == '' || x == type) {
+    if (x == type) {
+      state = 'drag-disabled';
+    } else if (x == 3) {
+      drag = 'draggable';
+      state = 'drag-active';
+    } else if (x == 0) {
       state = 'drag-disabled';
     } else {
       drag = 'draggable';
@@ -44,9 +50,13 @@ let displayPredTable = val => {
     accept: '.draggable',
     drop: function (event, ui) {
       let predId = ui.draggable[0].dataset['drag'];
-      Set.Predictors[predId - 1].status = 1;
+      let ndrop = Set.drop;
+      Set.Predictors[0][predId - 1].status = 1;
       revertPredictor(ui.draggable);
       ui.draggable.addClass('col-md-6');
+      if (ndrop == 1) {
+        $('#multiple-predictor').attr('disabled', false);
+      }
     },
   });
 };
@@ -59,7 +69,7 @@ function revertPredictor($item) {
       : $('<div id="predictors-table"/>').html($revert);
 
     $item.prependTo($list).show(function () {
-      displayPredTable(2);
+      displayPredTable(3);
     });
   });
 }

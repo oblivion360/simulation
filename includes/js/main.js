@@ -39,7 +39,7 @@ function stageActive() {
             //subPredBtn Click
             subPredBtn();
             // display predictor table
-            displayPredTable('');
+            displayPredTable(0);
             // feather.replace();
           },
         });
