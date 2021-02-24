@@ -9,7 +9,7 @@
       "end": 10,
       "add": 1,
       "textSingular": "Year",
-      "testPlural": "Years"
+      "textPlural": "Years"
     },
     {
       "predId": 2,
@@ -20,7 +20,7 @@
       "end": 5,
       "add": 1,
       "textSingular": "Score",
-      "testPlural": "Scores"
+      "textPlural": "Scores"
     },
     {
       "predId": 3,
@@ -31,7 +31,7 @@
       "end": 10,
       "add": 1,
       "textSingular": "Score",
-      "testPlural": "Score"
+      "textPlural": "Score"
     },
     {
       "predId": 4,
@@ -42,7 +42,7 @@
       "end": 10,
       "add": 1,
       "textSingular": "Score",
-      "testPlural": "Scores"
+      "textPlural": "Scores"
     },
     {
       "predId": 5,
@@ -53,7 +53,7 @@
       "end": 10,
       "add": 1,
       "textSingular": "Score",
-      "testPlural": "Scores"
+      "textPlural": "Scores"
     },
     {
       "predId": 6,

@@ -16,7 +16,7 @@ let subPredBtn = () => {
       $('.subPred-btn').removeClass('subBtn-active');
       $('#multi-hurdle').addClass('subBtn-active');
 
-      displayPredTable(2);
+      displayPredTable(3);
 
       holderMultiple();
     }

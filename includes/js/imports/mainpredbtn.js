@@ -15,13 +15,36 @@ let mainPredBtn = () => {
       $('.subPred-btn').attr('disabled', false);
       $('#multi-hurdle').addClass('subBtn-active');
       $('#compensatory').removeClass('subBtn-active');
+      $('.subPred-btn').removeClass('d-none');
       holderMultiple();
     } else {
       $('.subPred-btn').attr('disabled', true);
       $('.subPred-btn').removeClass('subBtn-active');
+      $('.subPred-btn').addClass('d-none');
+      setBackPredictors('single');
       holderSingle();
     }
   });
 };
+
+function setBackPredictors(type) {
+  if (type == 'single') {
+    Set.dropped.map(res => {
+      Set.Predictors[0].map(pred => {
+        if (pred.predId == res.predId) {
+          pred.status = 1;
+        }
+      });
+    });
+    Set.dropped = [];
+    displayPredTable(3);
+  } else if (type == 'multiple') {
+  } else {
+    Set.dropped = [];
+  }
+
+  //set back button Multiple
+  $('#multiple-predictor').attr('disabled', false);
+}
 
 export default mainPredBtn;

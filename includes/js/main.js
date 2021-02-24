@@ -34,12 +34,16 @@ function stageActive() {
                 recycleImage(ui.draggable);
               },
             });
+
             //mainPredBtn Click
             mainPredBtn();
+
             //subPredBtn Click
             subPredBtn();
+
             // display predictor table
             displayPredTable(0);
+
             // feather.replace();
           },
         });

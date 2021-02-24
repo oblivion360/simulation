@@ -1,5 +1,6 @@
 class Settings {
   drop = '1';
+  finalDrop = [];
   dropped = [];
   data = {
     Pred: async () => {
@@ -11,11 +12,11 @@ class Settings {
           this.Predictors.push(pred);
         });
     },
-    Dropped: (a, b, c) => {
+    Dropped: (predId, value, stage) => {
       let drop = {
-        predId: a,
-        value: b,
-        stage: c,
+        predId: Number(predId),
+        value: value,
+        stage: Number(stage),
       };
       this.dropped.push(drop);
     },
@@ -123,3 +124,12 @@ class Settings {
 const Set = new Settings();
 
 Set.data.Pred();
+
+// Set.data.Dropped(1);
+// Set.data.Dropped(2, 3, 4);
+
+// Set.dropped.map(res => {
+//   if (res.predId == 1) {
+//     console.log(res);
+//   }
+// });

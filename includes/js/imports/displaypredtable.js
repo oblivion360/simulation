@@ -28,8 +28,7 @@ let displayPredTable = val => {
       state = 'drag-active';
     }
     // ${newType}
-    $('#predictors-table').append(` 
-      
+    $('#predictors-table').append(`       
       <div class="col-md-6 drag-btn ${drag} ${newType}" data-drag="${predId}">
         <div class="drag-box ${state}">    
           ${name}     
@@ -53,6 +52,7 @@ let displayPredTable = val => {
       let ndrop = Set.drop;
       Set.Predictors[0][predId - 1].status = 1;
       revertPredictor(ui.draggable);
+      setBack();
       ui.draggable.addClass('col-md-6');
       if (ndrop == 1) {
         $('#multiple-predictor').attr('disabled', false);
@@ -63,6 +63,7 @@ let displayPredTable = val => {
 
 function revertPredictor($item) {
   let $revert = $('#predictors-table');
+
   $item.hide(function () {
     var $list = $($revert).length
       ? $($revert)
@@ -72,6 +73,15 @@ function revertPredictor($item) {
       displayPredTable(3);
     });
   });
+}
+
+function setBack() {
+  //for single method
+  $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+
+  //set method btn to not active
+  $('.btn-method').removeClass('btn-active');
+  $('.btn-method').attr('disabled', true);
 }
 
 export default displayPredTable;
