@@ -40,7 +40,18 @@ function setBackPredictors(type) {
     $('#compensatory').attr('disabled', false);
     $('#counter').val(1);
   } else {
+    Set.dropped.map(res => {
+      Set.Predictors[0].map(pred => {
+        if (pred.predId == res.predId) {
+          pred.status = 1;
+        }
+      });
+    });
     Set.dropped = [];
+    displayPredTable(1);
+    $('#single-predictor').attr('disabled', false);
+    $('#multi-hurdle').attr('disabled', false);
+    $('#counter').val(1);
   }
 }
 

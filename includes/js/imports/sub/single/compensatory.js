@@ -1,12 +1,16 @@
-const Multiple = () => {
+const Compensatory = () => {
   // for any change on method
   $(document).change(event => {});
-  $('.method').on('change', function (res) {
+  $('.weight').on('change', function (res) {
     let predId = res.target.dataset['predid'],
-      y = $('#methodType').val(),
-      clss = res.target.dataset['class'],
-      value = $('.' + clss).val();
-
+      id = res.target.id,
+      x = Number($('#totalWeight').val()),
+      totalWeight = 0,
+      predType = $('#predType').val(),
+      value = Number($('#' + id).val());
+    totalWeight = x + value;
+    $('#totalWeight').val(totalWeight);
+    $('#percentage').html(totalWeight + '%');
     Set.dropped.map(drop => {
       if (drop.predId == predId) {
         drop.value = value;
@@ -15,32 +19,49 @@ const Multiple = () => {
             drop.stage = st.stageId;
           }
         });
-        drop.methodType = y;
+        // drop.methodType = y;
+        drop.predType = predType;
       }
-      drop.predType = 1;
     });
-    //console.log(Set.dropped);
+
+    console.log(Set.dropped);
+  });
+
+  $('.method').on('change', function (res) {
+    let y = $('#methodType').val(),
+      value = $('.method').val();
+
+    Set.dropped.map(drop => {
+      drop.weightValue = value;
+
+      drop.methodType = y;
+    });
+
+    console.log(Set.dropped);
   });
 
   //choosing top-down
   $(document).click(event => {
-    let method = event.target.dataset.method,
-      type = event.target.dataset.type,
+    let type = event.target.dataset.type,
       id = event.target.id;
 
     if (type == 'minimum') {
-      let predId = $('.' + method).attr('data-predid');
-      showMethod(predId, method);
+      // let predId = $('.' + method).attr('data-predid');
+      // showMethod(predId, method);
       $('.btn-method').removeClass('btn-active');
+      $('.method').html(`<option value="0" selected>Pls Choose</option>`);
       $('#' + id).addClass('btn-active');
       $('#methodType').val(1);
+      for (let x = 1; x <= 10; x++) {
+        $('.method').append(`<option value="${x}">${x}</option>`);
+      }
     } else if (type == 'topdown') {
-      $('.' + method).html(`<option value="0" selected>Pls Choose</option>`);
+      $('.method').html(`<option value="0" selected>Pls Choose</option>`);
       let start = 5,
         add = 5,
         end = 100;
       do {
-        $('.' + method).append(`<option value="${start}">${start}%</option>`);
+        $('.method').append(`<option value="${start}">${start}%</option>`);
         start = start + add;
       } while (start <= end);
 
@@ -90,4 +111,4 @@ function showMethod(predId, method) {
   });
 }
 
-export default Multiple;
+export default Compensatory;

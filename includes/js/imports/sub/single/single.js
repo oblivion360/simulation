@@ -15,6 +15,7 @@ const Single = () => {
         });
         drop.methodType = y;
       }
+      drop.predType = 1;
     });
     console.log(Set.dropped);
   });

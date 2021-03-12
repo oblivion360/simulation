@@ -58,16 +58,30 @@ let displayPredTable = val => {
       if (ndrop == 1) {
         $('#multiple-predictor').attr('disabled', false);
       } else if (ndrop == 2) {
-        $('#single-predictor').attr('disabled', false);
-        $('#compensatory').attr('disabled', false);
-        $('#counter').val(1);
+        let counter = $('#counter').val();
+        counter = counter - 1;
+        if (counter == 1) {
+          $('#single-predictor').attr('disabled', false);
+          $('#compensatory').attr('disabled', false);
+        }
+        $('#counter').val(counter);
+      } else if (ndrop == 3) {
+        let counter = $('#counter').val();
+        counter = counter - 1;
+        if (counter == 1) {
+          $('#single-predictor').attr('disabled', false);
+          $('#multi-hurdle').attr('disabled', false);
+          $('#counter').val(1);
+        }
+        $('#counter').val(counter);
       }
     },
   });
 };
 
 function revertPredictor($item) {
-  let $revert = $('#predictors-table');
+  let $revert = $('#predictors-table'),
+    ndrop = Set.drop;
 
   $item.hide(function () {
     var $list = $($revert).length
@@ -75,7 +89,11 @@ function revertPredictor($item) {
       : $('<div id="predictors-table"/>').html($revert);
 
     $item.prependTo($list).show(function () {
-      displayPredTable(3);
+      if (ndrop == 3) {
+        displayPredTable(1);
+      } else {
+        displayPredTable(3);
+      }
     });
   });
 }

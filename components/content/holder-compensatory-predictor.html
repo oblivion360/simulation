@@ -1,7 +1,11 @@
+<input type="hidden" id="counter" value="1" />
+<input type="hidden" id="methodType" value="0" />
+<input type="hidden" id="predType" value="2" />
+<input type="hidden" id="totalWeight" value="0" />
 <!-- Start of row -->
 <div class="row">
-  <div class="col-md-6 bg-holdera p-4" id="holder-button">
-    <div class="choosen-holder">
+  <div class="col-md-6 bg-holdera p-4 droppable1" id="holder1">
+    <div class="choosen-holder choosen-holder1">
       <!-- <button
           type="button"
           class="btn btn-block btn-large btn-info choosen"
@@ -15,15 +19,15 @@
     <div class="row">
       <div class="col-md-12 text-center pt-2">
         <div class="form-group">
-          <select class="form-control">
+          <select class="form-control weight" id="weight1">
             <option value="0" selected>Select the Weightage</option>
           </select>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-6 bg-holdera p-4" id="holder-button">
-    <div class="choosen-holder">
+  <div class="col-md-6 bg-holdera p-4 droppable2" id="holder2">
+    <div class="choosen-holder choosen-holder2">
       <!-- <button
           type="button"
           class="btn btn-block btn-large btn-info choosen"
@@ -37,7 +41,7 @@
     <div class="row">
       <div class="col-md-12 text-center pt-2">
         <div class="form-group">
-          <select class="form-control">
+          <select class="form-control weight" id="weight2">
             <option value="0" selected>Select the Weightage</option>
           </select>
         </div>
@@ -61,24 +65,36 @@
   <div class="col-md-6 bg-holderd p-4">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h4>Total Weightage: <span class="text-danger">0%</span></h4>
+        <h4>
+          Total Weightage: <span class="text-danger" id="percentage">0%</span>
+        </h4>
       </div>
       <div class="col-md-12 text-center">
         <p class="text-muted">Select the scoring Method</p>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-block btn-sm bg-button" disabled>
-          Cut-Off<br />Method
+        <button
+          type="button"
+          class="btn btn-block btn-sm bg-button btn-method"
+          data-type="minimum"
+          id="minimum"
+        >
+          Minimum Competency<br />Method
         </button>
       </div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-block btn-sm bg-button" disabled>
+        <button
+          type="button"
+          class="btn btn-block btn-sm bg-button btn-method"
+          data-type="topdown"
+          id="topdown"
+        >
           Top-Down<br />Method
         </button>
       </div>
       <div class="col-md-12 text-center pt-2">
         <div class="form-group">
-          <select class="form-control">
+          <select class="form-control method">
             <option value="0" selected>Pls Choose</option>
           </select>
         </div>
