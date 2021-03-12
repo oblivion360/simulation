@@ -13,9 +13,8 @@ let holderSingle = () => {
         accept: '.draggable',
         drop: function (event, ui) {
           let predId = ui.draggable[0].dataset['drag'];
-
           Set.Predictors[0][predId - 1].status = 2;
-
+          $('#methodType').val(1);
           Single();
           showMethod(predId);
           saveDrop(predId);

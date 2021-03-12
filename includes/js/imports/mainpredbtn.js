@@ -16,6 +16,7 @@ let mainPredBtn = () => {
       $('#multi-hurdle').addClass('subBtn-active');
       $('#compensatory').removeClass('subBtn-active');
       $('.subPred-btn').removeClass('d-none');
+      setBackPredictors('multiple');
       holderMultiple();
     } else {
       $('.subPred-btn').attr('disabled', true);
@@ -38,13 +39,24 @@ function setBackPredictors(type) {
     });
     Set.dropped = [];
     displayPredTable(3);
+    //set back button Multiple
+    $('#multiple-predictor').attr('disabled', false);
   } else if (type == 'multiple') {
+    Set.dropped.map(res => {
+      Set.Predictors[0].map(pred => {
+        if (pred.predId == res.predId) {
+          pred.status = 1;
+        }
+      });
+    });
+    Set.dropped = [];
+    displayPredTable(3);
+    $('#single-predictor').attr('disabled', false);
+    $('#compensatory').attr('disabled', false);
+    $('#counter').val(1);
   } else {
     Set.dropped = [];
   }
-
-  //set back button Multiple
-  $('#multiple-predictor').attr('disabled', false);
 }
 
 export default mainPredBtn;

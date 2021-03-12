@@ -2,7 +2,9 @@ const Single = () => {
   // for any change on method
   $('.method').on('change', function (res) {
     let predId = res.target.dataset['predid'],
+      y = $('#methodType').val(),
       value = $('.method').val();
+
     Set.dropped.map(drop => {
       if (drop.predId == predId) {
         drop.value = value;
@@ -11,6 +13,7 @@ const Single = () => {
             drop.stage = st.stageId;
           }
         });
+        drop.methodType = y;
       }
     });
     console.log(Set.dropped);
@@ -22,6 +25,7 @@ const Single = () => {
     let start = 5,
       add = 5,
       end = 100;
+    $('#methodType').val(2);
     do {
       $('.method').append(`<option value="${start}">${start}%</option>`);
       start = start + add;
@@ -33,6 +37,7 @@ const Single = () => {
 
   $('#minimum').on('click', function () {
     let predId = $('.method').attr('data-predid');
+    $('#methodType').val(1);
     showMethod(predId);
     $('.btn-method').removeClass('btn-active');
     $('#minimum').addClass('btn-active');

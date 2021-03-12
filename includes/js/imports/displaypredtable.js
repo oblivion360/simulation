@@ -50,12 +50,17 @@ let displayPredTable = val => {
     drop: function (event, ui) {
       let predId = ui.draggable[0].dataset['drag'];
       let ndrop = Set.drop;
+      $('#methodType').val(1);
       Set.Predictors[0][predId - 1].status = 1;
       revertPredictor(ui.draggable);
       setBack();
       ui.draggable.addClass('col-md-6');
       if (ndrop == 1) {
         $('#multiple-predictor').attr('disabled', false);
+      } else if (ndrop == 2) {
+        $('#single-predictor').attr('disabled', false);
+        $('#compensatory').attr('disabled', false);
+        $('#counter').val(1);
       }
     },
   });

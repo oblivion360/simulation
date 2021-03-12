@@ -1,5 +1,7 @@
-<div class="col-md-6 bg-holdera p-4">
-  <div class="choosen-holder">
+<!-- Start of row -->
+
+<div class="col-md-6 bg-holdera p-4 droppable ui-droppable">
+  <div class="choosen-holder set-choosen">
     <!-- <button
           type="button"
           class="btn btn-block btn-large btn-info choosen"
@@ -15,21 +17,33 @@
       <p class="text-muted">Select the scoring Method</p>
     </div>
     <div class="col-md-6">
-      <button type="button" class="btn btn-block btn-sm bg-button" disabled>
-        Cut-Off<br />Method
+      <button
+        type="button"
+        class="btn btn-block btn-sm bg-button btn-method"
+        disabled
+        id="minimum"
+      >
+        Minimum Competency<br />Method
       </button>
     </div>
     <div class="col-md-6">
-      <button type="button" class="btn btn-block btn-sm bg-button" disabled>
+      <button
+        type="button"
+        id="topdown"
+        class="btn btn-block btn-sm bg-button btn-method"
+        disabled
+      >
         Top-Down<br />Method
       </button>
     </div>
     <div class="col-md-12 text-center pt-2">
       <div class="form-group">
-        <select class="form-control">
+        <select class="form-control method" data-predid="0" data-pretext="">
           <option value="0" selected>Pls Choose</option>
         </select>
       </div>
     </div>
   </div>
 </div>
+
+<!-- /.end of row -->

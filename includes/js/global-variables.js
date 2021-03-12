@@ -12,11 +12,12 @@ class Settings {
           this.Predictors.push(pred);
         });
     },
-    Dropped: (predId, value, stage) => {
+    Dropped: (predId, value, stage, methodType) => {
       let drop = {
         predId: Number(predId),
         value: value,
         stage: Number(stage),
+        methodType: Number(methodType),
       };
       this.dropped.push(drop);
     },
