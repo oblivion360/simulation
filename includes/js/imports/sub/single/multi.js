@@ -3,37 +3,57 @@ const Multiple = () => {
   $(document).change(event => {});
   $('.method').on('change', function (res) {
     let predId = res.target.dataset['predid'],
+      stage = $('#stage').val(),
       y = $('#methodType').val(),
+      counter = $('#counter').val(),
       clss = res.target.dataset['class'],
+      value = Number($('.' + clss).val());
+    if (isNaN(value)) {
       value = $('.' + clss).val();
-
+    }
+    console.log(value);
     Set.dropped.map(drop => {
       if (drop.predId == predId) {
         drop.value = value;
-        Set.Stages.map(st => {
-          if (st.status == 1) {
-            drop.stage = st.stageId;
-          }
-        });
+        drop.stage = stage;
         drop.methodType = y;
       }
       drop.predType = 1;
     });
-    //console.log(Set.dropped);
+    if (counter > 2) {
+      if (stage == 1) {
+        $('#next').addClass('btn-stage-active').attr('disabled', false);
+      } else {
+        $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
+      }
+    }
+    console.log(Set.dropped);
   });
 
   //choosing top-down
   $(document).click(event => {
     let method = event.target.dataset.method,
       type = event.target.dataset.type,
+      counter = $('#counter').val(),
+      otherId = event.target.dataset.counter,
       id = event.target.id;
 
     if (type == 'minimum') {
       let predId = $('.' + method).attr('data-predid');
       showMethod(predId, method);
-      $('.btn-method').removeClass('btn-active');
+      $('#' + otherId).removeClass('btn-active');
       $('#' + id).addClass('btn-active');
       $('#methodType').val(1);
+
+      if (counter > 2) {
+        if (stage == 1) {
+          $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+        } else {
+          $('.nav-btn').removeClass('btn-stage-active');
+          $('#prev').attr('disabled', false);
+          $('#next').attr('disabled', true);
+        }
+      }
     } else if (type == 'topdown') {
       $('.' + method).html(`<option value="0" selected>Pls Choose</option>`);
       let start = 5,
@@ -44,9 +64,19 @@ const Multiple = () => {
         start = start + add;
       } while (start <= end);
 
-      $('.btn-method').removeClass('btn-active');
+      $('#' + otherId).removeClass('btn-active');
       $('#' + id).addClass('btn-active');
       $('#methodType').val(2);
+
+      if (counter > 2) {
+        if (stage == 1) {
+          $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+        } else {
+          $('.nav-btn').removeClass('btn-stage-active');
+          $('#prev').attr('disabled', false);
+          $('#next').attr('disabled', true);
+        }
+      }
     }
   });
 };

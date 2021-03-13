@@ -3,6 +3,7 @@ import holderCompensatory from './holdercompensatory.js';
 import holderMultiple from './holdermultiple.js';
 
 let subPredBtn = () => {
+  let stage = $('#stage').val();
   $('.subPred-btn').on('click', e => {
     let btn = e.target.id;
     if (btn == 'compensatory') {
@@ -12,6 +13,13 @@ let subPredBtn = () => {
       displayPredTable(1);
 
       holderCompensatory();
+      if (stage == 1) {
+        $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+      } else {
+        $('.nav-btn').removeClass('btn-stage-active');
+        $('#prev').attr('disabled', false).addClass('btn-stage-active');
+        $('#next').attr('disabled', true);
+      }
     } else {
       setBackPredictors('multiple');
       $('.subPred-btn').removeClass('subBtn-active');
@@ -20,6 +28,13 @@ let subPredBtn = () => {
       displayPredTable(3);
 
       holderMultiple();
+      if (stage == 1) {
+        $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+      } else {
+        $('.nav-btn').removeClass('btn-stage-active');
+        $('#prev').attr('disabled', false).addClass('btn-stage-active');
+        $('#next').attr('disabled', true);
+      }
     }
   });
 };
@@ -27,7 +42,7 @@ let subPredBtn = () => {
 function setBackPredictors(type) {
   if (type == 'multiple') {
     Set.dropped.map(res => {
-      console.log(res);
+      // console.log(res);
       Set.Predictors[0].map(pred => {
         if (pred.predId == res.predId) {
           pred.status = 1;

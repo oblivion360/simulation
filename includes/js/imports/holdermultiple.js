@@ -101,12 +101,11 @@ function showMethod(predId) {
   $('.method' + x).html(`<option value="0" selected>Pls Choose</option>`);
   Set.Predictors[0].map(res => {
     if (res.predId == predId) {
-      // console.log(typeof res.start);
-      if (typeof res.start == 'number') {
-        let start = res.start,
-          end = res.end,
+      if (res.valueType == 1) {
+        let start = Number(res.start),
+          end = Number(res.end),
           x = 0,
-          add = res.add;
+          add = Number(res.add);
 
         do {
           x++;
@@ -121,7 +120,7 @@ function showMethod(predId) {
           }
           start = start + add;
         } while (start <= end);
-      } else if (typeof res.start == 'string') {
+      } else if (res.valueType == 2) {
         let start = res.start,
           end = res.end;
         $('.method' + x).append(`

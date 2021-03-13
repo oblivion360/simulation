@@ -3,6 +3,7 @@ import holderSingle from './holdersingle.js';
 import holderMultiple from './holdermultiple.js';
 
 let mainPredBtn = () => {
+  let stage = $('#stage').val();
   // choosing a Predictor btn
   $('.pred-btn').on('click', e => {
     let btn = e.target.dataset.btn;
@@ -18,12 +19,26 @@ let mainPredBtn = () => {
       $('.subPred-btn').removeClass('d-none');
       setBackPredictors('multiple');
       holderMultiple();
+      if (stage == 1) {
+        $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+      } else {
+        $('.nav-btn').removeClass('btn-stage-active');
+        $('#prev').attr('disabled', false).addClass('btn-stage-active');
+        $('#next').attr('disabled', true);
+      }
     } else {
       $('.subPred-btn').attr('disabled', true);
       $('.subPred-btn').removeClass('subBtn-active');
       $('.subPred-btn').addClass('d-none');
       setBackPredictors('single');
       holderSingle();
+      if (stage == 1) {
+        $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+      } else {
+        $('.nav-btn').removeClass('btn-stage-active');
+        $('#prev').attr('disabled', false).addClass('btn-stage-active');
+        $('#next').attr('disabled', true);
+      }
     }
   });
 };

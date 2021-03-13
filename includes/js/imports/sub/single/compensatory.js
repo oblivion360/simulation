@@ -1,16 +1,18 @@
 const Compensatory = () => {
   // for any change on method
-  $(document).change(event => {});
+
   $('.weight').on('change', function (res) {
     let predId = res.target.dataset['predid'],
       id = res.target.id,
-      x = Number($('#totalWeight').val()),
-      totalWeight = 0,
       predType = $('#predType').val(),
+      counter = $('#counter').val(),
+      a = 0,
       value = Number($('#' + id).val());
-    totalWeight = x + value;
-    $('#totalWeight').val(totalWeight);
-    $('#percentage').html(totalWeight + '%');
+    for (let z = 1; z < counter; z++) {
+      a = a + Number($('#weight' + z).val());
+    }
+
+    $('#percentage').html(a + '%');
     Set.dropped.map(drop => {
       if (drop.predId == predId) {
         drop.value = value;
@@ -29,6 +31,8 @@ const Compensatory = () => {
 
   $('.method').on('change', function (res) {
     let y = $('#methodType').val(),
+      stage = $('#stage').val(),
+      counter = $('#counter').val(),
       value = $('.method').val();
 
     Set.dropped.map(drop => {
@@ -36,13 +40,20 @@ const Compensatory = () => {
 
       drop.methodType = y;
     });
-
+    if (counter > 2) {
+      if (stage == 1) {
+        $('#next').addClass('btn-stage-active').attr('disabled', false);
+      } else {
+        $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
+      }
+    }
     console.log(Set.dropped);
   });
 
   //choosing top-down
   $(document).click(event => {
     let type = event.target.dataset.type,
+      counter = $('#counter').val(),
       id = event.target.id;
 
     if (type == 'minimum') {
@@ -54,6 +65,15 @@ const Compensatory = () => {
       $('#methodType').val(1);
       for (let x = 1; x <= 10; x++) {
         $('.method').append(`<option value="${x}">${x}</option>`);
+      }
+      if (counter > 2) {
+        if (stage == 1) {
+          $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+        } else {
+          $('.nav-btn').removeClass('btn-stage-active');
+          $('#prev').attr('disabled', false);
+          $('#next').attr('disabled', true);
+        }
       }
     } else if (type == 'topdown') {
       $('.method').html(`<option value="0" selected>Pls Choose</option>`);
@@ -68,6 +88,15 @@ const Compensatory = () => {
       $('.btn-method').removeClass('btn-active');
       $('#' + id).addClass('btn-active');
       $('#methodType').val(2);
+      if (counter > 2) {
+        if (stage == 1) {
+          $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+        } else {
+          $('.nav-btn').removeClass('btn-stage-active');
+          $('#prev').attr('disabled', false);
+          $('#next').attr('disabled', true);
+        }
+      }
     }
   });
 };

@@ -1,40 +1,88 @@
 let displayPredTable = val => {
   $('#predictors-table').html('');
+  // console.log(Set.finalDrop.length);
 
-  Set.Predictors[0].map(({ name, type, status, predId }) => {
-    let x = val,
-      state = '',
-      drag = '',
-      newType = '';
+  if (Set.finalDrop.length == 0) {
+    Set.Predictors[0].map(({ name, type, status, predId }) => {
+      let x = val,
+        state = '',
+        drag = '',
+        newType = '';
 
-    if (status != 1 || predId == 9) {
-      newType = 'pred-hide';
-    }
-    if (type == x) {
-      state = 'disabled';
-    } else {
-      state = '';
-    }
+      if (status != 1 || predId == 9) {
+        newType = 'pred-hide';
+      }
+      if (type == x) {
+        state = 'disabled';
+      } else {
+        state = '';
+      }
 
-    if (x == type) {
-      state = 'drag-disabled';
-    } else if (x == 3) {
-      drag = 'draggable';
-      state = 'drag-active';
-    } else if (x == 0) {
-      state = 'drag-disabled';
-    } else {
-      drag = 'draggable';
-      state = 'drag-active';
-    }
-    // ${newType}
-    $('#predictors-table').append(`       
-      <div class="col-md-6 drag-btn ${drag} ${newType}" data-drag="${predId}">
-        <div class="drag-box ${state}">    
-          ${name}     
-        </div>  
-      </div>`);
-  });
+      if (x == type) {
+        state = 'drag-disabled';
+      } else if (x == 3) {
+        drag = 'draggable';
+        state = 'drag-active';
+      } else if (x == 0) {
+        state = 'drag-disabled';
+      } else {
+        drag = 'draggable';
+        state = 'drag-active';
+      }
+      // ${newType}
+      $('#predictors-table').append(`       
+        <div class="col-md-6 drag-btn ${drag} ${newType}" data-drag="${predId}">
+          <div class="drag-box ${state}">    
+            ${name}     
+          </div>  
+        </div>`);
+    });
+  } else {
+    // set the pridictor that is save
+    Set.finalDrop.map(fd => {
+      let fpred = fd.predId;
+      Set.Predictors[0].map(pred => {
+        if (fpred == pred.predId) {
+          pred.status = 2;
+        }
+      });
+    });
+    // now display pridictors
+    Set.Predictors[0].map(({ name, type, status, predId }) => {
+      let x = val,
+        state = '',
+        drag = '',
+        newType = '';
+
+      if (status != 1 || predId == 9) {
+        newType = 'pred-hide';
+      }
+      if (type == x) {
+        state = 'disabled';
+      } else {
+        state = '';
+      }
+
+      if (x == type) {
+        state = 'drag-disabled';
+      } else if (x == 3) {
+        drag = 'draggable';
+        state = 'drag-active';
+      } else if (x == 0) {
+        state = 'drag-disabled';
+      } else {
+        drag = 'draggable';
+        state = 'drag-active';
+      }
+      // ${newType}
+      $('#predictors-table').append(`       
+        <div class="col-md-6 drag-btn ${drag} ${newType}" data-drag="${predId}">
+          <div class="drag-box ${state}">    
+            ${name}     
+          </div>  
+        </div>`);
+    });
+  }
 
   // draggable
   $('.draggable').draggable({
@@ -77,6 +125,10 @@ let displayPredTable = val => {
       }
     },
   });
+
+  function next() {
+    console.log('Next');
+  }
 };
 
 function revertPredictor($item) {
@@ -99,12 +151,29 @@ function revertPredictor($item) {
 }
 
 function setBack() {
+  let drop = Set.drop,
+    counter = $('#counter').val();
   //for single method
-  $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+  if (drop == 1) {
+    $('.method').html(`<option value="0" selected>Pls Choose</option>`);
 
-  //set method btn to not active
-  $('.btn-method').removeClass('btn-active');
-  $('.btn-method').attr('disabled', true);
+    //set method btn to not active
+    $('.btn-method').removeClass('btn-active');
+    $('.btn-method').attr('disabled', true);
+  } else if (drop == 2) {
+    counter = counter - 1;
+    $('.method' + counter).html(
+      `<option value="0" selected>Pls Choose</option>`
+    );
+
+    //set method btn to not active
+    $('#topdown' + counter)
+      .removeClass('btn-active')
+      .attr('disabled', true);
+    $('#minimum' + counter)
+      .removeClass('btn-active')
+      .attr('disabled', true);
+  }
 }
 
 export default displayPredTable;

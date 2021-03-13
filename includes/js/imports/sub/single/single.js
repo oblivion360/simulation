@@ -2,21 +2,25 @@ const Single = () => {
   // for any change on method
   $('.method').on('change', function (res) {
     let predId = res.target.dataset['predid'],
+      stage = $('#stage').val(),
       y = $('#methodType').val(),
+      value = Number($('.method').val());
+    if (isNaN(value)) {
       value = $('.method').val();
-
+    }
     Set.dropped.map(drop => {
       if (drop.predId == predId) {
         drop.value = value;
-        Set.Stages.map(st => {
-          if (st.status == 1) {
-            drop.stage = st.stageId;
-          }
-        });
+        drop.stage = stage;
         drop.methodType = y;
       }
       drop.predType = 1;
     });
+    if (stage == 1) {
+      $('#next').addClass('btn-stage-active').attr('disabled', false);
+    } else {
+      $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
+    }
     console.log(Set.dropped);
   });
 
@@ -25,6 +29,7 @@ const Single = () => {
     $('.method').html(`<option value="0" selected>Pls Choose</option>`);
     let start = 5,
       add = 5,
+      stage = $('#stage').val(),
       end = 100;
     $('#methodType').val(2);
     do {
@@ -34,14 +39,29 @@ const Single = () => {
 
     $('.btn-method').removeClass('btn-active');
     $('#topdown').addClass('btn-active');
+    if (stage == 1) {
+      $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+    } else {
+      $('.nav-btn').removeClass('btn-stage-active');
+      $('#prev').attr('disabled', false);
+      $('#next').attr('disabled', true);
+    }
   });
 
   $('#minimum').on('click', function () {
-    let predId = $('.method').attr('data-predid');
+    let predId = $('.method').attr('data-predid'),
+      stage = $('#stage').val();
     $('#methodType').val(1);
     showMethod(predId);
     $('.btn-method').removeClass('btn-active');
     $('#minimum').addClass('btn-active');
+    if (stage == 1) {
+      $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+    } else {
+      $('.nav-btn').removeClass('btn-stage-active');
+      $('#prev').attr('disabled', false);
+      $('#next').attr('disabled', true);
+    }
   });
 };
 
