@@ -1,7 +1,7 @@
 import mainPredBtn from './imports/mainpredbtn.js';
 import subPredBtn from './imports/subpredbtn.js';
 import displayPredTable from './imports/displaypredtable.js';
-// import Settings from './imports/settings.js';
+import Summary from './imports/summary.js';
 
 $(function () {
   stageActive();
@@ -53,6 +53,17 @@ function stageActive() {
           },
         });
       } else if (stageId == 5) {
+        $.ajax({
+          type: 'GET',
+          crossDomain: true,
+          url: 'components/pages/summary.html',
+          dataType: 'html',
+          success: function (res) {
+            // show page
+            $('#content').html(res);
+            Summary();
+          },
+        });
       } else if (stageId == 6) {
       }
     }
@@ -63,50 +74,48 @@ $('#next').on('click', function () {
   let type = Set.drop,
     length = Set.dropped.length,
     dropped = Set.dropped,
-    stage,
+    stage = Number($('#stage').val()),
     newStage,
     counter = $('#counter').val();
 
-  Set.Stages.map(st => {
-    if (st.status == 1) {
-      stage = Number(st.stageId);
-      newStage = Number(stage + 1);
+  newStage = Number(stage + 1);
+  console.log(stage);
+  if (stage <= 4) {
+    // set all alert
+    if (type >= 2 && counter == 2 && length == 0) {
+      alert('Need at Least two drop');
+    } else if (type >= 2 && counter > 2 && length != 0) {
+      dropped.map(val => {
+        Set.finalDrop.push(val);
+      });
+
+      Set.Stages.map(st => {
+        // console.log(stage);
+        if (st.stageId == stage) {
+          st.status = 2;
+        } else if (st.stageId == newStage) {
+          st.status = 1;
+        }
+      });
+      stageActive();
+    } else if (type == 1 && counter >= 1 && length != 0) {
+      dropped.map(val => {
+        Set.finalDrop.push(val);
+      });
+
+      Set.Stages.map(st => {
+        // console.log(stage);
+        if (st.stageId == stage) {
+          st.status = 2;
+        } else if (st.stageId == newStage) {
+          st.status = 1;
+        }
+      });
+      stageActive();
+    } else {
+      alert('Need at Least two drop');
     }
-  });
-
-  // set all alert
-  if (type >= 2 && counter == 2 && length == 0) {
-    alert('Need at Least two drop');
-  } else if (type >= 2 && counter > 2 && length != 0) {
-    dropped.map(val => {
-      Set.finalDrop.push(val);
-    });
-
-    Set.Stages.map(st => {
-      // console.log(stage);
-      if (st.stageId == stage) {
-        st.status = 2;
-      } else if (st.stageId == newStage) {
-        st.status = 1;
-      }
-    });
+  } else if (stage == 5) {
     stageActive();
-  } else if (type == 1 && counter >= 1 && length != 0) {
-    dropped.map(val => {
-      Set.finalDrop.push(val);
-    });
-
-    Set.Stages.map(st => {
-      // console.log(stage);
-      if (st.stageId == stage) {
-        st.status = 2;
-      } else if (st.stageId == newStage) {
-        st.status = 1;
-      }
-    });
-    stageActive();
-  } else {
-    alert('Need at Least two drop');
   }
-  //console.log('type: ' + type + ' counter: ' + counter + ' length: ' + length);
 });

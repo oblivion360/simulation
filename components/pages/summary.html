@@ -1,0 +1,129 @@
+<div class="col-md-12" id="content-banner">
+  <!-- Top Header -->
+  <div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+  >
+    <!-- first button -->
+    <div class="col-md-8 pb-2">
+      <p>
+        Please review your selection here. Select “Amend” if you need to make
+        any changes. Once you are ready, select “Start Simulation” to view the
+        results. You will not be able to make any changes once the simulation
+        has started.
+      </p>
+    </div>
+    <!-- /.first button -->
+
+    <!-- /.first button -->
+
+    <div class="col-md-4">
+      <button type="button" style="float: right" class="btn btn-sm btn-circle">
+        <b>?</b>
+      </button>
+    </div>
+  </div>
+  <!-- /.Top Header -->
+</div>
+
+<div class="col-md-12">
+  <!-- this where accordion exist -->
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseOne"
+            aria-expanded="false"
+            aria-controls="collapseOne"
+          >
+            Stage 1: Initial
+          </button>
+        </h2>
+      </div>
+
+      <div
+        id="collapseOne"
+        class="collapse show"
+        aria-labelledby="headingOne"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body" id="resultInitial">&nbsp;</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left collapsed"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            Stage 2: Substantive
+          </button>
+        </h2>
+      </div>
+      <div
+        id="collapseTwo"
+        class="collapse"
+        aria-labelledby="headingTwo"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body" id="resultSubstantive">&nbsp;</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left collapsed"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseThree"
+            aria-expanded="false"
+            aria-controls="collapseThree"
+          >
+            Stage 3: Discretionary
+          </button>
+        </h2>
+      </div>
+      <div
+        id="collapseThree"
+        class="collapse"
+        aria-labelledby="headingThree"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body" id="resultDiscretionary">&nbsp;</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingFour">
+        <h2 class="mb-0">
+          <button
+            class="btn btn-link btn-block text-left collapsed"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            Stage 4: Contingent
+          </button>
+        </h2>
+      </div>
+      <div
+        id="collapseFour"
+        class="collapse"
+        aria-labelledby="headingFour"
+        data-parent="#accordionExample"
+      >
+        <div class="card-body" id="resultContingent">&nbsp;</div>
+      </div>
+    </div>
+  </div>
+</div>
