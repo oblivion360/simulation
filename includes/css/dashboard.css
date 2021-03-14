@@ -267,3 +267,38 @@ body {
 body {
   background: linear-gradient(90deg, #ffffff 43.95%, #d7f5fd 100%);
 }
+
+.predNames {
+  width: 100%;
+  padding: 15px 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  background-color: #f4b183;
+  border-radius: 10px 10px;
+  box-shadow: 5px 5px 10px grey;
+}
+
+.methods {
+  width: 100%;
+  padding: 15px 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+  background-color: #2979ce;
+  border-radius: 10px 10px;
+  box-shadow: 5px 5px 10px grey;
+}
+
+.scores,
+.weights {
+  width: 100%;
+  padding: 15px 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #2b3582;
+  border-radius: 10px 10px;
+  background-color: #fff;
+  font-weight: bold;
+  box-shadow: 5px 5px 10px grey;
+}

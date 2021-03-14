@@ -2,6 +2,7 @@ import mainPredBtn from './imports/mainpredbtn.js';
 import subPredBtn from './imports/subpredbtn.js';
 import displayPredTable from './imports/displaypredtable.js';
 import Summary from './imports/summary.js';
+import SummarySettings from './imports/sub/single/summary-settings.js';
 
 $(function () {
   stageActive();
@@ -62,9 +63,12 @@ function stageActive() {
             // show page
             $('#content').html(res);
             Summary();
+            SummarySettings();
           },
         });
       } else if (stageId == 6) {
+        $('#startSimulation').modal('show');
+        console.log('show');
       }
     }
   });
@@ -115,7 +119,7 @@ $('#next').on('click', function () {
     } else {
       alert('Need at Least two drop');
     }
-  } else if (stage == 5) {
+  } else if (stage >= 5) {
     stageActive();
   }
 });
