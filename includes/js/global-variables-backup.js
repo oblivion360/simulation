@@ -26,10 +26,13 @@ class Settings {
     Cand: async () => {
       fetch('includes/js/api/candidates.txt')
         .then(response => response.json())
-        .then(val => {
-          let cand = val.Candidates;
-
-          this.Candidates.push(cand);
+        .then(data => {
+          let cand = data.Candidates;
+          // console.log(cand);
+          cand.map(res => {
+            this.Candidates.push(res);
+          });
+          // this.Predictors.push(pred);
         });
     },
   };
@@ -78,6 +81,60 @@ class Settings {
 
   // predId, value, stage
   Computations = [];
+
+  // candidate, predId, value
+  Candidates = [
+    {
+      candidate: 'A',
+      score: [
+        {
+          predId: 1,
+          type: 1,
+          value: 12,
+        },
+        {
+          predId: 2,
+          type: 1,
+          value: 4,
+        },
+        {
+          predId: 7,
+          type: 2,
+          value: 'Pass',
+        },
+        {
+          predId: 8,
+          type: 2,
+          value: 'Pass',
+        },
+      ],
+    },
+    {
+      candidate: 'B',
+      score: [
+        {
+          predId: 1,
+          type: 1,
+          value: 4,
+        },
+        {
+          predId: 2,
+          type: 1,
+          value: 1,
+        },
+        {
+          predId: 7,
+          type: 2,
+          value: 'Fail',
+        },
+        {
+          predId: 8,
+          type: 2,
+          value: 'Fail',
+        },
+      ],
+    },
+  ];
 }
 
 const Set = new Settings();

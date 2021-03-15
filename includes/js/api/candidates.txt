@@ -1,0 +1,412 @@
+{
+    "Candidates" : [
+        {
+            "name": "A",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 4
+                },
+                {
+                    "predId": 2,
+                    "score": 4
+                },
+                {
+                    "predId": 3,
+                    "score": 6
+                },
+                {
+                    "predId": 4,
+                    "score": 9
+                },
+                {
+                    "predId": 5,
+                    "score": 6
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "B",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 12
+                },
+                {
+                    "predId": 2,
+                    "score": 3
+                },
+                {
+                    "predId": 3,
+                    "score": 6
+                },
+                {
+                    "predId": 4,
+                    "score": 3
+                },
+                {
+                    "predId": 5,
+                    "score": 8
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "C",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 9
+                },
+                {
+                    "predId": 2,
+                    "score": 4
+                },
+                {
+                    "predId": 3,
+                    "score": 5
+                },
+                {
+                    "predId": 4,
+                    "score": 8
+                },
+                {
+                    "predId": 5,
+                    "score": 4
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "fail"
+                }
+            ]
+        },
+        {
+            "name": "D",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 5
+                },
+                {
+                    "predId": 2,
+                    "score": 4
+                },
+                {
+                    "predId": 3,
+                    "score": 5
+                },
+                {
+                    "predId": 4,
+                    "score": 5
+                },
+                {
+                    "predId": 5,
+                    "score": 4
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "E",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 14
+                },
+                {
+                    "predId": 2,
+                    "score": 5
+                },
+                {
+                    "predId": 3,
+                    "score": 8
+                },
+                {
+                    "predId": 4,
+                    "score": 7
+                },
+                {
+                    "predId": 5,
+                    "score": 8
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "F",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 7
+                },
+                {
+                    "predId": 2,
+                    "score": 3
+                },
+                {
+                    "predId": 3,
+                    "score": 4
+                },
+                {
+                    "predId": 4,
+                    "score": 3
+                },
+                {
+                    "predId": 5,
+                    "score": 6
+                },
+                {
+                    "predId": 6,
+                    "score": "no"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "G",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 6
+                },
+                {
+                    "predId": 2,
+                    "score": 4
+                },
+                {
+                    "predId": 3,
+                    "score": 8
+                },
+                {
+                    "predId": 4,
+                    "score": 7
+                },
+                {
+                    "predId": 5,
+                    "score": 2
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "H",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 9
+                },
+                {
+                    "predId": 2,
+                    "score": 5
+                },
+                {
+                    "predId": 3,
+                    "score": 5
+                },
+                {
+                    "predId": 4,
+                    "score": 2
+                },
+                {
+                    "predId": 5,
+                    "score": 7
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "I",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 10
+                },
+                {
+                    "predId": 2,
+                    "score": 4
+                },
+                {
+                    "predId": 3,
+                    "score": 9
+                },
+                {
+                    "predId": 4,
+                    "score": 10
+                },
+                {
+                    "predId": 5,
+                    "score": 3
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "J",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 18
+                },
+                {
+                    "predId": 2,
+                    "score": 3
+                },
+                {
+                    "predId": 3,
+                    "score": 7
+                },
+                {
+                    "predId": 4,
+                    "score": 3
+                },
+                {
+                    "predId": 5,
+                    "score": 6
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        },
+        {
+            "name": "K",
+            "scores": [
+                {
+                    "predId": 1,
+                    "score": 11
+                },
+                {
+                    "predId": 2,
+                    "score": 4
+                },
+                {
+                    "predId": 3,
+                    "score": 6
+                },
+                {
+                    "predId": 4,
+                    "score": 7
+                },
+                {
+                    "predId": 5,
+                    "score": 5
+                },
+                {
+                    "predId": 6,
+                    "score": "yes"
+                },
+                {
+                    "predId": 7,
+                    "score": "ok"
+                },
+                {
+                    "predId": 8,
+                    "score": "pass"
+                }
+            ]
+        }
+        
+    ] 
+}

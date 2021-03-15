@@ -1,7 +1,5 @@
-"use strict";
-(function() {
-    'use strict';
-    feather.replace();
-    
-    
-  })()
+'use strict';
+(function () {
+  'use strict';
+  feather.replace();
+})();

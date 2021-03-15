@@ -1,5 +1,10 @@
 body {
   font-size: 0.875rem;
+  font-size: large !important;
+}
+
+p {
+  font-size: large !important;
 }
 
 .feather {
@@ -127,7 +132,7 @@ body {
 }
 
 .text-align-center {
-  text-align: center;
+  text-align: center !important;
 }
 
 /* .bg-company {
