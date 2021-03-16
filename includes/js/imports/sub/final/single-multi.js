@@ -70,7 +70,6 @@ let SingleMulti = (num, fd, id) => {
       });
 
       if (typeof value == 'number') {
-        value = value - 0.5;
         if (scored >= value) {
           displayResult = 'Pass';
         } else {

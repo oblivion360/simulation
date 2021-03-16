@@ -32,10 +32,19 @@ class Settings {
           this.Candidates.push(cand);
         });
     },
+    Total: (name, total) => {
+      let drop = {
+        name: name,
+        total: Number(total),
+      };
+
+      this.totalArray.push(drop);
+    },
   };
 
   Predictors = [];
   Candidates = [];
+  totalArray = [];
 
   Stages = [
     {
