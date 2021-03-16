@@ -2,7 +2,7 @@ import mainPredBtn from './imports/mainpredbtn.js';
 import subPredBtn from './imports/subpredbtn.js';
 import displayPredTable from './imports/displaypredtable.js';
 import Summary from './imports/summary.js';
-import SummarySettings from './imports/sub/single/summary-settings.js';
+import SummarySettings from './imports/sub/final/summary-settings.js';
 
 $(function () {
   stageActive();

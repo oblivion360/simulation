@@ -1,4 +1,4 @@
-import CandidatesSettings from './candidates-settings.js';
+import CandidatesSettings from '../single/candidates-settings.js';
 let SummarySettings = () => {
   $('#button-stage').html(`
         <div class="col-md-6">&nbsp;</div>
