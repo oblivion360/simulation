@@ -18,13 +18,19 @@ let Final = () => {
 };
 
 function stage(num) {
-  let id = 1,
+  let id = 0,
+    type = 1,
     mType;
 
   Set.Candidates[0].map(res => {
     $('#finalHead' + num).append(
       `<th scope="col" class='text-align-center'>${res.name}</th>`
     );
+  });
+  Set.Candidates[0].map(cd => {
+    $('#holderTotal' + num).append(`
+      <input type='hidden' id='${cd.name}${num}' value='0'/>
+    `);
   });
 
   Set.finalDrop.map(fd => {
@@ -35,9 +41,11 @@ function stage(num) {
       if (fd.predType == 1) {
         SingleMulti(num, fd, id, mType);
         id = id + 1;
+        type = 1;
       } else {
         Compensatory(num, fd, id, mType);
         id = id + 1;
+        type = 2;
       }
     }
   });

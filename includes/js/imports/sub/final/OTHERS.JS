@@ -60,3 +60,38 @@ if (fd.methodType == 1) {
           `);
   });
 }
+
+// -------------------------------------------------------------------------------------------------------------------------- //
+
+// console.log(res.scores);
+let scored;
+res.scores.map(sc => {
+  if (fd.predId == sc.predId && fd.stage == num) {
+    scored = sc.score;
+  }
+});
+total2 = Number(scored) * (Number(value) / 100);
+// console.log(
+//   'Name: ' + res.name + ' Scored: ' + scored + ' Value: ' + value
+// );
+total = total + Number(total2.toFixed(2));
+if (Set.totalArray.length == 0) {
+  console.log('first add');
+  Set.data.Total(res.name, total);
+} else {
+  // Set.totalArray[t].total = Set.totalArray[t].total + total;
+  for (let t = 0; t < Set.totalArray.length; t++) {
+    if (Set.totalArray[t].name == res.name) {
+      console.log('if Update ' + Set.totalArray.length);
+      Set.totalArray[t].total = Set.totalArray[t].total + total;
+      z = 0;
+    } else {
+      console.log('rx ' + rx);
+      if (rx == Set.totalArray.length - 1) {
+        console.log('z add ' + Set.totalArray.length);
+        Set.data.Total(res.name, total);
+      }
+      rx = rx + 1;
+    }
+  }
+}

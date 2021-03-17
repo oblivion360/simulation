@@ -1,23 +1,22 @@
 let Compensatory = (num, fd, id) => {
   // for Single and Multi PredType
   let Pred,
-    value,
-    value1,
-    weightValue,
+    value = 0,
+    value1 = 0,
+    result,
+    z = 0,
+    weightValue = 0,
     weightValue2,
     total = 0,
     total2 = 0,
-    rx = 0,
+    totalResult,
+    holder = 0,
     mtype,
-    z = 0,
-    start,
-    maxScores = [],
-    maxScore;
+    scored = 0;
 
   Set.Predictors[0].map(pred => {
     if (pred.predId == fd.predId && fd.stage == num) {
       Pred = pred.name;
-      start = pred.start;
     }
   });
   weightValue = fd.weightValue;
@@ -47,52 +46,93 @@ let Compensatory = (num, fd, id) => {
         
   </tr>
 `);
+  $('#finalScore' + num).html(`
+      <tr id='Score${id}${num}'>
+            <th scope="row">STATUS</th>            
+      </tr>
+  `);
 
   Set.Candidates[0].map(res => {
-    // console.log(res.scores);
-    let scored;
     res.scores.map(sc => {
-      if (fd.predId == sc.predId && fd.stage == num) {
+      if (fd.predId == sc.predId) {
         scored = sc.score;
       }
     });
-    total2 = Number(scored) * (Number(value) / 100);
-    // console.log(
-    //   'Name: ' + res.name + ' Scored: ' + scored + ' Value: ' + value
-    // );
-    total = total + Number(total2.toFixed(2));
-    if (Set.totalArray.length == 0) {
-      console.log('first add');
-      Set.data.Total(res.name, total);
+    value1 = Number(value) / 100;
+    total2 = scored * value1;
+    holder = $('#' + res.name + '' + num).val();
+    if (holder <= 0) {
+      total = total2;
+      // console.log(res.name + ' 1: ' + total);
     } else {
-      // Set.totalArray[t].total = Set.totalArray[t].total + total;
-      for (let t = 0; t < Set.totalArray.length; t++) {
-        if (Set.totalArray[t].name == res.name) {
-          console.log('if Update ' + Set.totalArray.length);
-          Set.totalArray[t].total = Set.totalArray[t].total + total;
-          z = 0;
-        } else {
-          console.log('rx ' + rx);
-          if (rx == Set.totalArray.length - 1) {
-            console.log('z add ' + Set.totalArray.length);
-            Set.data.Total(res.name, total);
-          }
-          rx = rx + 1;
-        }
-      }
+      holder = $('#' + res.name + '' + num).val();
+      total = Number(holder) + total2;
+
+      // console.log(res.name + ' 2: ' + total);
     }
 
+    $('#' + res.name + '' + num).val(total.toFixed(2));
     $('#finalScore' + id + '' + num).append(`
-        <td class='text-align-center'>${scored}</td>
-      `);
+      <td class='text-align-center'>${scored}</td>
+    `);
   });
+
+  Set.Candidates[0].map(cd => {
+    holder = $('#' + cd.name + '' + num).val();
+    $('#finalTotal' + id + '' + num).append(`
+      <td class='text-align-center'>${holder}</td>
+    `);
+  });
+
   //console.log(Set.totalArray);
-  $('#finalScore' + num).html(`
-      <tr id='Score${id}${num}'>
-            <th scope="row">STATUS</th>
-            
-      </tr>
-  `);
+
+  if (fd.methodType == 1) {
+    Set.Candidates[0].map(cd => {
+      holder = $('#' + cd.name + '' + num).val();
+
+      if (holder >= weightValue) {
+        result = 'Pass';
+      } else {
+        result = '<span class="text-danger">Failed</span>';
+      }
+      console.log('FinalScore1: ' + id + ' Stage:' + num);
+      $('#Score' + id + '' + num).append(`
+        <td class='text-align-center'>${result}</td>
+      `);
+    });
+  } else {
+    // name, total, stage, result
+    Set.Candidates[0].map(cd => {
+      z = z + 1;
+      holder = $('#' + cd.name + '' + num).val();
+      Set.data.InsertCompensatory(z, cd.name, holder, num, weightValue);
+    });
+    //Set.CompensatoryFinal(weightValue);
+    Set.data.CompensatoryFinal();
+    totalResult = Set.totalResult.sort(function (x, y) {
+      var n = x.stage - y.stage;
+      if (n !== 0) {
+        return n;
+      }
+
+      return x.id - y.id;
+    });
+
+    Set.totalResult.map(tr => {
+      // console.log('tr.Stage: ' + tr.stage);
+      if (tr.stage == num) {
+        if (tr.result == 1) {
+          result = 'Pass';
+        } else {
+          result = '<span class="text-danger">Failed</span>';
+        }
+        // console.log('FinalScore2: ' + id + ' Stage:' + num);
+        $('#Score' + id + '' + num).append(`
+          <td class='text-align-center'>${result}</td>
+         `);
+      }
+    });
+  }
 };
 
 export default Compensatory;
