@@ -92,8 +92,10 @@ let Compensatory = (num, fd, id) => {
 
       if (holder >= weightValue) {
         result = 'Pass';
+        Set.data.InsertFinal(cd.cId, 1);
       } else {
         result = '<span class="text-danger">Failed</span>';
+        Set.data.InsertFinal(cd.cId, 2);
       }
       console.log('FinalScore1: ' + id + ' Stage:' + num);
       $('#Score' + id + '' + num).append(`
@@ -123,8 +125,10 @@ let Compensatory = (num, fd, id) => {
       if (tr.stage == num) {
         if (tr.result == 1) {
           result = 'Pass';
+          Set.data.InsertFinal(tr.id, 1);
         } else {
           result = '<span class="text-danger">Failed</span>';
+          Set.data.InsertFinal(tr.id, 2);
         }
         // console.log('FinalScore2: ' + id + ' Stage:' + num);
         $('#Score' + id + '' + num).append(`

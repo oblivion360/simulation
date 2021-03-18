@@ -202,6 +202,28 @@ class Settings {
         }
       }
     },
+    InsertFinal: (cId, result) => {
+      let drop = {
+        cId: Number(cId),
+        result: Number(result),
+      };
+
+      if (this.finalCandidates.length <= 0) {
+        this.finalCandidates.push(drop);
+      } else {
+        if (this.finalCandidates.some(td => td.cId === cId)) {
+          this.finalCandidates.map(res => {
+            if (res.cId == cId) {
+              if (res.result == 1) {
+                res.result = Number(result);
+              }
+            }
+          });
+        } else {
+          this.finalCandidates.push(drop);
+        }
+      }
+    },
   };
 
   Predictors = [];
@@ -209,6 +231,7 @@ class Settings {
   CompensatoryTotal = [];
   MultiResult = [];
   totalResult = [];
+  finalCandidates = [];
 
   Stages = [
     {

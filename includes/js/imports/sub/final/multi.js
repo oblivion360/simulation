@@ -80,8 +80,10 @@ let Multi = (num, fd, id) => {
 
         if (value.toLowerCase() == scored.toLowerCase()) {
           displayResult = 1;
+          Set.data.InsertFinal(res.cId, 1);
         } else {
           displayResult = 2;
+          Set.data.InsertFinal(res.cId, 2);
         }
       }
 
@@ -106,8 +108,10 @@ let Multi = (num, fd, id) => {
 
       if (scored >= maxScore) {
         displayResult = 1;
+        Set.data.InsertFinal(res.cId, 1);
       } else {
         displayResult = 2;
+        Set.data.InsertFinal(res.cId, 2);
       }
       // console.log(res.name + ' ' + displayResult + ' ' + num + ' ');
       Set.data.InsertMultiResult(res.name, displayResult, num);

@@ -1,6 +1,7 @@
 {
     "Candidates" : [
-        {
+        {   
+            "cId": 1,
             "name": "A",
             "scores": [
                 {
@@ -25,19 +26,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 2,
             "name": "B",
             "scores": [
                 {
@@ -62,19 +64,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 3,
             "name": "C",
             "scores": [
                 {
@@ -99,19 +102,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "fail"
+                    "score": "Fail"
                 }
             ]
         },
         {
+            "cId": 4,
             "name": "D",
             "scores": [
                 {
@@ -136,19 +140,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 5,
             "name": "E",
             "scores": [
                 {
@@ -173,19 +178,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 6,
             "name": "F",
             "scores": [
                 {
@@ -210,19 +216,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "no"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 7,
             "name": "G",
             "scores": [
                 {
@@ -247,19 +254,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 8,
             "name": "H",
             "scores": [
                 {
@@ -284,19 +292,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 9,
             "name": "I",
             "scores": [
                 {
@@ -321,19 +330,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 10,
             "name": "J",
             "scores": [
                 {
@@ -358,19 +368,20 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Pass"
                 }
             ]
         },
         {
+            "cId": 11,
             "name": "K",
             "scores": [
                 {
@@ -395,15 +406,15 @@
                 },
                 {
                     "predId": 6,
-                    "score": "yes"
+                    "score": "Yes"
                 },
                 {
                     "predId": 7,
-                    "score": "ok"
+                    "score": "Pass"
                 },
                 {
                     "predId": 8,
-                    "score": "pass"
+                    "score": "Fail"
                 }
             ]
         }

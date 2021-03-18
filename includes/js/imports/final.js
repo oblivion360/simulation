@@ -16,6 +16,8 @@ let Final = () => {
       stage(4);
     }
   });
+
+  finalResult();
 };
 
 function stage(num) {
@@ -53,6 +55,42 @@ function stage(num) {
         type = 2;
       }
     }
+  });
+}
+
+function finalResult() {
+  Set.Predictors[0].map(pred => {
+    Set.finalDrop.map(fd => {
+      if (fd.predId == pred.predId) {
+        $('#finalistHead').append(`  
+          <th class='text-align-center'>${pred.name}</th>
+        `);
+      }
+    });
+  });
+
+  Set.finalCandidates.map(fc => {
+    let x = 1;
+    Set.Candidates[0].map(cd => {
+      if (fc.cId == cd.cId && fc.result != 2) {
+        $('#finalistBody').append(`
+            <tr id='finalistScore${fc.cId}'>
+                  <th scope="row">${cd.name}</th>                  
+            </tr>
+        `);
+        Set.finalDrop.map(fd => {
+          cd.scores.map(sc => {
+            if (sc.predId == fd.predId) {
+              console.log(sc.predId + ' == ' + fd.predId + ' id: ' + fc.cId);
+              $('#finalistScore' + fc.cId).append(`  
+                <td class='text-align-center'>${sc.score}</td>
+              `);
+            }
+          });
+        });
+      }
+    });
+    x = x + 1;
   });
 }
 

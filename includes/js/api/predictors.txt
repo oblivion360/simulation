@@ -74,8 +74,8 @@
       "status": 1,
       "name": "Background Check",
       "type": 1,
-      "start": "Ok",
-      "end": "Other",
+      "start": "Pass",
+      "end": "Fail",
       "valueType": 2
     },
     {

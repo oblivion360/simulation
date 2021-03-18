@@ -72,15 +72,19 @@ let SingleMulti = (num, fd, id) => {
       if (typeof value == 'number') {
         if (scored >= value) {
           displayResult = 'Pass';
+          Set.data.InsertFinal(res.cId, 1);
         } else {
           displayResult = '<span class="text-danger">Failed</span>';
+          Set.data.InsertFinal(res.cId, 2);
         }
       } else {
         value = value;
         console.log(start);
-        if (start.toLowerCase() == scored) {
+        if (start.toLowerCase() == scored.toLowerCase()) {
           displayResult = 'Pass';
+          Set.data.InsertFinal(res.cId, 1);
         } else {
+          Set.data.InsertFinal(res.cId, 2);
           displayResult = '<span class="text-danger">Failed</span>';
         }
       }
@@ -104,8 +108,10 @@ let SingleMulti = (num, fd, id) => {
 
       if (scored >= maxScore) {
         displayResult = 'Pass';
+        Set.data.InsertFinal(res.cId, 1);
       } else {
         displayResult = '<span class="text-danger">Failed</span>';
+        Set.data.InsertFinal(res.cId, 2);
       }
 
       $('#Score' + id + '' + num).append(`
