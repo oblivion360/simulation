@@ -151,7 +151,6 @@ p {
 .bg-button:disabled {
   background-color: #8aacd1 !important;
   color: white;
-  border-radius: 0px !important;
 }
 
 .bg-button:hover {
@@ -224,6 +223,7 @@ p {
   background-color: #fff;
   width: 100%;
   border: dashed 1px;
+  border-radius: 30px;
 }
 
 .drag-btn {
@@ -255,6 +255,7 @@ p {
   color: #fff;
   cursor: grab;
   z-index: 1;
+  border-radius: 30px;
 }
 
 .drag-active {
@@ -306,4 +307,22 @@ body {
   background-color: #fff;
   font-weight: bold;
   box-shadow: 5px 5px 10px grey;
+}
+
+.btn-method {
+  border-radius: 30px !important;
+}
+
+.card-header {
+  background-color: #9dd7c4;
+}
+
+.card-header h2 button {
+  font-size: 20px;
+  color: #236585 !important;
+}
+
+.modal-footer button {
+  border-radius: 30px;
+  width: 100px;
 }
