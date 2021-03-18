@@ -1,6 +1,6 @@
 const Multiple = () => {
   // for any change on method
-  $(document).change(event => {});
+  // $(document).change(event => {});
   $('.method').on('change', function (res) {
     let predId = res.target.dataset['predid'],
       stage = $('#stage').val(),
@@ -18,7 +18,7 @@ const Multiple = () => {
         drop.stage = stage;
         drop.methodType = y;
       }
-      drop.predType = 1;
+      drop.predType = 2;
     });
     if (counter > 2) {
       if (stage == 1) {
@@ -60,7 +60,9 @@ const Multiple = () => {
         add = 5,
         end = 100;
       do {
-        $('.' + method).append(`<option value="${start}">${start}%</option>`);
+        $('.' + method).append(
+          `<option value="${start}">Top ${start}%</option>`
+        );
         start = start + add;
       } while (start <= end);
 

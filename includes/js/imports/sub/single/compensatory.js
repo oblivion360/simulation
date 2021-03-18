@@ -22,7 +22,7 @@ const Compensatory = () => {
           }
         });
         // drop.methodType = y;
-        drop.predType = predType;
+        drop.predType = Number(predType);
       }
     });
 
@@ -38,7 +38,7 @@ const Compensatory = () => {
     Set.dropped.map(drop => {
       drop.weightValue = value;
 
-      drop.methodType = y;
+      drop.methodType = 3;
     });
     if (counter > 2) {
       if (stage == 1) {

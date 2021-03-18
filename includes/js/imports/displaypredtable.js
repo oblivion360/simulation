@@ -100,9 +100,11 @@ let displayPredTable = val => {
       let ndrop = Set.drop;
       $('#methodType').val(1);
       Set.Predictors[0][predId - 1].status = 1;
+      removeDropped(Set.Predictors[0][predId - 1].predId);
       revertPredictor(ui.draggable);
       setBack();
       ui.draggable.addClass('col-md-6');
+
       if (ndrop == 1) {
         $('#multiple-predictor').attr('disabled', false);
       } else if (ndrop == 2) {
@@ -174,6 +176,16 @@ function setBack() {
       .removeClass('btn-active')
       .attr('disabled', true);
   }
+}
+
+function removeDropped(id) {
+  let x = 0;
+  Set.dropped.map(res => {
+    if (res.predId == id) {
+      Set.dropped.splice(x, 1);
+    }
+    x = x + 1;
+  });
 }
 
 export default displayPredTable;

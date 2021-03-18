@@ -1,4 +1,5 @@
 import SingleMulti from './sub/final/single-multi.js';
+import Multi from './sub/final/multi.js';
 import Compensatory from './sub/final/compensatory.js';
 let Final = () => {
   Set.Stages.map(fd => {
@@ -42,7 +43,11 @@ function stage(num) {
         SingleMulti(num, fd, id, mType);
         id = id + 1;
         type = 1;
-      } else {
+      } else if (fd.predType == 2) {
+        Multi(num, fd, id, mType);
+        id = id + 1;
+        type = 2;
+      } else if (fd.predType == 3) {
         Compensatory(num, fd, id, mType);
         id = id + 1;
         type = 2;

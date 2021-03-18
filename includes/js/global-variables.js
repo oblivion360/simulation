@@ -177,12 +177,37 @@ class Settings {
 
       this.totalResult.push(drop);
     },
+    InsertMultiResult: (name, result, stage) => {
+      let drop = {
+        name: name,
+        result: Number(result),
+        stage: Number(stage),
+      };
+
+      if (this.MultiResult.length <= 0) {
+        this.MultiResult.push(drop);
+      } else {
+        if (
+          this.MultiResult.some(td => td.name === name && td.stage === stage)
+        ) {
+          this.MultiResult.map(res => {
+            if (res.name == name && res.stage == stage) {
+              if (res.result == 1) {
+                res.total = Number(result);
+              }
+            }
+          });
+        } else {
+          this.MultiResult.push(drop);
+        }
+      }
+    },
   };
 
   Predictors = [];
   Candidates = [];
   CompensatoryTotal = [];
-
+  MultiResult = [];
   totalResult = [];
 
   Stages = [

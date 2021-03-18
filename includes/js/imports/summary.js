@@ -7,10 +7,11 @@ let Summary = () => {
     x = 0;
   // summary display
   Set.finalDrop.map(fd => {
+    x = 0;
     //  stage 1
     if (fd.stage == 1) {
       // predType == 1
-      if (fd.predType == 1) {
+      if (fd.predType == 1 || fd.predType == 2) {
         score = fd.value;
         Set.Predictors[0].map(pred => {
           if (pred.predId == fd.predId) {
@@ -60,7 +61,7 @@ let Summary = () => {
             </div>
           `);
       } // predType == 2
-      else if (fd.predType == 2) {
+      else if (fd.predType == 3) {
         score = fd.value;
         weight = fd.weightValue;
         Set.Predictors[0].map(pred => {

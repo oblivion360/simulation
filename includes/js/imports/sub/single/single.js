@@ -33,7 +33,7 @@ const Single = () => {
       end = 100;
     $('#methodType').val(2);
     do {
-      $('.method').append(`<option value="${start}">${start}%</option>`);
+      $('.method').append(`<option value="${start}">Top ${start}%</option>`);
       start = start + add;
     } while (start <= end);
 
