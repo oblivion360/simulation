@@ -53,7 +53,7 @@ let SingleMulti = (num, fd, id) => {
     maxScore = Math.floor(maxScore);
     console.log('MaxScore2: ' + maxScore);
   }
-  $('#finalBody' + num).append(`
+  $('#finalScore' + num).append(`
       <tr id='Score${id}${num}'>
             <th scope="row">Status</th>
             

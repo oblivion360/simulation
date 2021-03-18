@@ -2,19 +2,17 @@ import CandidatesSettings from './candidates-settings.js';
 let SummarySettings = () => {
   $('#button-stage').html(`
         <div class="col-md-6">&nbsp;</div>
-        <div class="col-md-3">
+        <div class="col-md-6">
         <button
             type="button"
-            class="btn btn-sm bg-button btn-block nav-btn btn-stage-active"
+            class="btn bg-button nav-btn btn-stage-active"
             id="prev"
         >
             <span data-feather="chevrons-left"></span> AMEND
-        </button>
-        </div>
-        <div class="col-md-3">
+        </button>       
         <button
             type="button"
-            class="btn btn-sm bg-button btn-block nav-btn btn-stage-active"
+            class="btn bg-button nav-btn btn-stage-active"
             id="next"
         >
             START SIMULATION <span data-feather="chevrons-right"></span>

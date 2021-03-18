@@ -38,7 +38,7 @@ const Compensatory = () => {
     Set.dropped.map(drop => {
       drop.weightValue = value;
 
-      drop.methodType = 3;
+      drop.methodType = y;
     });
     if (counter > 2) {
       if (stage == 1) {

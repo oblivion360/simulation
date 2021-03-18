@@ -124,31 +124,25 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
           <!-- Content -->
           <div id="content" class="row"></div>
+
+          <!-- /.Content -->
+        </main>
+        <div id="footer" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
           <div class="row pt-4 mb-5" id="button-stage">
-            <div class="col-md-6">&nbsp;</div>
-            <div class="col-md-3">
-              <button
-                type="button"
-                class="btn btn-sm bg-button btn-block nav-btn"
-                id="prev"
-              >
-                <span data-feather="chevrons-left"></span> PREV
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+              <button type="button" class="btn bg-button nav-btn" id="prev">
+                <span class="feather" data-feather="chevrons-left"></span> PREV
+              </button>
+              <button type="button" class="btn bg-button nav-btn" id="next">
+                NEXT <span class="feather" data-feather="chevrons-right"></span>
               </button>
             </div>
-            <div class="col-md-3">
-              <button
-                type="button"
-                class="btn btn-sm bg-button btn-block nav-btn"
-                id="next"
-              >
-                NEXT <span data-feather="chevrons-right"></span>
-              </button>
-            </div>
+
             <input type="hidden" id="counter" value="1" />
             <input type="hidden" id="stage" value="0" />
           </div>
-          <!-- /.Content -->
-        </main>
+        </div>
         <!-- /.Main -->
       </div>
       <!-- /.First row  -->

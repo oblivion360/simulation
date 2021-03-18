@@ -143,7 +143,7 @@ let Summary = () => {
     } // stage 2
     else if (fd.stage == 2) {
       // predType == 1
-      if (fd.predType == 1) {
+      if (fd.predType == 1 || fd.predType == 2) {
         score = fd.value;
         Set.Predictors[0].map(pred => {
           if (pred.predId == fd.predId) {
@@ -193,7 +193,7 @@ let Summary = () => {
                   </div>
                 `);
       } // predType == 2
-      else if (fd.predType == 2) {
+      else if (fd.predType == 3) {
         score = fd.value;
         weight = fd.weightValue;
         Set.Predictors[0].map(pred => {
@@ -275,7 +275,7 @@ let Summary = () => {
     } // stage 3
     else if (fd.stage == 3) {
       // predType == 1
-      if (fd.predType == 1) {
+      if (fd.predType == 1 || fd.predType == 2) {
         score = fd.value;
         Set.Predictors[0].map(pred => {
           if (pred.predId == fd.predId) {
@@ -325,7 +325,7 @@ let Summary = () => {
                   </div>
                 `);
       } // predType == 2
-      else if (fd.predType == 2) {
+      else if (fd.predType == 3) {
         score = fd.value;
         weight = fd.weightValue;
         Set.Predictors[0].map(pred => {
@@ -407,7 +407,7 @@ let Summary = () => {
     } // stage 4
     else if (fd.stage == 4) {
       // predType == 1
-      if (fd.predType == 1) {
+      if (fd.predType == 1 || fd.predType == 2) {
         score = fd.value;
         Set.Predictors[0].map(pred => {
           if (pred.predId == fd.predId) {
@@ -457,7 +457,7 @@ let Summary = () => {
             </div>
           `);
       } // predType == 2
-      else if (fd.predType == 2) {
+      else if (fd.predType == 3) {
         score = fd.value;
         weight = fd.weightValue;
         Set.Predictors[0].map(pred => {

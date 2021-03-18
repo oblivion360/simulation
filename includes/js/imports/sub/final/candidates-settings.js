@@ -2,19 +2,18 @@ import Final from '../../final.js';
 let CandidatesSettings = () => {
   $('#button-stage').html(`
         <div class="col-md-6">&nbsp;</div>
-        <div class="col-md-3">
+        <div class="col-md-6">
         <button
             type="button"
-            class="btn btn-sm bg-button btn-block nav-btn btn-stage-active"
+            class="btn bg-button nav-btn btn-stage-active"
             id="prev"
         >
             <span data-feather="chevrons-left"></span> RETRY
         </button>
-        </div>
-        <div class="col-md-3">
+        
         <button
             type="button"
-            class="btn btn-sm bg-button btn-block nav-btn btn-stage-active"
+            class="btn bg-button nav-btn btn-stage-active"
             id="next"
         >
             DOWNLOAD <span data-feather="chevrons-right"></span>
