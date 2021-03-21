@@ -107,22 +107,35 @@ let displayPredTable = val => {
 
       if (ndrop == 1) {
         $('#multiple-predictor').attr('disabled', false);
+        $('#next').attr('disabled', false);
       } else if (ndrop == 2) {
         let counter = $('#counter').val();
         counter = counter - 1;
         if (counter == 1) {
           $('#single-predictor').attr('disabled', false);
           $('#compensatory').attr('disabled', false);
+          $('#next').attr('disabled', false);
+        } else if (counter == 2) {
+          $('#next').attr('disabled', true);
         }
         $('#counter').val(counter);
       } else if (ndrop == 3) {
-        let counter = $('#counter').val();
+        let counter = $('#counter').val(),
+          cdId;
+        cdId = counter;
         counter = counter - 1;
+
         if (counter == 1) {
           $('#single-predictor').attr('disabled', false);
           $('#multi-hurdle').attr('disabled', false);
-          $('#counter').val(1);
+          $('#next').attr('disabled', false);
+          $('#weight' + counter).val(0);
+        } else {
+          $('#next').attr('disabled', true);
+          $('#weight' + counter).val(0);
         }
+
+        $('.method').val(0);
         $('#counter').val(counter);
       }
     },

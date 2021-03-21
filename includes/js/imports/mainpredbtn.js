@@ -20,11 +20,13 @@ let mainPredBtn = () => {
       setBackPredictors('multiple');
       holderMultiple();
       if (stage == 1) {
-        $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+        $('#prev').attr('disabled', true).removeClass('btn-stage-active');
+        $('#next').attr('disabled', false).addClass('btn-stage-active');
       } else {
-        $('.nav-btn').removeClass('btn-stage-active');
-        $('#prev').attr('disabled', false).addClass('btn-stage-active');
-        $('#next').attr('disabled', true);
+        // $('.nav-btn').removeClass('btn-stage-active');
+        // $('#prev').attr('disabled', false).addClass('btn-stage-active');
+        // $('#next').attr('disabled', true);
+        $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
       }
     } else {
       $('.subPred-btn').attr('disabled', true);
@@ -33,11 +35,13 @@ let mainPredBtn = () => {
       setBackPredictors('single');
       holderSingle();
       if (stage == 1) {
-        $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+        $('#prev').attr('disabled', true).removeClass('btn-stage-active');
+        $('#next').attr('disabled', false).addClass('btn-stage-active');
       } else {
-        $('.nav-btn').removeClass('btn-stage-active');
-        $('#prev').attr('disabled', false).addClass('btn-stage-active');
-        $('#next').attr('disabled', true);
+        // $('.nav-btn').removeClass('btn-stage-active');
+        // $('#prev').attr('disabled', false).addClass('btn-stage-active');
+        // $('#next').attr('disabled', true);
+        $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
       }
     }
   });

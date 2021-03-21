@@ -25,6 +25,7 @@ let holderCompensatory = () => {
           saveDrop(predId);
 
           Set.drop = '3';
+          navBtn();
           $('#single-predictor').attr('disabled', true);
           $('#multiple-predictor').attr('disabled', true);
           $('#multi-hurdle').attr('disabled', true);
@@ -63,6 +64,16 @@ function saveDrop(predId) {
     // Set.dropped = [];
     Set.data.Dropped(predId);
     //console.log(Set.dropped);
+  }
+}
+
+function navBtn() {
+  let stage = Number($('#stage').val());
+  if (stage == 1) {
+    $('.nav-btn').attr('disabled', true);
+  } else {
+    $('#next').attr('disabled', true).removeClass('btn-stage-active');
+    $('#prev').attr('disabled', false).addClass('btn-stage-active');
   }
 }
 

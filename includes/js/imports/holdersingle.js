@@ -21,6 +21,8 @@ let holderSingle = () => {
           addPredictors(ui.draggable);
           Set.drop = '1';
           $('#multiple-predictor').attr('disabled', true);
+
+          navBtn();
         },
       });
     },
@@ -95,6 +97,16 @@ function saveDrop(predId) {
   $('#minimum').removeAttr('disabled');
   $('#topdown').removeAttr('disabled');
   $('#minimum').addClass('btn-active');
+}
+
+function navBtn() {
+  let stage = Number($('#stage').val());
+  if (stage == 1) {
+    $('.nav-btn').attr('disabled', true);
+  } else {
+    $('#next').attr('disabled', true).removeClass('btn-stage-active');
+    $('#prev').attr('disabled', false).addClass('btn-stage-active');
+  }
 }
 
 export default holderSingle;

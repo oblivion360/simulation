@@ -19,7 +19,7 @@ let holderMultiple = () => {
           Multiple();
           showMethod(predId);
           saveDrop(predId);
-
+          navBtn();
           Set.drop = '2';
           $('#single-predictor').attr('disabled', true);
           $('#compensatory').attr('disabled', true);
@@ -60,6 +60,7 @@ function droppable() {
       addPredictors(ui.draggable);
       showMethod(predId);
       Set.drop = '2';
+
       $('#single-predictor').attr('disabled', true);
       $('#compensatory').attr('disabled', true);
     },
@@ -149,6 +150,17 @@ function saveDrop(predId) {
   $('#minimum' + x).removeAttr('disabled');
   $('#topdown' + x).removeAttr('disabled');
   $('#minimum' + x).addClass('btn-active');
+}
+
+function navBtn() {
+  let stage = Number($('#stage').val());
+  console.log('navBtn: ' + stage);
+  if (stage == 1) {
+    $('.nav-btn').attr('disabled', true);
+  } else {
+    $('#next').attr('disabled', true).removeClass('btn-stage-active');
+    $('#prev').attr('disabled', false).addClass('btn-stage-active');
+  }
 }
 
 export default holderMultiple;

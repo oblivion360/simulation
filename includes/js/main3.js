@@ -15,7 +15,6 @@ function stageActive() {
     if (status == 1) {
       // for menu active
       $('.nav-link').removeClass('active');
-
       $(`#${other}`).addClass('active');
       $('#stage').val(stageId);
 
@@ -51,14 +50,7 @@ function stageActive() {
             // Settings();
 
             // feather.replace();
-            if (stageId == 1) {
-              $('#prev').attr('disabled', true).removeClass('btn-stage-active');
-              $('#next').attr('disabled', false).addClass('btn-stage-active');
-            } else {
-              $('.nav-btn')
-                .attr('disabled', false)
-                .addClass('btn-stage-active');
-            }
+            $('.nav-btn').attr('disabled', true);
           },
         });
       } else if (stageId == 5) {
@@ -89,9 +81,30 @@ $('#next').on('click', function () {
     counter = $('#counter').val();
 
   newStage = Number(stage + 1);
-
+  console.log(stage);
   if (stage <= 4) {
-    if (length == 0) {
+    // set all alert
+    if (type >= 2 && counter == 2 && length == 0) {
+      alert('Need at Least two drop');
+    } else if (type >= 2 && counter > 2 && length != 0) {
+      dropped.map(val => {
+        Set.finalDrop.push(val);
+      });
+
+      Set.Stages.map(st => {
+        // console.log(stage);
+        if (st.stageId == stage) {
+          st.status = 2;
+        } else if (st.stageId == newStage) {
+          st.status = 1;
+        }
+      });
+      stageActive();
+    } else if (type == 1 && counter >= 1 && length != 0) {
+      dropped.map(val => {
+        Set.finalDrop.push(val);
+      });
+
       Set.Stages.map(st => {
         // console.log(stage);
         if (st.stageId == stage) {
@@ -102,22 +115,9 @@ $('#next').on('click', function () {
       });
       stageActive();
     } else {
-      dropped.map(val => {
-        Set.finalDrop.push(val);
-      });
-      Set.Stages.map(st => {
-        // console.log(stage);
-        if (st.stageId == stage) {
-          st.status = 2;
-        } else if (st.stageId == newStage) {
-          st.status = 1;
-        }
-      });
-      stageActive();
+      alert('Need at Least two drop');
     }
-  } else if (stage == 5) {
+  } else if (stage >= 5) {
     stageActive();
-  } else {
-    // add the download pard
   }
 });
