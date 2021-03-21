@@ -76,7 +76,7 @@ function addPredictors($item) {
     var $list = $($trash).length
       ? $($trash)
       : $(`<div class="choosen-holder{x}"/>`).html($trash);
-
+    $('.choosen-holder' + x).html('');
     $item.appendTo($list).show(function () {
       $item.removeClass('col-md-6 drag-btn');
       $item.addClass('drop-btn');
@@ -97,7 +97,7 @@ function addPredictors($item) {
 
 function showMethod(predId) {
   let x = $('#counter').val();
-  console.log(x);
+  console.log('show method' + x);
   $('.method' + x).attr('data-predid', predId);
   $('.method' + x).html(`<option value="0" selected>Pls Choose</option>`);
   Set.Predictors[0].map(res => {
@@ -105,17 +105,17 @@ function showMethod(predId) {
       if (res.valueType == 1) {
         let start = Number(res.start),
           end = Number(res.end),
-          x = 0,
+          y = 0,
           add = Number(res.add);
 
         do {
-          x++;
-          if (x == 1) {
-            $('.method').append(`
+          y++;
+          if (y == 1) {
+            $('.method' + x).append(`
             <option value="${start}" >${start} ${res.textSingular}</option>
             `);
           } else {
-            $('.method').append(`
+            $('.method' + x).append(`
             <option value="${start}" >${start} ${res.textPlural}</option>
             `);
           }

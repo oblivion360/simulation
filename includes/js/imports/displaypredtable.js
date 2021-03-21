@@ -108,9 +108,11 @@ let displayPredTable = val => {
       if (ndrop == 1) {
         $('#multiple-predictor').attr('disabled', false);
         $('#next').attr('disabled', false);
+        $('.choosen-holder').html('Drag Predictor Here');
       } else if (ndrop == 2) {
         let counter = $('#counter').val();
         counter = counter - 1;
+        $('.choosen-holder' + counter).html('Drag Predictor Here');
         if (counter == 1) {
           $('#single-predictor').attr('disabled', false);
           $('#compensatory').attr('disabled', false);
@@ -124,7 +126,7 @@ let displayPredTable = val => {
           cdId;
         cdId = counter;
         counter = counter - 1;
-
+        $('.choosen-holder' + counter).html('Drag Predictor Here');
         if (counter == 1) {
           $('#single-predictor').attr('disabled', false);
           $('#multi-hurdle').attr('disabled', false);

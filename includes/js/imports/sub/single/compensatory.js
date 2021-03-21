@@ -11,8 +11,16 @@ const Compensatory = () => {
     for (let z = 1; z < counter; z++) {
       a = a + Number($('#weight' + z).val());
     }
+    if (a < 100 || a > 100) {
+      $('#percentage').removeClass('text-primary');
+      $('#percentage').addClass('text-danger');
+      $('#percentage').html(a + '%');
+    } else {
+      $('#percentage').removeClass('text-danger');
+      $('#percentage').addClass('text-primary');
+      $('#percentage').html(a + '%');
+    }
 
-    $('#percentage').html(a + '%');
     Set.dropped.map(drop => {
       if (drop.predId == predId) {
         drop.value = value;

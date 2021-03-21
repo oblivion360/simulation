@@ -44,7 +44,7 @@ function addPredictors($item, predId) {
     var $list = $($trash).length
       ? $($trash)
       : $(`<div class="choosen-holder{x}"/>`).html($trash);
-
+    $('.choosen-holder' + x).html('');
     $item.appendTo($list).show(function () {
       $item.removeClass('col-md-6 drag-btn');
       $item.addClass('drop-btn');
