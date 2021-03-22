@@ -23,6 +23,128 @@ class Settings {
       };
       this.dropped.push(drop);
     },
+    InsertMulti: (id, scored, stage, weightValue, a) => {
+      let drop = {
+        id: Number(id),
+        scored: Number(scored),
+        stage: Number(stage),
+        weightValue: Number(weightValue),
+        a: Number(a),
+      };
+
+      this.MultiTotal.push(drop);
+    },
+    InsertFinalMulti: () => {
+      let wv = 0,
+        z = 1,
+        nstage = 1,
+        na = 0,
+        length = 0,
+        limit = 0,
+        sort,
+        result = 0;
+
+      sort = this.MultiTotal.sort(function (x, y) {
+        var n = x.stage - y.stage,
+          z = x.a - y.a;
+        if (n !== 0) {
+          return n;
+        }
+        if (z !== 0) {
+          return z;
+        }
+        return y.scored - x.scored;
+      });
+
+      sort.map(st => {
+        if (nstage != st.stage || na != st.a) {
+          nstage = st.stage;
+          na = st.a;
+          z = 1;
+        }
+        wv = st.weightValue / 100;
+        length = this.Candidates[0].length;
+        limit = Math.round(length * wv);
+
+        if (this.FinalMulti.length <= 0) {
+          if (z <= limit) {
+            // console.log('if = 0 1: ' + result);
+            result = 1;
+            this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+          } else {
+            result = 2;
+            // console.log('if = 0 2: ' + result);
+            this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+          }
+        } else {
+          if (
+            this.FinalMulti.some(td => td.id === st.id && td.stage === st.stage)
+          ) {
+            if (z <= limit) {
+              result = 1;
+
+              this.FinalMulti.map(tr => {
+                if (tr.id == st.id && tr.stage == st.stage) {
+                  if (tr.result == 1) {
+                    tr.result = result;
+                    console.log(
+                      'z: ' +
+                        z +
+                        ' tr.result: ' +
+                        tr.result +
+                        ' result: ' +
+                        result
+                    );
+                  }
+                  tr.scored = Number(st.scored);
+                }
+              });
+            } else {
+              result = 2;
+
+              this.FinalMulti.map(tr => {
+                if (tr.id == st.id && tr.stage == st.stage) {
+                  if (tr.result == 1) {
+                    tr.result = result;
+                    console.log(
+                      'z: ' +
+                        z +
+                        ' tr.result: ' +
+                        tr.result +
+                        ' result: ' +
+                        result
+                    );
+                  }
+                  tr.scored = Number(st.scored);
+                }
+              });
+            }
+          } else {
+            if (z <= limit) {
+              // console.log('if = 0 1: ' + result);
+              result = 1;
+              this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+            } else {
+              result = 2;
+              // console.log('if = 0 2: ' + result);
+              this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+            }
+          }
+        }
+
+        z = z + 1;
+      });
+    },
+    InsertMultiTotal: (id, scored, stage, result) => {
+      let drop = {
+        id: Number(id),
+        scored: Number(scored),
+        stage: Number(stage),
+        result: Number(result),
+      };
+
+      this.FinalMulti.push(drop);
+    },
     InsertSingle: (id, scored, stage, weightValue) => {
       let drop = {
         id: Number(id),
@@ -41,7 +163,6 @@ class Settings {
         limit = 0,
         sort,
         result = 0;
-      length = this.SingleTotal.length;
 
       sort = this.SingleTotal.sort(function (x, y) {
         var n = x.stage - y.stage;
@@ -327,6 +448,9 @@ class Settings {
 
   SingleTotal = [];
   FinalSingle = [];
+
+  MultiTotal = [];
+  FinalMulti = [];
 
   CompensatoryTotal = [];
   MultiResult = [];
