@@ -68,36 +68,30 @@ let Multi = (num, fd, id) => {
           scored = sc.score;
         }
       });
-      console.log(
-        'Name: ' +
-          res.name +
-          ' Scored: ' +
-          scored +
-          ' Value: ' +
-          value +
-          ' TypeOf: ' +
-          typeof scored
-      );
-      if (typeof scored == 'number') {
+
+      if (typeof value == 'number') {
         if (scored >= value) {
           displayResult = 1;
         } else {
           displayResult = 2;
         }
       } else {
-        // value = value;
+        value = value;
 
         if (value.toLowerCase() == scored.toLowerCase()) {
           displayResult = 1;
+          Set.data.InsertFinal(res.cId, 1);
         } else {
           displayResult = 2;
+          Set.data.InsertFinal(res.cId, 2);
         }
       }
-      Set.data.InsertFinal(res.cId, displayResult);
 
-      // console.log('Name: ' + res.name + ' DisplayResult: ' + ' Stage: ' + num);
+      // $('#Score' + id + '' + num).append(`
+      //       <td class='text-align-center'>${displayResult}</td>
+      //     `);
 
-      Set.data.InsertMultiResult(res.cId, displayResult, num);
+      Set.data.InsertMultiResult(res.name, displayResult, num);
     });
   } else {
     Set.Candidates[0].map(res => {
@@ -114,8 +108,10 @@ let Multi = (num, fd, id) => {
 
       if (scored >= maxScore) {
         displayResult = 1;
+        Set.data.InsertFinal(res.cId, 1);
       } else {
         displayResult = 2;
+        Set.data.InsertFinal(res.cId, 2);
       }
       // console.log(res.name + ' ' + displayResult + ' ' + num + ' ');
       Set.data.InsertMultiResult(res.name, displayResult, num);
@@ -127,10 +123,8 @@ let Multi = (num, fd, id) => {
     if (res.stage == num) {
       if (res.result == 1) {
         displayResult = 'Pass';
-        Set.data.InsertFinal(res.cId, 1);
       } else {
         displayResult = '<span class="text-danger">Failed</span>';
-        Set.data.InsertFinal(res.cId, 2);
       }
       $('#Score' + id + '' + num).append(`
         <td class='text-align-center'>${displayResult}</td>

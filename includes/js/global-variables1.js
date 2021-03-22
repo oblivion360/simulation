@@ -23,104 +23,6 @@ class Settings {
       };
       this.dropped.push(drop);
     },
-    InsertSingle: (id, scored, stage, weightValue) => {
-      let drop = {
-        id: Number(id),
-        scored: Number(scored),
-        stage: Number(stage),
-        weightValue: Number(weightValue),
-      };
-
-      this.SingleTotal.push(drop);
-    },
-    InsertFinalSingle: () => {
-      let wv = 0,
-        z = 1,
-        nstage = 1,
-        length = 0,
-        limit = 0,
-        sort,
-        result = 0;
-      length = this.SingleTotal.length;
-
-      sort = this.SingleTotal.sort(function (x, y) {
-        var n = x.stage - y.stage;
-        if (n !== 0) {
-          return n;
-        }
-        return y.scored - x.scored;
-      });
-
-      sort.map(st => {
-        if (nstage != st.stage) {
-          nstage = st.stage;
-          z = 1;
-        }
-        wv = st.weightValue / 100;
-        length = this.Candidates[0].length;
-        limit = Math.round(length * wv);
-
-        if (this.FinalSingle.length <= 0) {
-          if (z <= limit) {
-            // console.log('if = 0 1: ' + result);
-            result = 1;
-            this.data.InsertSingleTotal(st.id, st.scored, st.stage, result);
-          } else {
-            result = 2;
-            // console.log('if = 0 2: ' + result);
-            this.data.InsertSingleTotal(st.id, st.scored, st.stage, result);
-          }
-        } else {
-          if (
-            this.FinalSingle.some(
-              td => td.id === st.id && td.stage === st.stage
-            )
-          ) {
-            if (z <= limit) {
-              result = 1;
-              // console.log('if = 0 1: ' + result);
-              this.FinalSingle.map(tr => {
-                if (tr.id == st.id && tr.stage == st.stage) {
-                  tr.result = Number(result);
-                  tr.scored = Number(st.scored);
-                }
-              });
-            } else {
-              result = 2;
-              // console.log('if = 0 2: ' + result);
-              this.FinalSingle.map(tr => {
-                if (tr.id == st.id && tr.stage == st.stage) {
-                  tr.result = Number(result);
-                  tr.scored = Number(st.scored);
-                }
-              });
-            }
-          } else {
-            if (z <= limit) {
-              // console.log('if = 0 1: ' + result);
-              result = 1;
-              this.data.InsertSingleTotal(st.id, st.scored, st.stage, result);
-            } else {
-              result = 2;
-              // console.log('if = 0 2: ' + result);
-              this.data.InsertSingleTotal(st.id, st.scored, st.stage, result);
-            }
-          }
-        }
-
-        z = z + 1;
-      });
-    },
-    InsertSingleTotal: (id, scored, stage, result) => {
-      let drop = {
-        id: Number(id),
-        scored: Number(scored),
-        stage: Number(stage),
-        result: Number(result),
-      };
-
-      this.FinalSingle.push(drop);
-    },
     Cand: async () => {
       fetch('includes/js/api/candidates.txt')
         .then(response => response.json())
@@ -275,9 +177,9 @@ class Settings {
 
       this.totalResult.push(drop);
     },
-    InsertMultiResult: (cId, result, stage) => {
+    InsertMultiResult: (name, result, stage) => {
       let drop = {
-        cId: Number(cId),
+        name: name,
         result: Number(result),
         stage: Number(stage),
       };
@@ -285,11 +187,13 @@ class Settings {
       if (this.MultiResult.length <= 0) {
         this.MultiResult.push(drop);
       } else {
-        if (this.MultiResult.some(td => td.cId == cId && td.stage == stage)) {
+        if (
+          this.MultiResult.some(td => td.name === name && td.stage === stage)
+        ) {
           this.MultiResult.map(res => {
-            if (res.cId == cId && res.stage == stage) {
+            if (res.name == name && res.stage == stage) {
               if (res.result == 1) {
-                res.result = Number(result);
+                res.total = Number(result);
               }
             }
           });
@@ -324,10 +228,6 @@ class Settings {
 
   Predictors = [];
   Candidates = [];
-
-  SingleTotal = [];
-  FinalSingle = [];
-
   CompensatoryTotal = [];
   MultiResult = [];
   totalResult = [];

@@ -86,6 +86,7 @@ $('#next').on('click', function () {
     dropped = Set.dropped,
     stage = Number($('#stage').val()),
     newStage,
+    newDrop,
     counter = $('#counter').val();
 
   newStage = Number(stage + 1);
@@ -102,8 +103,12 @@ $('#next').on('click', function () {
       });
       stageActive();
     } else {
-      dropped.map(val => {
-        Set.finalDrop.push(val);
+      Set.dropped.map(val => {
+        newDrop = Set.finalDrop.some(element => element.predId == val.predId);
+
+        if (newDrop == false) {
+          Set.finalDrop.push(val);
+        }
       });
       Set.Stages.map(st => {
         // console.log(stage);
