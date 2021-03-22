@@ -1,5 +1,4 @@
 import Final from '../../final.js';
-import FinalPrint from '../../final-print.js';
 let CandidatesSettings = () => {
   $('#button-stage').html(`
         <div class="col-md-6">&nbsp;</div>
@@ -59,7 +58,6 @@ function downloadCandidates() {
     success: function (res) {
       // show page
       $('#change-all').html(res);
-      FinalPrint();
     },
   });
 }
