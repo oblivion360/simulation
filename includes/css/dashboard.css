@@ -438,3 +438,25 @@ main {
   min-height: calc(100vh - 177.5px);
   margin-bottom: 30px;
 }
+
+.add-button {
+  color: #2b3582;
+  margin-top: 10px;
+  line-height: 30px;
+  font-size: 16px;
+  display: block;
+}
+
+.add-button:hover {
+  cursor: pointer;
+}
+
+.remove-button {
+  display: block;
+  position: absolute;
+  width: 100%;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+}

@@ -55,7 +55,9 @@ const Multiple = () => {
         }
       }
     } else if (type == 'topdown') {
-      $('.' + method).html(`<option value="0" selected>Pls Choose</option>`);
+      $('.' + method).html(
+        `<option value="0" selected>Select the Score</option>`
+      );
       let start = 5,
         add = 5,
         end = 100;
@@ -81,11 +83,15 @@ const Multiple = () => {
       }
     }
   });
+
+  $('.add-button').on('click', function () {
+    console.log('add slot');
+  });
 };
 
 function showMethod(predId, method) {
   $('.' + method).attr('data-predid', predId);
-  $('.' + method).html(`<option value="0" selected>Pls Choose</option>`);
+  $('.' + method).html(`<option value="0" selected>Select the Score</option>`);
   Set.Predictors[0].map(res => {
     if (res.predId == predId) {
       // console.log(typeof res.start);

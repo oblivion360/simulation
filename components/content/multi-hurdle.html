@@ -1,27 +1,32 @@
-<!-- Start of row -->
-
-<div class="col-md-6 bg-holdera p-4 droppable ui-droppable">
-  <div class="choosen-holder set-choosen">
+<div class="col-md-5 bg-holdera p-4 drop">
+  
+    <div class="remove remove-button rmb">
+      <img src="includes/images/times.png" class="button-img-remove" height="20">&nbsp;</img>
+      <b class="remove rmb">Remove Slot</b>
+    </div>
+  
+  <div class="choosen-holder ch-holder">
+    Drag Predictor Here
     <!-- <button
-          type="button"
-          class="btn btn-block btn-large btn-info choosen"
-          id="choosen1"
-        >
-          Company Experience
-        </button> -->
+            type="button"
+            class="btn btn-block btn-large btn-info choosen"
+            id="choosen1"
+          >
+            Company Experience
+          </button> -->
   </div>
 </div>
-<div class="col-md-6 bg-holderb p-4">
+<div class="col-md-7 bg-holderb p-4 selector">
   <div class="row">
     <div class="col-md-12 text-center">
-      <p class="text-muted">Select the scoring Method</p>
+      <p class="text-muted">Select the Scoring Method</p>
     </div>
     <div class="col-md-6">
       <button
         type="button"
-        class="btn btn-block btn-sm bg-button btn-method"
+        class="btn btn-block btn-sm bg-button btn-method mininum min"
         disabled
-        id="minimum"
+        data-type="minimum"
       >
         Minimum Competency<br />Method
       </button>
@@ -29,21 +34,24 @@
     <div class="col-md-6">
       <button
         type="button"
-        id="topdown"
-        class="btn btn-block btn-sm bg-button btn-method"
+        class="btn btn-block btn-sm bg-button btn-method topdown top"
         disabled
+        data-type="topdown"
       >
         Top-Down<br />Method
       </button>
     </div>
     <div class="col-md-12 text-center pt-2">
       <div class="form-group">
-        <select class="form-control method" data-predid="0" data-pretext="">
-          <option value="0" selected>Pls Choose</option>
+        <select
+          class="form-control method method-select"
+          data-predid="0"
+          data-pretext=""
+          data-type="method"
+        >
+          <option value="0" selected>Select the Score</option>
         </select>
       </div>
     </div>
   </div>
 </div>
-
-<!-- /.end of row -->

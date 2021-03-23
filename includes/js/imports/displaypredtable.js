@@ -96,13 +96,16 @@ let displayPredTable = val => {
   $('#predictors-table').droppable({
     accept: '.draggable',
     drop: function (event, ui) {
-      let predId = ui.draggable[0].dataset['drag'];
-      let ndrop = Set.drop;
+      let predId = ui.draggable[0].dataset['drag'],
+        id,
+        ndrop = Set.drop;
       $('#methodType').val(1);
       Set.Predictors[0][predId - 1].status = 1;
       removeDropped(Set.Predictors[0][predId - 1].predId);
       revertPredictor(ui.draggable);
-      setBack();
+      id = ui.draggable;
+      id = id[0].dataset.num;
+      setBack(id);
       ui.draggable.addClass('col-md-6');
 
       if (ndrop == 1) {
@@ -167,20 +170,22 @@ function revertPredictor($item) {
   });
 }
 
-function setBack() {
+function setBack(id) {
   let drop = Set.drop,
-    counter = $('#counter').val();
+    counter = id;
+
   //for single method
   if (drop == 1) {
-    $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+    console.log('drop1 ' + id);
+    $('.method').html(`<option value="0" selected>Select the Score</option>`);
 
     //set method btn to not active
     $('.btn-method').removeClass('btn-active');
     $('.btn-method').attr('disabled', true);
   } else if (drop == 2) {
-    counter = counter - 1;
+    console.log('drop2 ' + id);
     $('.method' + counter).html(
-      `<option value="0" selected>Pls Choose</option>`
+      `<option value="0" selected>Select the Score</option>`
     );
 
     //set method btn to not active
