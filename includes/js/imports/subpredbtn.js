@@ -5,6 +5,7 @@ import holderMultiple from './holdermultiple.js';
 let subPredBtn = () => {
   let stage = $('#stage').val();
   $('.subPred-btn').on('click', e => {
+    $('#counter').val(1);
     let btn = e.target.id;
     if (btn == 'compensatory') {
       $('.subPred-btn').removeClass('subBtn-active');

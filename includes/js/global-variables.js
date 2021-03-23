@@ -23,9 +23,9 @@ class Settings {
       };
       this.dropped.push(drop);
     },
-    InsertMulti: (id, scored, stage, weightValue, a) => {
+    InsertMulti: (cId, scored, stage, weightValue, a) => {
       let drop = {
-        id: Number(id),
+        cId: Number(cId),
         scored: Number(scored),
         stage: Number(stage),
         weightValue: Number(weightValue),
@@ -70,21 +70,27 @@ class Settings {
           if (z <= limit) {
             // console.log('if = 0 1: ' + result);
             result = 1;
-            this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+            console.log('st.cId ' + st.cId);
+            this.data.InsertMultiTotal(st.cId, st.scored, st.stage, result);
+            // console.log('st.cId ' + st.cId);
           } else {
             result = 2;
+            // console.log('st.cId ' + st.cId);
             // console.log('if = 0 2: ' + result);
-            this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+            this.data.InsertMultiTotal(st.cId, st.scored, st.stage, result);
           }
         } else {
           if (
-            this.FinalMulti.some(td => td.id === st.id && td.stage === st.stage)
+            this.FinalMulti.some(
+              td => td.cId === st.cId && td.stage === st.stage
+            )
           ) {
             if (z <= limit) {
               result = 1;
 
               this.FinalMulti.map(tr => {
-                if (tr.id == st.id && tr.stage == st.stage) {
+                if (tr.cId == st.cId && tr.stage == st.stage) {
+                  // console.log('st.cId ' + st.cId);
                   if (tr.result == 1) {
                     tr.result = result;
                     console.log(
@@ -96,14 +102,17 @@ class Settings {
                         result
                     );
                   }
-                  tr.scored = Number(st.scored);
+                  if (tr.scored >= 1) {
+                    tr.scored = Number(st.scored);
+                  }
                 }
               });
             } else {
               result = 2;
 
               this.FinalMulti.map(tr => {
-                if (tr.id == st.id && tr.stage == st.stage) {
+                if (tr.cId == st.cId && tr.stage == st.stage) {
+                  // console.log('st.cId ' + st.cId);
                   if (tr.result == 1) {
                     tr.result = result;
                     console.log(
@@ -115,7 +124,9 @@ class Settings {
                         result
                     );
                   }
-                  tr.scored = Number(st.scored);
+                  if (tr.scored >= 1) {
+                    tr.scored = Number(st.scored);
+                  }
                 }
               });
             }
@@ -123,11 +134,11 @@ class Settings {
             if (z <= limit) {
               // console.log('if = 0 1: ' + result);
               result = 1;
-              this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+              this.data.InsertMultiTotal(st.cId, st.scored, st.stage, result);
             } else {
               result = 2;
               // console.log('if = 0 2: ' + result);
-              this.data.InsertMultiTotal(st.id, st.scored, st.stage, result);
+              this.data.InsertMultiTotal(st.cId, st.scored, st.stage, result);
             }
           }
         }
@@ -135,9 +146,9 @@ class Settings {
         z = z + 1;
       });
     },
-    InsertMultiTotal: (id, scored, stage, result) => {
+    InsertMultiTotal: (cId, scored, stage, result) => {
       let drop = {
-        id: Number(id),
+        cId: Number(cId),
         scored: Number(scored),
         stage: Number(stage),
         result: Number(result),
@@ -296,7 +307,7 @@ class Settings {
         return y.total - x.total;
       });
 
-      console.log(sort);
+      // console.log(sort);
 
       // name, total, stage, result
       sort.map(res => {
@@ -396,26 +407,28 @@ class Settings {
 
       this.totalResult.push(drop);
     },
-    InsertMultiResult: (cId, result, stage) => {
+    InsertMultiResult: (cId, scored, stage, result) => {
       let drop = {
         cId: Number(cId),
-        result: Number(result),
+        scored: Number(scored),
         stage: Number(stage),
+        result: Number(result),
       };
 
-      if (this.MultiResult.length <= 0) {
-        this.MultiResult.push(drop);
+      if (this.FinalMulti.length <= 0) {
+        this.FinalMulti.push(drop);
       } else {
-        if (this.MultiResult.some(td => td.cId == cId && td.stage == stage)) {
-          this.MultiResult.map(res => {
+        if (this.FinalMulti.some(td => td.cId == cId && td.stage == stage)) {
+          this.FinalMulti.map(res => {
             if (res.cId == cId && res.stage == stage) {
               if (res.result == 1) {
                 res.result = Number(result);
+                res.scored = Number(scored);
               }
             }
           });
         } else {
-          this.MultiResult.push(drop);
+          this.FinalMulti.push(drop);
         }
       }
     },
@@ -434,6 +447,26 @@ class Settings {
               if (res.result == 1) {
                 res.result = Number(result);
               }
+            }
+          });
+        } else {
+          this.finalCandidates.push(drop);
+        }
+      }
+    },
+    InsertFinalCompensatory: (cId, result) => {
+      let drop = {
+        cId: Number(cId),
+        result: Number(result),
+      };
+
+      if (this.finalCandidates.length <= 0) {
+        this.finalCandidates.push(drop);
+      } else {
+        if (this.finalCandidates.some(td => td.cId === cId)) {
+          this.finalCandidates.map(res => {
+            if (res.cId == cId) {
+              res.result = Number(result);
             }
           });
         } else {

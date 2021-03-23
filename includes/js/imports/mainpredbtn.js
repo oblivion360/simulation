@@ -9,7 +9,7 @@ let mainPredBtn = () => {
     let btn = e.target.dataset.btn;
     $('.btn').removeClass('btn-active');
     $('#' + btn).addClass('btn-active');
-
+    $('#counter').val(1);
     displayPredTable(3);
 
     if (btn == 'multiple-predictor') {

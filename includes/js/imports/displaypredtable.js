@@ -115,7 +115,7 @@ let displayPredTable = val => {
       } else if (ndrop == 2) {
         let counter = $('#counter').val();
         counter = counter - 1;
-        $('.choosen-holder' + counter).html('Drag Predictor Here');
+        $('.choosen-holder' + id).html('Drag Predictor Here');
         if (counter == 1) {
           $('#single-predictor').attr('disabled', false);
           $('#compensatory').attr('disabled', false);
@@ -125,21 +125,44 @@ let displayPredTable = val => {
         }
         $('#counter').val(counter);
       } else if (ndrop == 3) {
+        console.log(id);
         let counter = $('#counter').val(),
+          totalWeight,
+          a = 0,
           cdId;
         cdId = counter;
         counter = counter - 1;
-        $('.choosen-holder' + counter).html('Drag Predictor Here');
+        // console.log('.choosen-holder' + id);
+        $('.choosen-holder' + id).html('Drag Predictor Here');
         if (counter == 1) {
           $('#single-predictor').attr('disabled', false);
           $('#multi-hurdle').attr('disabled', false);
           $('#next').attr('disabled', false);
-          $('#weight' + counter).val(0);
+          // $('#weight' + counter).val(0);
         } else {
           $('#next').attr('disabled', true);
-          $('#weight' + counter).val(0);
+          // $('#weight' + counter).val(0);
         }
 
+        for (let z = 1; z <= 4; z++) {
+          totalWeight = $('#weight' + z).val();
+          if (typeof totalWeight !== 'undefined') {
+            a = a + Number($('#weight' + z).val());
+          }
+        }
+        a = a - Number($('#weight' + id).val());
+
+        if (a < 100 || a > 100) {
+          $('#percentage').removeClass('text-primary');
+          $('#percentage').addClass('text-danger');
+          $('#percentage').html(a + '%');
+        } else {
+          $('#percentage').removeClass('text-danger');
+          $('#percentage').addClass('text-primary');
+          $('#percentage').html(a + '%');
+        }
+
+        $('#weight' + id).val(0);
         $('.method').val(0);
         $('#counter').val(counter);
       }
@@ -188,6 +211,20 @@ function setBack(id) {
       `<option value="0" selected>Select the Score</option>`
     );
 
+    //set method btn to not active
+    $('#topdown' + counter)
+      .removeClass('btn-active')
+      .attr('disabled', true);
+    $('#minimum' + counter)
+      .removeClass('btn-active')
+      .attr('disabled', true);
+  } else if (drop == 3) {
+    console.log('drop2 ' + id);
+    $('.btn-method').removeClass('btn-active');
+    $('.method').html(`<option value="0" selected>Select the Score</option>`);
+    $('.weight' + counter).html(
+      `<option value="0" selected>Select the Weightage</option>`
+    );
     //set method btn to not active
     $('#topdown' + counter)
       .removeClass('btn-active')

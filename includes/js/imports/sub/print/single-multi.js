@@ -72,19 +72,15 @@ let SingleMulti = (num, fd, id) => {
       if (typeof value == 'number') {
         if (scored >= value) {
           displayResult = 'Pass';
-          Set.data.InsertFinal(res.cId, 1);
         } else {
           displayResult = '<span class="text-danger">Failed</span>';
-          Set.data.InsertFinal(res.cId, 2);
         }
       } else {
         value = value;
         console.log(start);
         if (start.toLowerCase() == scored.toLowerCase()) {
           displayResult = 'Pass';
-          Set.data.InsertFinal(res.cId, 1);
         } else {
-          Set.data.InsertFinal(res.cId, 2);
           displayResult = '<span class="text-danger">Failed</span>';
         }
       }
@@ -118,8 +114,6 @@ let SingleMulti = (num, fd, id) => {
           }
         }
       });
-
-      Set.data.InsertSingle(res.cId, scored, num, value);
     });
 
     Set.data.InsertFinalSingle();
@@ -136,13 +130,10 @@ let SingleMulti = (num, fd, id) => {
       if (tr.stage == num) {
         if (tr.result == 1 && tr.scored != 0) {
           displayResult = 'Pass';
-          Set.data.InsertFinal(tr.id, 1);
         } else if (tr.result == 1 && tr.scored == 0) {
           displayResult = '<span class="text-danger">Failed</span>';
-          Set.data.InsertFinal(tr.id, 2);
         } else {
           displayResult = '<span class="text-danger">Failed</span>';
-          Set.data.InsertFinal(tr.id, 2);
         }
         // console.log('FinalScore2: ' + id + ' Stage:' + num);
         $('#Score' + id + '' + num).append(`

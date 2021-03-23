@@ -1,6 +1,7 @@
 import displayPredTable from './displaypredtable.js';
 import Multiple from './sub/single/multi.js';
 let holderMultiple = () => {
+  Set.drop = '2';
   $.ajax({
     type: 'GET',
     crossDomain: true,
@@ -23,13 +24,14 @@ let holderMultiple = () => {
           drop: function (event, ui) {
             let predId = ui.draggable[0].dataset['drag'],
               id;
+            $('#methodType').val(1);
             Set.Predictors[0][predId - 1].status = 2;
             id = event.target.id;
             id = id.split(/([0-9]+)/);
             addPredictors(ui.draggable, id[1]);
             Multiple();
-            showMethod(predId);
-            saveDrop(predId);
+            showMethod(predId, id[1]);
+            saveDrop(predId, id[1]);
             navBtn();
 
             Set.drop = '2';
@@ -66,9 +68,7 @@ function addPredictors($item, x) {
   });
 }
 
-function showMethod(predId) {
-  let x = $('#counter').val();
-  console.log('show method' + x);
+function showMethod(predId, x) {
   $('.method' + x).attr('data-predid', predId);
   $('.method' + x).html(`<option value="0" selected>Select the Score</option>`);
   Set.Predictors[0].map(res => {
@@ -106,9 +106,7 @@ function showMethod(predId) {
   });
 }
 
-function saveDrop(predId) {
-  let x = $('#counter').val();
-
+function saveDrop(predId, x) {
   if (typeof Set.dropped[0] == 'undefined') {
     Set.data.Dropped(predId);
     //console.log(Set.dropped);
@@ -137,6 +135,7 @@ function navBtn() {
 let multiHurdle = () => {
   $('.add-button').on('click', function () {
     let x = $('#addCounter').val();
+    $('#methodType').val(1);
     $.ajax({
       type: 'GET',
       crossDomain: true,
@@ -160,13 +159,14 @@ let multiHurdle = () => {
               let predId = ui.draggable[0].dataset['drag'],
                 id,
                 rmb;
+              $('#methodType').val(1);
               Set.Predictors[0][predId - 1].status = 2;
               id = event.target.id;
               id = id.split(/([0-9]+)/);
               addPredictors(ui.draggable, id[1]);
               Multiple();
-              showMethod(predId);
-              saveDrop(predId);
+              showMethod(predId, id[1]);
+              saveDrop(predId, id[1]);
               navBtn();
               rmb = event.target.id;
               rmb = rmb.split(/([0-9]+)/);

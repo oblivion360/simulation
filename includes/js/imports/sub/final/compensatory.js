@@ -12,6 +12,8 @@ let Compensatory = (num, fd, id) => {
     totalResult,
     holder = 0,
     mtype,
+    b = 0,
+    c = 0,
     scored = 0;
 
   Set.Predictors[0].map(pred => {
@@ -87,15 +89,27 @@ let Compensatory = (num, fd, id) => {
   //console.log(Set.totalArray);
 
   if (fd.methodType == 1) {
+    Set.finalDrop.map(fds => {
+      if (fds.stage == num && fds.predType == 3) {
+        b = b + 1;
+      }
+    });
+    c = id + 1;
     Set.Candidates[0].map(cd => {
       holder = $('#' + cd.name + '' + num).val();
 
       if (holder >= weightValue) {
         result = 'Pass';
-        Set.data.InsertFinal(cd.cId, 1);
+        console.log(' c: ' + c + ' b: ' + b);
+        if (c == b) {
+          Set.data.InsertFinal(cd.cId, 1);
+        }
       } else {
         result = '<span class="text-danger">Failed</span>';
-        Set.data.InsertFinal(cd.cId, 2);
+        console.log(' c: ' + c + ' b: ' + b);
+        if (c == b) {
+          Set.data.InsertFinal(cd.cId, 2);
+        }
       }
       console.log('FinalScore1: ' + id + ' Stage:' + num);
       $('#Score' + id + '' + num).append(`
@@ -119,16 +133,31 @@ let Compensatory = (num, fd, id) => {
 
       return x.id - y.id;
     });
-
-    Set.totalResult.map(tr => {
+    Set.finalDrop.map(fds => {
+      if (fds.stage == num && fds.predType == 3) {
+        b = b + 1;
+      }
+    });
+    c = id + 1;
+    totalResult.map(tr => {
       // console.log('tr.Stage: ' + tr.stage);
       if (tr.stage == num) {
         if (tr.result == 1) {
           result = 'Pass';
-          Set.data.InsertFinal(tr.id, 1);
+          console.log(
+            'cId: ' + tr.id + ' Actual: ' + tr.result + ' c: ' + c + ' b: ' + b
+          );
+          if (c == b) {
+            Set.data.InsertFinal(tr.id, 1);
+          }
         } else {
           result = '<span class="text-danger">Failed</span>';
-          Set.data.InsertFinal(tr.id, 2);
+          console.log(
+            'cId: ' + tr.id + ' Actual: ' + tr.result + ' c: ' + c + ' b: ' + b
+          );
+          if (c == b) {
+            Set.data.InsertFinal(tr.id, 2);
+          }
         }
         // console.log('FinalScore2: ' + id + ' Stage:' + num);
         $('#Score' + id + '' + num).append(`

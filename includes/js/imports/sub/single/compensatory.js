@@ -7,10 +7,16 @@ const Compensatory = () => {
       predType = $('#predType').val(),
       counter = $('#counter').val(),
       a = 0,
+      totalWeight,
       value = Number($('#' + id).val());
-    for (let z = 1; z < counter; z++) {
-      a = a + Number($('#weight' + z).val());
+    console.log(id);
+    for (let z = 1; z <= 4; z++) {
+      totalWeight = $('#weight' + z).val();
+      if (typeof totalWeight !== 'undefined') {
+        a = a + Number($('#weight' + z).val());
+      }
     }
+
     if (a < 100 || a > 100) {
       $('#percentage').removeClass('text-primary');
       $('#percentage').addClass('text-danger');
@@ -33,13 +39,16 @@ const Compensatory = () => {
         drop.predType = Number(predType);
       }
     });
-
-    console.log(Set.dropped);
+    $('#next').removeClass('btn-stage-active').attr('disabled', true);
+    $('.btn-method').removeClass('btn-active');
+    $('.method').html(`<option value="0" selected>Select the Score</option>`);
   });
 
   $('.method').on('change', function (res) {
     let y = $('#methodType').val(),
       stage = $('#stage').val(),
+      a = 0,
+      totalWeight,
       counter = $('#counter').val(),
       value = $('.method').val();
 
@@ -48,14 +57,23 @@ const Compensatory = () => {
 
       drop.methodType = y;
     });
-    if (counter > 2) {
-      if (stage == 1) {
-        $('#next').addClass('btn-stage-active').attr('disabled', false);
-      } else {
-        $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
+    for (let z = 1; z <= 4; z++) {
+      totalWeight = $('#weight' + z).val();
+      if (typeof totalWeight !== 'undefined') {
+        a = a + Number($('#weight' + z).val());
       }
     }
-    console.log(Set.dropped);
+    if (a == 100) {
+      if (counter > 2) {
+        if (stage == 1) {
+          $('#next').addClass('btn-stage-active').attr('disabled', false);
+        } else {
+          $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
+        }
+      }
+    }
+
+    // console.log(Set.dropped);
   });
 
   //choosing top-down
@@ -68,7 +86,7 @@ const Compensatory = () => {
       // let predId = $('.' + method).attr('data-predid');
       // showMethod(predId, method);
       $('.btn-method').removeClass('btn-active');
-      $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+      $('.method').html(`<option value="0" selected>Select the Score</option>`);
       $('#' + id).addClass('btn-active');
       $('#methodType').val(1);
       for (let x = 1; x <= 10; x++) {
@@ -84,7 +102,7 @@ const Compensatory = () => {
         }
       }
     } else if (type == 'topdown') {
-      $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+      $('.method').html(`<option value="0" selected>Select the Score</option>`);
       let start = 5,
         add = 5,
         end = 100;
@@ -111,7 +129,7 @@ const Compensatory = () => {
 
 function showMethod(predId, method) {
   $('.' + method).attr('data-predid', predId);
-  $('.' + method).html(`<option value="0" selected>Pls Choose</option>`);
+  $('.' + method).html(`<option value="0" selected>Select the Score</option>`);
   Set.Predictors[0].map(res => {
     if (res.predId == predId) {
       // console.log(typeof res.start);

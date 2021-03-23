@@ -1,6 +1,7 @@
 import displayPredTable from './displaypredtable.js';
 import Single from './sub/single/single.js';
 let holderSingle = () => {
+  Set.drop = '1';
   $.ajax({
     type: 'GET',
     crossDomain: true,

@@ -1,8 +1,10 @@
 <input type="hidden" id="methodType" value="0" />
 <input type="hidden" id="predType" value="3" />
 <input type="hidden" id="totalWeight" value="0" />
+<input type="hidden" id="addCounter" value="3" /> 
+<input type="hidden" id="wval" value="0" /> 
 <!-- Start of row -->
-<div class="row">
+<div class="row" id="holder-button">
   <div class="col-md-5 bg-holdera p-4 droppable1" id="holder1">
     <div class="choosen-holder choosen-holder1">
       Drag Predictor Here
@@ -54,13 +56,8 @@
 <div class="row">
   <div class="col-md-5 bg-holderc p-4">
     <div class="add-button">
-      <!-- <button
-          type="button"
-          class="btn btn-block btn-large btn-info choosen"
-          id="choosen1"
-        >
-          Company Experience
-        </button> -->
+      <img src="includes/images/plus.png" class="button-img-add" height="30">&nbsp;</img>
+      <b>Add a New Slot</b>
     </div>
   </div>
   <div class="col-md-7 bg-holderd p-4">
@@ -96,7 +93,7 @@
       <div class="col-md-12 text-center pt-2">
         <div class="form-group">
           <select class="form-control method">
-            <option value="0" selected>Pls Choose</option>
+            <option value="0" selected>Select the Score</option>
           </select>
         </div>
       </div>
