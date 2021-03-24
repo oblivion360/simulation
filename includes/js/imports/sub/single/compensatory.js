@@ -44,7 +44,7 @@ const Compensatory = () => {
     $('.method').html(`<option value="0" selected>Select the Score</option>`);
   });
 
-  $('.btn-method-comp').on('change', function (res) {
+  $('.comp').on('change', function (res) {
     let y = $('#methodType').val(),
       stage = $('#stage').val(),
       a = 0,
