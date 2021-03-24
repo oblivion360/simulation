@@ -7,7 +7,7 @@ let CandidatesSettings = () => {
         <button
             type="button"
             class="btn bg-button nav-btn btn-stage-active"
-            id="prev"
+            id="retryModal"
         >
             <span data-feather="chevrons-left"></span> RETRY
         </button>
@@ -30,6 +30,25 @@ let CandidatesSettings = () => {
   $('#download-pdf').on('click', function () {
     console.log('download');
     downloadCandidates();
+  });
+
+  // insert modal
+  $.ajax({
+    type: 'GET',
+    crossDomain: true,
+    url: 'components/content/modal/retry.html',
+    dataType: 'html',
+    success: function (res) {
+      // show page
+      $('#modal').append(res);
+      $('#retry').on('click', function () {
+        location.reload();
+      });
+    },
+  });
+
+  $('#retryModal').on('click', function () {
+    $('#retrySimulation').modal('show');
   });
 };
 

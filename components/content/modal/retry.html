@@ -1,0 +1,40 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="retrySimulation"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  data-backdrop="static"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" id="simulation-content">
+      <div class="modal-body" id="simulation-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p>You will lost all progress for the</p>
+            <p>current simulation</p>
+            <br />
+            <p>Are you sure</p>
+            <p>you want to retry?</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" id="simulation-button">
+            <button
+              type="button"
+              class="btn btn-secondary btn-lg"
+              data-dismiss="modal"
+              id="retry-no"
+            >
+              No
+            </button>
+            <button type="button" class="btn btn-primary btn-lg" id="retry">
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
