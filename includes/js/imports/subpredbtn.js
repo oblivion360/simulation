@@ -12,7 +12,7 @@ let subPredBtn = () => {
       $('#compensatory').addClass('subBtn-active');
       setBackPredictors('compensatory');
       displayPredTable(1);
-
+      console.log(btn);
       holderCompensatory();
       if (stage == 1) {
         $('#prev').attr('disabled', true).removeClass('btn-stage-active');
@@ -24,6 +24,7 @@ let subPredBtn = () => {
         $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
       }
     } else {
+      console.log(btn);
       setBackPredictors('multiple');
       $('.subPred-btn').removeClass('subBtn-active');
       $('#multi-hurdle').addClass('subBtn-active');

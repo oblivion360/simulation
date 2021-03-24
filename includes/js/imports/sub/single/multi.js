@@ -31,17 +31,22 @@ const Multiple = () => {
   });
 
   //choosing top-down
-  $(document).click(event => {
+  $('.btn-method').click(event => {
     let method = event.target.dataset.method,
       type = event.target.dataset.type,
       counter = $('#counter').val(),
+      y,
       otherId = event.target.dataset.counter,
       id = event.target.id;
 
-    if (type == 'minimum') {
-      let predId = $('.' + method).attr('data-predid');
-      showMethod(predId, method);
-      $('#' + otherId).removeClass('btn-active');
+    y = id;
+    y = y.split(/([0-9]+)/);
+    console.log(y[0]);
+    if (y[0] == 'minimum') {
+      let predId = $('.method' + y[1]).attr('data-predid');
+
+      showMethod(predId, method, y[1]);
+      $('#topdown' + y[1]).removeClass('btn-active');
       $('#' + id).addClass('btn-active');
       $('#methodType').val(1);
 
@@ -54,21 +59,21 @@ const Multiple = () => {
           $('#next').attr('disabled', true);
         }
       }
-    } else if (type == 'topdown') {
-      $('.' + method).html(
+    } else if (y[0] == 'topdown') {
+      $('.method' + y[1]).html(
         `<option value="0" selected>Select the Score</option>`
       );
       let start = 5,
         add = 5,
         end = 100;
       do {
-        $('.' + method).append(
+        $('.method' + y[1]).append(
           `<option value="${start}">Top ${start}%</option>`
         );
         start = start + add;
       } while (start <= end);
 
-      $('#' + otherId).removeClass('btn-active');
+      $('#minimum' + y[1]).removeClass('btn-active');
       $('#' + id).addClass('btn-active');
       $('#methodType').val(2);
 
@@ -83,15 +88,12 @@ const Multiple = () => {
       }
     }
   });
-
-  $('.add-button').on('click', function () {
-    console.log('add slot');
-  });
 };
 
-function showMethod(predId, method) {
-  $('.' + method).attr('data-predid', predId);
-  $('.' + method).html(`<option value="0" selected>Select the Score</option>`);
+function showMethod(predId, method, y) {
+  console.log(y);
+  $('.method' + y).attr('data-predid', predId);
+  $('.method' + y).html(`<option value="0" selected>Select the Score</option>`);
   Set.Predictors[0].map(res => {
     if (res.predId == predId) {
       // console.log(typeof res.start);
@@ -104,11 +106,11 @@ function showMethod(predId, method) {
         do {
           x++;
           if (x == 1) {
-            $('.' + method).append(`
+            $('.method' + y).append(`
               <option value="${start}" >${start} ${res.textSingular}</option>
               `);
           } else {
-            $('.' + method).append(`
+            $('.method' + y).append(`
               <option value="${start}" >${start} ${res.textPlural}</option>
               `);
           }
@@ -117,10 +119,10 @@ function showMethod(predId, method) {
       } else if (typeof res.start == 'string') {
         let start = res.start,
           end = res.end;
-        $('.' + method).append(`
+        $('.method' + y).append(`
               <option value="${start}" >${start}</option>
               `);
-        $('.' + method).append(`
+        $('.method' + y).append(`
               <option value="${end}" >${end}</option>
               `);
       }

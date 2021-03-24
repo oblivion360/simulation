@@ -14,29 +14,36 @@ let holderCompensatory = () => {
       for (let x = 5; x <= 100; x = x + 5) {
         $('.weight').append(`<option value="${x}">${x}%</option>`);
       }
-
-      // droppable
-      $('.droppable1, .droppable2').droppable({
-        accept: '.draggable',
-        drop: function (event, ui) {
-          let predId = ui.draggable[0].dataset['drag'],
-            id;
-          Set.Predictors[0][predId - 1].status = 2;
-          id = event.target.id;
-          id = id.split(/([0-9]+)/);
-          addPredictors(ui.draggable, predId, id[1]);
-          Compensatory();
-          saveDrop(predId);
-
-          Set.drop = '3';
-          navBtn();
-          $('#single-predictor').attr('disabled', true);
-          $('#multiple-predictor').attr('disabled', true);
-          $('#multi-hurdle').attr('disabled', true);
-        },
+      let newPred = [];
+      Set.Predictors[0].map(pred => {
+        if (pred.status == 1) {
+          newPred.push(pred);
+        }
       });
 
-      compensatory();
+      // droppable
+      for (let z = 1; z <= newPred.length; z++) {
+        $('.droppable' + z).droppable({
+          accept: '.draggable',
+          drop: function (event, ui) {
+            let predId = ui.draggable[0].dataset['drag'],
+              id;
+            Set.Predictors[0][predId - 1].status = 2;
+            id = event.target.id;
+            id = id.split(/([0-9]+)/);
+            addPredictors(ui.draggable, predId, id[1]);
+            Compensatory();
+            saveDrop(predId);
+
+            Set.drop = '3';
+            navBtn();
+            $('#single-predictor').attr('disabled', true);
+            $('#multiple-predictor').attr('disabled', true);
+            $('#multi-hurdle').attr('disabled', true);
+          },
+        });
+      }
+      com();
     },
   });
 };
@@ -84,7 +91,7 @@ function navBtn() {
   }
 }
 
-let compensatory = () => {
+let com = () => {
   $('.add-button').on('click', function () {
     let x = $('#addCounter').val();
     $('#methodType').val(1);

@@ -44,7 +44,7 @@ const Compensatory = () => {
     $('.method').html(`<option value="0" selected>Select the Score</option>`);
   });
 
-  $('.method').on('change', function (res) {
+  $('.btn-method-comp').on('change', function (res) {
     let y = $('#methodType').val(),
       stage = $('#stage').val(),
       a = 0,
@@ -73,7 +73,7 @@ const Compensatory = () => {
       }
     }
 
-    // console.log(Set.dropped);
+    console.log(Set.dropped);
   });
 
   //choosing top-down
@@ -84,13 +84,13 @@ const Compensatory = () => {
 
     if (type == 'minimum') {
       // let predId = $('.' + method).attr('data-predid');
-      // showMethod(predId, method);
-      $('.btn-method').removeClass('btn-active');
-      $('.method').html(`<option value="0" selected>Select the Score</option>`);
+
+      $('.btn-method-comp').removeClass('btn-active');
+      $('.comp').html(`<option value="0" selected>Select the Score</option>`);
       $('#' + id).addClass('btn-active');
       $('#methodType').val(1);
       for (let x = 1; x <= 10; x++) {
-        $('.method').append(`<option value="${x}">${x}</option>`);
+        $('.comp').append(`<option value="${x}">${x}</option>`);
       }
       if (counter > 2) {
         if (stage == 1) {
@@ -102,16 +102,16 @@ const Compensatory = () => {
         }
       }
     } else if (type == 'topdown') {
-      $('.method').html(`<option value="0" selected>Select the Score</option>`);
+      $('.comp').html(`<option value="0" selected>Select the Score</option>`);
       let start = 5,
         add = 5,
         end = 100;
       do {
-        $('.method').append(`<option value="${start}">${start}%</option>`);
+        $('.comp').append(`<option value="${start}">${start}%</option>`);
         start = start + add;
       } while (start <= end);
 
-      $('.btn-method').removeClass('btn-active');
+      $('.btn-method-comp').removeClass('btn-active');
       $('#' + id).addClass('btn-active');
       $('#methodType').val(2);
       if (counter > 2) {
@@ -126,44 +126,5 @@ const Compensatory = () => {
     }
   });
 };
-
-function showMethod(predId, method) {
-  $('.' + method).attr('data-predid', predId);
-  $('.' + method).html(`<option value="0" selected>Select the Score</option>`);
-  Set.Predictors[0].map(res => {
-    if (res.predId == predId) {
-      // console.log(typeof res.start);
-      if (typeof res.start == 'number') {
-        let start = res.start,
-          end = res.end,
-          x = 0,
-          add = res.add;
-
-        do {
-          x++;
-          if (x == 1) {
-            $('.' + method).append(`
-              <option value="${start}" >${start} ${res.textSingular}</option>
-              `);
-          } else {
-            $('.' + method).append(`
-              <option value="${start}" >${start} ${res.textPlural}</option>
-              `);
-          }
-          start = start + add;
-        } while (start <= end);
-      } else if (typeof res.start == 'string') {
-        let start = res.start,
-          end = res.end;
-        $('.' + method).append(`
-              <option value="${start}" >${start}</option>
-              `);
-        $('.' + method).append(`
-              <option value="${end}" >${end}</option>
-              `);
-      }
-    }
-  });
-}
 
 export default Compensatory;

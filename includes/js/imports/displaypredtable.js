@@ -219,19 +219,15 @@ function setBack(id) {
       .removeClass('btn-active')
       .attr('disabled', true);
   } else if (drop == 3) {
-    console.log('drop2 ' + id);
+    console.log('drop3 ' + id);
     $('.btn-method').removeClass('btn-active');
     $('.method').html(`<option value="0" selected>Select the Score</option>`);
     $('.weight' + counter).html(
       `<option value="0" selected>Select the Weightage</option>`
     );
     //set method btn to not active
-    $('#topdown' + counter)
-      .removeClass('btn-active')
-      .attr('disabled', true);
-    $('#minimum' + counter)
-      .removeClass('btn-active')
-      .attr('disabled', true);
+    $('#topdown').removeClass('btn-active').attr('disabled', true);
+    $('#minimum').removeClass('btn-active').attr('disabled', true);
   }
 }
 

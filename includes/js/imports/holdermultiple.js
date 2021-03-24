@@ -28,6 +28,7 @@ let holderMultiple = () => {
             Set.Predictors[0][predId - 1].status = 2;
             id = event.target.id;
             id = id.split(/([0-9]+)/);
+            console.log(id[1]);
             addPredictors(ui.draggable, id[1]);
             Multiple();
             showMethod(predId, id[1]);
@@ -42,7 +43,6 @@ let holderMultiple = () => {
         });
       }
       multiHurdle();
-      //multiHurdle();
     },
   });
 };
