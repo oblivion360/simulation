@@ -36,7 +36,7 @@
             type="button"
             data-toggle="collapse"
             data-target="#collapseOne"
-            aria-expanded="true"
+            aria-expanded="false"
             aria-controls="collapseOne"
           >
             <b>Stage 1:</b> Initial
@@ -44,7 +44,12 @@
         </h2>
       </div>
 
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+      <div
+        id="collapseOne"
+        class="collapse show"
+        aria-labelledby="headingOne"
+        data-parent="#accordionExample"
+      >
         <div class="card-body" id="resultInitial">
           <div class="card-body" id="resultContingent">
             <div class="col-md-12">
@@ -73,14 +78,19 @@
             type="button"
             data-toggle="collapse"
             data-target="#collapseTwo"
-            aria-expanded="true"
+            aria-expanded="false"
             aria-controls="collapseTwo"
           >
             <b>Stage 2:</b> Substantive
           </button>
         </h2>
       </div>
-      <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo">
+      <div
+        id="collapseTwo"
+        class="collapse"
+        aria-labelledby="headingTwo"
+        data-parent="#accordionExample"
+      >
         <div class="card-body" id="resultSubstantive">
           <div class="card-body" id="resultContingent">
             <div class="col-md-12">
@@ -109,7 +119,7 @@
             type="button"
             data-toggle="collapse"
             data-target="#collapseThree"
-            aria-expanded="true"
+            aria-expanded="false"
             aria-controls="collapseThree"
           >
             <b>Stage 3:</b> Discretionary
@@ -118,8 +128,9 @@
       </div>
       <div
         id="collapseThree"
-        class="collapse show"
+        class="collapse"
         aria-labelledby="headingThree"
+        data-parent="#accordionExample"
       >
         <div class="card-body" id="resultDiscretionary">
           <div class="card-body" id="resultContingent">
@@ -149,7 +160,7 @@
             type="button"
             data-toggle="collapse"
             data-target="#collapseFour"
-            aria-expanded="true"
+            aria-expanded="false"
             aria-controls="collapseFour"
           >
             <b>Stage 4:</b> Contingent
@@ -158,8 +169,9 @@
       </div>
       <div
         id="collapseFour"
-        class="collapse show"
+        class="collapse"
         aria-labelledby="headingFour"
+        data-parent="#accordionExample"
       >
         <div class="card-body" id="resultContingent">
           <div class="col-md-12">
@@ -187,7 +199,7 @@
             type="button"
             data-toggle="collapse"
             data-target="#collapseFive"
-            aria-expanded="true"
+            aria-expanded="false"
             aria-controls="collapseFive"
           >
             <b>Finalist</b>
@@ -196,7 +208,7 @@
       </div>
       <div
         id="collapseFive"
-        class="collapse show"
+        class="collapse"
         aria-labelledby="headingFour"
         data-parent="#accordionExample"
       >

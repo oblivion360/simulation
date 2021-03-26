@@ -27,8 +27,8 @@ const Single = () => {
   //choosing top-down
   $('#topdown').on('click', function () {
     $('.method').html(`<option value="0" selected>Pls Choose</option>`);
-    let start = 5,
-      add = 5,
+    let start = 10,
+      add = 10,
       stage = $('#stage').val(),
       end = 100;
     $('#methodType').val(2);

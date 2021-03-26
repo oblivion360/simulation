@@ -63,8 +63,8 @@ const Multiple = () => {
       $('.method' + y[1]).html(
         `<option value="0" selected>Select the Score</option>`
       );
-      let start = 5,
-        add = 5,
+      let start = 10,
+        add = 10,
         end = 100;
       do {
         $('.method' + y[1]).append(

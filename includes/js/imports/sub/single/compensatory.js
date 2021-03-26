@@ -103,8 +103,8 @@ const Compensatory = () => {
       }
     } else if (type == 'topdown') {
       $('.comp').html(`<option value="0" selected>Select the Score</option>`);
-      let start = 5,
-        add = 5,
+      let start = 10,
+        add = 10,
         end = 100;
       do {
         $('.comp').append(`<option value="${start}">${start}%</option>`);

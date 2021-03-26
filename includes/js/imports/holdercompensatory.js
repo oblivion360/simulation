@@ -11,7 +11,7 @@ let holderCompensatory = () => {
       // show page
       $('#predictor-holder').html(res);
       // set weight selector
-      for (let x = 5; x <= 100; x = x + 5) {
+      for (let x = 10; x <= 100; x = x + 10) {
         $('.weight').append(`<option value="${x}">${x}%</option>`);
       }
       let newPred = [];
@@ -34,7 +34,7 @@ let holderCompensatory = () => {
             addPredictors(ui.draggable, predId, id[1]);
             Compensatory();
             saveDrop(predId);
-
+            console.log('drop 1');
             Set.drop = '3';
             navBtn();
             $('#single-predictor').attr('disabled', true);
@@ -103,7 +103,7 @@ let com = () => {
       success: function (res) {
         // show page
         $('#holder-button').append(res);
-        for (let x = 5; x <= 100; x = x + 5) {
+        for (let x = 10; x <= 100; x = x + 10) {
           $('.weight').append(`<option value="${x}">${x}%</option>`);
         }
 
@@ -128,7 +128,7 @@ let com = () => {
               addPredictors(ui.draggable, predId, id[1]);
               Compensatory();
               saveDrop(predId);
-
+              console.log('drop 2');
               Set.drop = '3';
               navBtn();
 

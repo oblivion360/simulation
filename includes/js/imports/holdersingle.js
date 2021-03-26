@@ -47,6 +47,18 @@ function addPredictors($item) {
 }
 
 function showMethod(predId) {
+  let btn = [];
+  btn = Set.Predictors[0].find(pred => pred.predId == predId);
+  console.log(btn);
+  if (btn.valueType == 2) {
+    $('#topdown').attr('disabled', 'true');
+    $('#minimum').removeAttr('disabled');
+    $('#minimum').addClass('btn-active');
+  } else {
+    $('#minimum').removeAttr('disabled');
+    $('#topdown').removeAttr('disabled');
+    $('#minimum').addClass('btn-active');
+  }
   $('.method').attr('data-predid', predId);
   $('.method').html(`<option value="0" selected>Pls Choose</option>`);
   Set.Predictors[0].map(res => {
@@ -94,10 +106,6 @@ function saveDrop(predId) {
     Set.data.Dropped(predId);
     console.log(Set.dropped);
   }
-
-  $('#minimum').removeAttr('disabled');
-  $('#topdown').removeAttr('disabled');
-  $('#minimum').addClass('btn-active');
 }
 
 function navBtn() {

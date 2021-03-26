@@ -34,7 +34,7 @@ let holderMultiple = () => {
             showMethod(predId, id[1]);
             saveDrop(predId, id[1]);
             navBtn();
-
+            console.log('drop 1');
             Set.drop = '2';
 
             $('#single-predictor').attr('disabled', true);
@@ -116,9 +116,18 @@ function saveDrop(predId, x) {
     //console.log(Set.dropped);
   }
 
-  $('#minimum' + x).removeAttr('disabled');
-  $('#topdown' + x).removeAttr('disabled');
-  $('#minimum' + x).addClass('btn-active');
+  let btn = [];
+  btn = Set.Predictors[0].find(pred => pred.predId == predId);
+  console.log(btn);
+  if (btn.valueType == 2) {
+    $('#topdown' + x).attr('disabled', 'true');
+    $('#minimum' + x).removeAttr('disabled');
+    $('#minimum' + x).addClass('btn-active');
+  } else {
+    $('#minimum' + x).removeAttr('disabled');
+    $('#topdown' + x).removeAttr('disabled');
+    $('#minimum' + x).addClass('btn-active');
+  }
 }
 
 function navBtn() {
@@ -172,7 +181,7 @@ let multiHurdle = () => {
               rmb = rmb.split(/([0-9]+)/);
               Set.drop = '2';
               addPred(rmb[1], predId);
-
+              console.log('drop 2');
               $('#single-predictor').attr('disabled', true);
               $('#compensatory').attr('disabled', true);
             },

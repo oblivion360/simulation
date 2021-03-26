@@ -460,3 +460,7 @@ main {
 .remove-button:hover {
   cursor: pointer;
 }
+
+select.weight {
+  margin-top: 40px;
+}
