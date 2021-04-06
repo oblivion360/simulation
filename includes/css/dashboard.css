@@ -464,3 +464,11 @@ main {
 select.weight {
   margin-top: 40px;
 }
+
+.help {
+  float: right;
+}
+
+.help:hover {
+  cursor: pointer;
+}

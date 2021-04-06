@@ -14,15 +14,15 @@ let holderCompensatory = () => {
       for (let x = 10; x <= 100; x = x + 10) {
         $('.weight').append(`<option value="${x}">${x}%</option>`);
       }
-      let newPred = [];
-      Set.Predictors[0].map(pred => {
-        if (pred.status == 1) {
-          newPred.push(pred);
-        }
-      });
+      // let newPred = [];
+      // Set.Predictors[0].map(pred => {
+      //   if (pred.status == 1) {
+      //     newPred.push(pred);
+      //   }
+      // });
 
       // droppable
-      for (let z = 1; z <= newPred.length; z++) {
+      for (let z = 1; z <= 2; z++) {
         $('.droppable' + z).droppable({
           accept: '.draggable',
           drop: function (event, ui) {
@@ -95,60 +95,63 @@ let com = () => {
   $('.add-button').on('click', function () {
     let x = $('#addCounter').val();
     $('#methodType').val(1);
-    $.ajax({
-      type: 'GET',
-      crossDomain: true,
-      url: 'components/content/compensatory.html',
-      dataType: 'html',
-      success: function (res) {
-        // show page
-        $('#holder-button').append(res);
-        for (let x = 10; x <= 100; x = x + 10) {
-          $('.weight').append(`<option value="${x}">${x}%</option>`);
-        }
-
-        let newPred = [];
-        Set.Predictors[0].map(pred => {
-          if (pred.status == 1) {
-            newPred.push(pred);
-          }
-        });
-        addSetting();
-        for (let z = 1; z <= newPred.length; z++) {
-          $('.droppable' + z).droppable({
-            accept: '.draggable',
-            drop: function (event, ui) {
-              let predId = ui.draggable[0].dataset['drag'],
-                id,
-                rmb;
-              $('#methodType').val(1);
-              Set.Predictors[0][predId - 1].status = 2;
-              id = event.target.id;
-              id = id.split(/([0-9]+)/);
-              addPredictors(ui.draggable, predId, id[1]);
-              Compensatory();
-              saveDrop(predId);
-              console.log('drop 2');
-              Set.drop = '3';
-              navBtn();
-
-              rmb = event.target.id;
-              rmb = rmb.split(/([0-9]+)/);
-              addPred(rmb[1], predId);
-
-              $('#single-predictor').attr('disabled', true);
-              $('#multiple-predictor').attr('disabled', true);
-              $('#multi-hurdle').attr('disabled', true);
-            },
-          });
-        }
-
-        x = Number(x) + 1;
-        $('#addCounter').val(x);
-
-        removeHolder();
-      },
+    let newPred = [];
+    Set.Predictors[0].map(pred => {
+      if (pred.status == 1 && pred.type == 2) {
+        newPred.push(pred);
+      }
     });
+
+    if (newPred.length != 0) {
+      $.ajax({
+        type: 'GET',
+        crossDomain: true,
+        url: 'components/content/compensatory.html',
+        dataType: 'html',
+        success: function (res) {
+          // show page
+          $('#holder-button').append(res);
+          for (let x = 10; x <= 100; x = x + 10) {
+            $('.weight').append(`<option value="${x}">${x}%</option>`);
+          }
+
+          addSetting();
+          for (let z = 1; z <= 8; z++) {
+            $('.droppable' + z).droppable({
+              accept: '.draggable',
+              drop: function (event, ui) {
+                let predId = ui.draggable[0].dataset['drag'],
+                  id,
+                  rmb;
+                $('#methodType').val(1);
+                Set.Predictors[0][predId - 1].status = 2;
+                id = event.target.id;
+                id = id.split(/([0-9]+)/);
+                addPredictors(ui.draggable, predId, id[1]);
+                Compensatory();
+                saveDrop(predId);
+                console.log('drop 2');
+                Set.drop = '3';
+                navBtn();
+
+                rmb = event.target.id;
+                rmb = rmb.split(/([0-9]+)/);
+                addPred(rmb[1], predId);
+
+                $('#single-predictor').attr('disabled', true);
+                $('#multiple-predictor').attr('disabled', true);
+                $('#multi-hurdle').attr('disabled', true);
+              },
+            });
+          }
+
+          x = Number(x) + 1;
+          $('#addCounter').val(x);
+
+          removeHolder();
+        },
+      });
+    }
   });
 };
 

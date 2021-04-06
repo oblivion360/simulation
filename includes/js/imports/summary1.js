@@ -6,47 +6,9 @@ let Summary = () => {
     weight,
     x = 0;
   // summary display
-  let stage1 = Set.finalDrop.some(fd => fd.stage == 1);
-  let stage2 = Set.finalDrop.some(fd => fd.stage == 2);
-  let stage3 = Set.finalDrop.some(fd => fd.stage == 3);
-  let stage4 = Set.finalDrop.some(fd => fd.stage == 4);
-
-  if (stage1 == false) {
-    $('#resultInitial').html(`
-      <p class="text-summary">
-           No Predictor was selected.
-      </p>
-    `);
-  }
-
-  if (stage2 == false) {
-    $('#resultSubstantive').html(`
-      <p class="text-summary">
-           No Predictor was selected.
-      </p>
-    `);
-  }
-
-  if (stage3 == false) {
-    $('#resultDiscretionary').html(`
-      <p class="text-summary">
-           No Predictor was selected.
-      </p>
-    `);
-  }
-
-  if (stage4 == false) {
-    $('#resultContingent').html(`
-      <p class="text-summary">
-           No Predictor was selected.
-      </p>
-    `);
-  }
-
   Set.finalDrop.map(fd => {
     x = 0;
     //  stage 1
-
     if (fd.stage == 1) {
       // predType == 1
       if (fd.predType == 1 || fd.predType == 2) {

@@ -56,6 +56,44 @@ function stage(num) {
       }
     }
   });
+
+  if (num == 1) {
+    let stage = Set.finalDrop.some(fd => fd.stage == num);
+    if (stage == false) {
+      $('#resultInitial').html(`
+        <p class="text-summary">
+             No Predictor was selected.
+        </p>
+      `);
+    }
+  } else if (num == 2) {
+    let stage = Set.finalDrop.some(fd => fd.stage == num);
+    if (stage == false) {
+      $('#resultSubstantive').html(`
+        <p class="text-summary">
+             No Predictor was selected.
+        </p>
+      `);
+    }
+  } else if (num == 3) {
+    let stage = Set.finalDrop.some(fd => fd.stage == num);
+    if (stage == false) {
+      $('#resultDiscretionary').html(`
+        <p class="text-summary">
+             No Predictor was selected.
+        </p>
+      `);
+    }
+  } else if (num == 4) {
+    let stage = Set.finalDrop.some(fd => fd.stage == num);
+    if (stage == false) {
+      $('#resultContingent').html(`
+        <p class="text-summary">
+             No Predictor was selected.
+        </p>
+      `);
+    }
+  }
 }
 
 function finalResult() {

@@ -11,14 +11,14 @@ let holderMultiple = () => {
       // show page
       $('#predictor-holder').html(res);
       $('#methodType').val(1);
-      let newPred = [];
-      Set.Predictors[0].map(pred => {
-        if (pred.status == 1) {
-          newPred.push(pred);
-        }
-      });
-
-      for (let z = 1; z <= newPred.length; z++) {
+      // let newPred = [];
+      // Set.Predictors[0].map(pred => {
+      //   if (pred.status == 1) {
+      //     newPred.push(pred);
+      //   }
+      // });
+      // console.log('Pred Length: ' + newPred.length);
+      for (let z = 1; z <= 2; z++) {
         $('.droppable' + z).droppable({
           accept: '.draggable',
           drop: function (event, ui) {
@@ -118,7 +118,7 @@ function saveDrop(predId, x) {
 
   let btn = [];
   btn = Set.Predictors[0].find(pred => pred.predId == predId);
-  console.log(btn);
+  // console.log(btn);
   if (btn.valueType == 2) {
     $('#topdown' + x).attr('disabled', 'true');
     $('#minimum' + x).removeAttr('disabled');
@@ -132,7 +132,7 @@ function saveDrop(predId, x) {
 
 function navBtn() {
   let stage = Number($('#stage').val());
-  console.log('navBtn: ' + stage);
+  // console.log('navBtn: ' + stage);
   if (stage == 1) {
     $('.nav-btn').attr('disabled', true);
   } else {
@@ -145,55 +145,58 @@ let multiHurdle = () => {
   $('.add-button').on('click', function () {
     let x = $('#addCounter').val();
     $('#methodType').val(1);
-    $.ajax({
-      type: 'GET',
-      crossDomain: true,
-      url: 'components/content/multi-hurdle.html',
-      dataType: 'html',
-      success: function (res) {
-        // show page
-        $('#holder-button').append(res);
-
-        let newPred = [];
-        Set.Predictors[0].map(pred => {
-          if (pred.status == 1) {
-            newPred.push(pred);
-          }
-        });
-        addSetting();
-        for (let z = 1; z <= newPred.length; z++) {
-          $('.droppable' + z).droppable({
-            accept: '.draggable',
-            drop: function (event, ui) {
-              let predId = ui.draggable[0].dataset['drag'],
-                id,
-                rmb;
-              $('#methodType').val(1);
-              Set.Predictors[0][predId - 1].status = 2;
-              id = event.target.id;
-              id = id.split(/([0-9]+)/);
-              addPredictors(ui.draggable, id[1]);
-              Multiple();
-              showMethod(predId, id[1]);
-              saveDrop(predId, id[1]);
-              navBtn();
-              rmb = event.target.id;
-              rmb = rmb.split(/([0-9]+)/);
-              Set.drop = '2';
-              addPred(rmb[1], predId);
-              console.log('drop 2');
-              $('#single-predictor').attr('disabled', true);
-              $('#compensatory').attr('disabled', true);
-            },
-          });
-        }
-
-        x = Number(x) + 1;
-        $('#addCounter').val(x);
-
-        removeHolder();
-      },
+    let newPred = [];
+    Set.Predictors[0].map(pred => {
+      if (pred.status == 1) {
+        newPred.push(pred);
+      }
     });
+    if (newPred.length != 0) {
+      $.ajax({
+        type: 'GET',
+        crossDomain: true,
+        url: 'components/content/multi-hurdle.html',
+        dataType: 'html',
+        success: function (res) {
+          // show page
+          $('#holder-button').append(res);
+
+          addSetting();
+
+          for (let z = 1; z <= 8; z++) {
+            $('.droppable' + z).droppable({
+              accept: '.draggable',
+              drop: function (event, ui) {
+                let predId = ui.draggable[0].dataset['drag'],
+                  id,
+                  rmb;
+                $('#methodType').val(1);
+                Set.Predictors[0][predId - 1].status = 2;
+                id = event.target.id;
+                id = id.split(/([0-9]+)/);
+                addPredictors(ui.draggable, id[1]);
+                Multiple();
+                showMethod(predId, id[1]);
+                saveDrop(predId, id[1]);
+                navBtn();
+                rmb = event.target.id;
+                rmb = rmb.split(/([0-9]+)/);
+                Set.drop = '2';
+                addPred(rmb[1], predId);
+                console.log('drop 2');
+                $('#single-predictor').attr('disabled', true);
+                $('#compensatory').attr('disabled', true);
+              },
+            });
+          }
+
+          x = Number(x) + 1;
+          $('#addCounter').val(x);
+
+          removeHolder();
+        },
+      });
+    }
   });
 };
 

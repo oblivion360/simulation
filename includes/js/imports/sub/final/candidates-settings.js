@@ -1,5 +1,5 @@
 import Final from '../../final.js';
-import FinalPrint from '../../final-print.js';
+
 let CandidatesSettings = () => {
   $('#button-stage').html(`
         <div class="col-md-6">&nbsp;</div>
@@ -46,6 +46,19 @@ let CandidatesSettings = () => {
       });
     },
   });
+  $.ajax({
+    type: 'GET',
+    crossDomain: true,
+    url: 'components/content/modal/savepdf.html',
+    dataType: 'html',
+    success: function (res) {
+      // show page
+      $('#modal').append(res);
+      $('#print').on('click', function () {
+        window.print();
+      });
+    },
+  });
 
   $('#retryModal').on('click', function () {
     $('#retrySimulation').modal('show');
@@ -70,17 +83,13 @@ function showCandidates() {
 }
 
 function downloadCandidates() {
-  $.ajax({
-    type: 'GET',
-    crossDomain: true,
-    url: 'components/pages/print.html',
-    dataType: 'html',
-    success: function (res) {
-      // show page
-      $('#change-all').html(res);
-      FinalPrint();
-    },
-  });
+  let finalDrop = Set.finalDrop,
+    finalCandidates = Set.finalCandidates;
+  // Put the object into storage
+  localStorage.setItem('finalDrop', JSON.stringify(finalDrop));
+  localStorage.setItem('finalCandidates', JSON.stringify(finalCandidates));
+
+  window.open('finalprint.html', '_blank');
 }
 
 export default CandidatesSettings;
