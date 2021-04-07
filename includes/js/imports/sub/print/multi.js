@@ -1,5 +1,6 @@
 let Multi = (num, fd, id) => {
   // for Single and Multi PredType
+  console.log('id: ' + id);
   let Pred,
     value,
     value1,
@@ -10,6 +11,9 @@ let Multi = (num, fd, id) => {
     mtype,
     start,
     failed,
+    fx = 0,
+    fxfd,
+    fxlength = 0,
     maxScores = [],
     maxScore;
   Set.Predictors[0].map(pred => {
@@ -18,7 +22,9 @@ let Multi = (num, fd, id) => {
       start = pred.start;
     }
   });
-
+  fxfd = Set.finalDrop.filter(fd => fd.stage == num);
+  fxlength = fxfd.length;
+  fx = id + 1;
   if (fd.methodType == 1) {
     mtype = 'Min. Competency';
     value = fd.value;
@@ -75,16 +81,16 @@ let Multi = (num, fd, id) => {
           scored = sc.score;
         }
       });
-      console.log(
-        'Name: ' +
-          res.name +
-          ' Scored: ' +
-          scored +
-          ' Value: ' +
-          value +
-          ' TypeOf: ' +
-          typeof scored
-      );
+      // console.log(
+      //   'Name: ' +
+      //     res.name +
+      //     ' Scored: ' +
+      //     scored +
+      //     ' Value: ' +
+      //     value +
+      //     ' TypeOf: ' +
+      //     typeof scored
+      // );
       if (typeof scored == 'number') {
         if (scored >= value) {
           displayResult = 1;
@@ -173,7 +179,10 @@ let Multi = (num, fd, id) => {
         }
 
         Set.data.InsertFinal(tr.cId, 2);
-        Set.data.InsertFailedCandidates(tr.cId);
+        console.log('fx: ' + fx + ' length: ' + fxlength);
+        if (fx >= fxlength) {
+          Set.data.InsertFailedCandidates(tr.cId);
+        }
       } else {
         if (failed == true && num != 1) {
           displayResult = '<span class="text-danger">N/A</span>';
@@ -181,7 +190,10 @@ let Multi = (num, fd, id) => {
           displayResult = '<span class="text-danger">Failed</span>';
         }
         Set.data.InsertFinal(tr.cId, 2);
-        Set.data.InsertFailedCandidates(tr.cId);
+        console.log('fx: ' + fx + ' length: ' + fxlength);
+        if (fx >= fxlength) {
+          Set.data.InsertFailedCandidates(tr.cId);
+        }
       }
       // console.log('FinalScore2: ' + id + ' Stage:' + num);
       $('#Score' + id + '' + num).append(`
