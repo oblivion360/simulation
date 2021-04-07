@@ -9,7 +9,6 @@ let Multi = (num, fd, id) => {
     displayResult,
     mtype,
     start,
-    failed,
     maxScores = [],
     maxScore;
   Set.Predictors[0].map(pred => {
@@ -45,10 +44,7 @@ let Multi = (num, fd, id) => {
         maxScores.push(scored);
       }
     });
-    failed = Set.failedCandidates.some(fc => fc.cId == res.cId);
-    if (failed == true && num != 1) {
-      scored = '';
-    }
+
     $('#finalScore' + id + '' + num).append(`
         <td class='text-align-center'>${scored}</td>
       `);
@@ -109,8 +105,6 @@ let Multi = (num, fd, id) => {
         }
       }
       // Set.data.InsertFinal(res.cId, displayResult);
-
-      Set.data.InsertMultiResult(res.cId, scored, num, displayResult, num);
     });
   } else {
     let displayResult,
@@ -132,18 +126,14 @@ let Multi = (num, fd, id) => {
           // console.log('ID: ' + res.cId + 'SCORE: ' + sc.score);
           if (sc.score == 'Fail' || sc.score == 'No') {
             scored = 0;
-            // console.log('Failed ID: ' + res.cId + 'SCORE: ' + sc.score);
+            console.log('Failed ID: ' + res.cId + 'SCORE: ' + sc.score);
           } else {
-            // console.log('Passed ID: ' + res.cId + 'SCORE: ' + sc.score);
+            console.log('Passed ID: ' + res.cId + 'SCORE: ' + sc.score);
             scored = 1;
           }
         }
       });
-
-      Set.data.InsertMulti(res.cId, scored, num, value, id);
     });
-
-    Set.data.InsertFinalMulti();
   }
   totalResult = Set.FinalMulti.sort(function (x, y) {
     var n = x.stage - y.stage;
@@ -155,33 +145,13 @@ let Multi = (num, fd, id) => {
 
   totalResult.map(tr => {
     // console.log('tr.Stage: ' + tr.stage);
-
     if (tr.stage == num) {
-      failed = Set.failedCandidates.some(fc => fc.cId == tr.cId);
       if (tr.result == 1 && tr.scored != 0) {
-        if (failed == true && num != 1) {
-          displayResult = '<span class="text-danger">N/A</span>';
-        } else {
-          displayResult = 'Pass';
-        }
-        Set.data.InsertFinal(tr.cId, 1);
+        displayResult = 'Pass';
       } else if (tr.result == 1 && tr.scored == 0) {
-        if (failed == true && num != 1) {
-          displayResult = '<span class="text-danger">N/A</span>';
-        } else {
-          displayResult = '<span class="text-danger">Failed</span>';
-        }
-
-        Set.data.InsertFinal(tr.cId, 2);
-        Set.data.InsertFailedCandidates(tr.cId);
+        displayResult = '<span class="text-danger">Failed</span>';
       } else {
-        if (failed == true && num != 1) {
-          displayResult = '<span class="text-danger">N/A</span>';
-        } else {
-          displayResult = '<span class="text-danger">Failed</span>';
-        }
-        Set.data.InsertFinal(tr.cId, 2);
-        Set.data.InsertFailedCandidates(tr.cId);
+        displayResult = '<span class="text-danger">Failed</span>';
       }
       // console.log('FinalScore2: ' + id + ' Stage:' + num);
       $('#Score' + id + '' + num).append(`

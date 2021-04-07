@@ -9,7 +9,6 @@ let Compensatory = (num, fd, id) => {
     weightValue2,
     total = 0,
     total2 = 0,
-    failed,
     totalResult,
     holder = 0,
     mtype,
@@ -61,7 +60,6 @@ let Compensatory = (num, fd, id) => {
         scored = sc.score;
       }
     });
-    failed = Set.failedCandidates.some(fc => fc.cId == res.cId);
     value1 = Number(value) / 100;
     total2 = scored * value1;
     holder = $('#' + res.name + '' + num).val();
@@ -76,11 +74,6 @@ let Compensatory = (num, fd, id) => {
     }
 
     $('#' + res.name + '' + num).val(total.toFixed(2));
-
-    if (failed == true && num != 1) {
-      scored = '';
-    }
-
     $('#finalScore' + id + '' + num).append(`
       <td class='text-align-center'>${scored}</td>
     `);
@@ -88,10 +81,6 @@ let Compensatory = (num, fd, id) => {
 
   Set.Candidates[0].map(cd => {
     holder = $('#' + cd.name + '' + num).val();
-    failed = Set.failedCandidates.some(fc => fc.cId == cd.cId);
-    if (failed == true && num != 1) {
-      holder = '';
-    }
     $('#finalTotal' + id + '' + num).append(`
       <td class='text-align-center'>${holder}</td>
     `);
@@ -100,39 +89,13 @@ let Compensatory = (num, fd, id) => {
   //console.log(Set.totalArray);
 
   if (fd.methodType == 1) {
-    Set.finalDrop.map(fds => {
-      if (fds.stage == num && fds.predType == 3) {
-        b = b + 1;
-      }
-    });
-    c = id + 1;
     Set.Candidates[0].map(cd => {
       holder = $('#' + cd.name + '' + num).val();
-      failed = Set.failedCandidates.some(fc => fc.cId == cd.cId);
 
       if (holder >= weightValue) {
-        if (failed == true && num != 1) {
-          result = '<span class="text-danger">N/A</span>';
-        } else {
-          result = 'Pass';
-        }
-
-        console.log(' c: ' + c + ' b: ' + b);
-        if (c == b) {
-          Set.data.InsertFinal(cd.cId, 1);
-        }
+        result = 'Pass';
       } else {
-        if (failed == true && num != 1) {
-          result = '<span class="text-danger">N/A</span>';
-        } else {
-          result = '<span class="text-danger">Failed</span>';
-        }
-
-        // console.log(' c: ' + c + ' b: ' + b);
-        if (c == b) {
-          Set.data.InsertFinal(cd.cId, 2);
-          Set.data.InsertFailedCandidates(cd.cId);
-        }
+        result = '<span class="text-danger">Failed</span>';
       }
       console.log('FinalScore1: ' + id + ' Stage:' + num);
       $('#Score' + id + '' + num).append(`
@@ -144,10 +107,9 @@ let Compensatory = (num, fd, id) => {
     Set.Candidates[0].map(cd => {
       z = z + 1;
       holder = $('#' + cd.name + '' + num).val();
-      Set.data.InsertCompensatory(z, cd.name, holder, num, weightValue);
     });
     //Set.CompensatoryFinal(weightValue);
-    Set.data.CompensatoryFinal();
+
     totalResult = Set.totalResult.sort(function (x, y) {
       var n = x.stage - y.stage;
       if (n !== 0) {
@@ -164,38 +126,12 @@ let Compensatory = (num, fd, id) => {
     c = id + 1;
     totalResult.map(tr => {
       // console.log('tr.Stage: ' + tr.stage);
-
       if (tr.stage == num) {
-        failed = Set.failedCandidates.some(fc => fc.cId == tr.id);
         if (tr.result == 1) {
-          if (failed == true && num != 1) {
-            result = '<span class="text-danger">N/A</span>';
-          } else {
-            result = 'Pass';
-          }
-
-          // console.log(
-          //   'cId: ' + tr.id + ' Actual: ' + tr.result + ' c: ' + c + ' b: ' + b
-          // );
-          if (c == b) {
-            Set.data.InsertFinal(tr.id, 1);
-          }
+          result = 'Pass';
         } else {
-          if (failed == true && num != 1) {
-            result = '<span class="text-danger">N/A</span>';
-          } else {
-            result = '<span class="text-danger">Failed</span>';
-          }
-
-          // console.log(
-          //   'cId: ' + tr.id + ' Actual: ' + tr.result + ' c: ' + c + ' b: ' + b
-          // );
-          if (c == b) {
-            Set.data.InsertFinal(tr.id, 2);
-            Set.data.InsertFailedCandidates(tr.id);
-          }
+          result = '<span class="text-danger">Failed</span>';
         }
-
         // console.log('FinalScore2: ' + id + ' Stage:' + num);
         $('#Score' + id + '' + num).append(`
           <td class='text-align-center'>${result}</td>

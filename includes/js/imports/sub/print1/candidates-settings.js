@@ -1,5 +1,4 @@
 import Final from '../../final.js';
-
 let CandidatesSettings = () => {
   $('#button-stage').html(`
         <div class="col-md-6">&nbsp;</div>
@@ -7,7 +6,7 @@ let CandidatesSettings = () => {
         <button
             type="button"
             class="btn bg-button nav-btn btn-stage-active"
-            id="retryModal"
+            id="prev"
         >
             <span data-feather="chevrons-left"></span> RETRY
         </button>
@@ -31,38 +30,6 @@ let CandidatesSettings = () => {
     console.log('download');
     downloadCandidates();
   });
-
-  // insert modal
-  $.ajax({
-    type: 'GET',
-    crossDomain: true,
-    url: 'components/content/modal/retry.html',
-    dataType: 'html',
-    success: function (res) {
-      // show page
-      $('#modal').append(res);
-      $('#retry').on('click', function () {
-        location.reload();
-      });
-    },
-  });
-  $.ajax({
-    type: 'GET',
-    crossDomain: true,
-    url: 'components/content/modal/savepdf.html',
-    dataType: 'html',
-    success: function (res) {
-      // show page
-      $('#modal').append(res);
-      $('#print').on('click', function () {
-        window.print();
-      });
-    },
-  });
-
-  $('#retryModal').on('click', function () {
-    $('#retrySimulation').modal('show');
-  });
 };
 
 function showCandidates() {
@@ -83,14 +50,16 @@ function showCandidates() {
 }
 
 function downloadCandidates() {
-  let finalDrop = Set.finalDrop,
-    failedCandidates = Set.failedCandidates,
-    finalCandidates = Set.finalCandidates;
-  // Put the object into storage
-  localStorage.setItem('finalDrop', JSON.stringify(finalDrop));
-  localStorage.setItem('failedCandidates', JSON.stringify(failedCandidates));
-  localStorage.setItem('finalCandidates', JSON.stringify(finalCandidates));
-  window.open('finalprint.html', '_blank');
+  $.ajax({
+    type: 'GET',
+    crossDomain: true,
+    url: 'components/pages/print.html',
+    dataType: 'html',
+    success: function (res) {
+      // show page
+      $('#change-all').html(res);
+    },
+  });
 }
 
 export default CandidatesSettings;
