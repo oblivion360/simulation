@@ -474,17 +474,7 @@ class Settings {
         }
       }
     },
-    InsertFailedCandidates: cId => {
-      let drop = {
-          cId: Number(cId),
-        },
-        fc;
-      fc = this.failedCandidates.some(flc => flc.cId == cId);
-
-      if (fc != true) {
-        this.failedCandidates.push(drop);
-      }
-    },
+    InsertFailed: cId => {},
   };
 
   Predictors = [];
@@ -500,8 +490,6 @@ class Settings {
   MultiResult = [];
   totalResult = [];
   finalCandidates = [];
-
-  failedCandidates = [];
 
   Stages = [
     {
