@@ -35,7 +35,53 @@
     <script src="includes/js/jquery-ui/jquery.ui.touch-punch.min.js"></script>
   </head>
   <body>
-    <div id="modal"></div>
+    <div id="modal">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="startSimulation"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        data-backdrop="static"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content" id="simulation-content">
+            <div class="modal-body" id="simulation-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <p>Would you like to</p>
+                  <p>start the simulation?</p>
+                  <br />
+                  <p>You will not be able to make any</p>
+                  <p>changes once</p>
+                  <p>it starts.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12" id="simulation-button">
+                  <button
+                    type="button"
+                    class="btn btn-secondary btn-lg"
+                    data-dismiss="modal"
+                    id="noSimulation"
+                  >
+                    No
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-lg"
+                    id="yesSimulation"
+                  >
+                    Yes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Top Navbar -->
     <nav
       class="navbar navbar-dark sticky-top bg-company flex-md-nowrap p-0 shadow"

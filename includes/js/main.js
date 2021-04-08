@@ -4,6 +4,7 @@ import showDrop from './imports/show-dropped.js';
 import displayPredTable from './imports/displaypredtable.js';
 import Summary from './imports/summary.js';
 import SummarySettings from './imports/sub/final/summary-settings.js';
+import CandidatesSettings from './imports/sub/final/candidates-settings.js';
 
 $(function () {
   stageActive();
@@ -220,6 +221,8 @@ $('#next').on('click', function () {
     }
   } else if (stage == 5) {
     stageActive();
+    $('#startSimulation').modal('show');
+    CandidatesSettings();
   } else {
     // add the download pard
   }
@@ -256,4 +259,10 @@ $('#prev').on('click', function () {
     }
   });
   backStageActive();
+  if (stage == 5) {
+    $('#next').html(`NEXT >>`);
+    $('#prev').html(`<< PREV`);
+
+    // $('.next').attr('id', 'next');
+  }
 });
