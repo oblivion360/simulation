@@ -13,6 +13,21 @@ let mainPredBtn = () => {
     displayPredTable(3);
 
     if (btn == 'multiple-predictor') {
+      // remove the finalDrop
+      let fdtrue = Set.finalDrop.some(fd => fd.stage == stage),
+        fd = Set.finalDrop.filter(fd => fd.stage == stage),
+        index,
+        index2;
+
+      if (fdtrue) {
+        index = Number(
+          Set.finalDrop.findIndex(fds => fds.predId == fd[0].predId)
+        );
+        index2 = fd.length;
+
+        Set.finalDrop.splice(index, index2);
+      }
+
       $('.subPred-btn').attr('disabled', false);
       $('#multi-hurdle').addClass('subBtn-active');
       $('#compensatory').removeClass('subBtn-active');
@@ -29,6 +44,23 @@ let mainPredBtn = () => {
         $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
       }
     } else {
+      // remove the finalDrop
+      let fdtrue = Set.finalDrop.some(fd => fd.stage == stage),
+        fd = Set.finalDrop.find(fd => fd.stage == stage),
+        index,
+        index2;
+
+      if (fdtrue) {
+        index = Number(Set.finalDrop.findIndex(fds => fds.predId == fd.predId));
+        index2 = index + 1;
+        console.log(index + ':' + index);
+        if (index != 0) {
+          Set.finalDrop.splice(index, index);
+        } else {
+          Set.finalDrop.splice(index, index2);
+        }
+      }
+
       $('.subPred-btn').attr('disabled', true);
       $('.subPred-btn').removeClass('subBtn-active');
       $('.subPred-btn').addClass('d-none');

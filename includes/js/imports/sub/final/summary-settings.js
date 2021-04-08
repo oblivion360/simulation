@@ -1,25 +1,19 @@
 import CandidatesSettings from './candidates-settings.js';
 let SummarySettings = () => {
-  $('#button-stage').html(`
-        <div class="col-md-6">&nbsp;</div>
-        <div class="col-md-6">
-        <button
-            type="button"
-            class="btn bg-button nav-btn btn-stage-active"
-            id="prev"
-        >
-            <span data-feather="chevrons-left"></span> AMEND
-        </button>       
-        <button
-            type="button"
-            class="btn bg-button nav-btn btn-stage-active"
-            id="next"
-        >
-            START SIMULATION <span data-feather="chevrons-right"></span>
-        </button>
-        </div>
-        <input type="hidden" id="stage" value="5" />
-    `);
+  $('#prev').html(`
+    <span data-feather="chevrons-left"></span> AMEND
+  `);
+  $('#nextBtn').html(`
+    <button
+      type="button"
+      class="btn bg-button nav-btn btn-stage-active"
+      id="nextSimulation"
+    >
+      START SIMULATION <span data-feather="chevrons-right"></span>
+    </button>
+  `);
+
+  $('#stage').val(5);
 
   // insert modal
   $.ajax({
@@ -33,7 +27,7 @@ let SummarySettings = () => {
     },
   });
 
-  $('#next').on('click', function () {
+  $('#nextSimulation').on('click', function () {
     $('#startSimulation').modal('show');
     CandidatesSettings();
   });

@@ -63,6 +63,7 @@ const Compensatory = () => {
         a = a + Number($('#weight' + z).val());
       }
     }
+    console.log('a: ' + a);
     if (a == 100) {
       if (counter > 2) {
         if (stage == 1) {
@@ -84,7 +85,7 @@ const Compensatory = () => {
 
     if (type == 'minimum') {
       // let predId = $('.' + method).attr('data-predid');
-
+      console.log('other1');
       $('.btn-method-comp').removeClass('btn-active');
       $('.comp').html(`<option value="0" selected>Select the Score</option>`);
       $('#' + id).addClass('btn-active');
@@ -102,6 +103,7 @@ const Compensatory = () => {
         }
       }
     } else if (type == 'topdown') {
+      console.log('other2');
       $('.comp').html(`<option value="0" selected>Select the Score</option>`);
       let start = 10,
         add = 10,

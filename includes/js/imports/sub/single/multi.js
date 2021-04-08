@@ -11,7 +11,7 @@ const Multiple = () => {
     if (isNaN(value)) {
       value = $('.' + clss).val();
     }
-    console.log(value);
+
     Set.dropped.map(drop => {
       if (drop.predId == predId) {
         drop.value = value;
@@ -27,7 +27,6 @@ const Multiple = () => {
         $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
       }
     }
-    console.log(Set.dropped);
   });
 
   //choosing top-down

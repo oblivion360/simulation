@@ -36,6 +36,11 @@ let holderCompensatory = () => {
             saveDrop(predId);
             console.log('drop 1');
             Set.drop = '3';
+
+            if ($('#counter').val() >= 2) {
+              $('#topdown').attr('disabled', false);
+              $('#minimum').attr('disabled', false);
+            }
             navBtn();
             $('#single-predictor').attr('disabled', true);
             $('#multiple-predictor').attr('disabled', true);
@@ -132,6 +137,10 @@ let com = () => {
                 saveDrop(predId);
                 console.log('drop 2');
                 Set.drop = '3';
+                if ($('#counter').val() >= 2) {
+                  $('#topdown').attr('disabled', false);
+                  $('#minimum').attr('disabled', false);
+                }
                 navBtn();
 
                 rmb = event.target.id;

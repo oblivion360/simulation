@@ -60,7 +60,7 @@ function showMethod(predId) {
     $('#minimum').addClass('btn-active');
   }
   $('.method').attr('data-predid', predId);
-  $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+  $('.method').html(`<option value="0" selected>Select the Score</option>`);
   Set.Predictors[0].map(res => {
     if (res.predId == predId) {
       // console.log(typeof res.start);

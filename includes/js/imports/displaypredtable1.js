@@ -99,7 +99,7 @@ let displayPredTable = val => {
       let predId = ui.draggable[0].dataset['drag'],
         dataNum = ui.draggable[0].dataset['num'],
         stage = $('#stage').val(),
-        id = ui.draggable[0].dataset['num'],
+        id,
         ndrop = Set.drop;
       $('#methodType').val(1);
       //set drop
@@ -161,7 +161,6 @@ let displayPredTable = val => {
         counter = counter - 1;
         // console.log('.choosen-holder' + id);
         $('.choosen-holder' + id).html('Drag Predictor Here');
-        console.log(counter);
         if (counter == 1) {
           // delete pred
 
@@ -281,11 +280,8 @@ function setBack(id) {
       `<option value="0" selected>Select the Weightage</option>`
     );
     //set method btn to not active
-    console.log($('#counter').val());
-    if ($('#counter').val() <= 2) {
-      $('#topdown').removeClass('btn-active').attr('disabled', true);
-      $('#minimum').removeClass('btn-active').attr('disabled', true);
-    }
+    $('#topdown').removeClass('btn-active').attr('disabled', true);
+    $('#minimum').removeClass('btn-active').attr('disabled', true);
   }
 }
 

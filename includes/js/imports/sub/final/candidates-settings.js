@@ -1,35 +1,9 @@
 import Final from '../../final.js';
 
 let CandidatesSettings = () => {
-  $('#button-stage').html(`
-        <div class="col-md-6">&nbsp;</div>
-        <div class="col-md-6">
-        <button
-            type="button"
-            class="btn bg-button nav-btn btn-stage-active"
-            id="retryModal"
-        >
-            <span data-feather="chevrons-left"></span> RETRY
-        </button>
-        
-        <button
-            type="button"
-            class="btn bg-button nav-btn btn-stage-active"
-            id="download-pdf"
-        >
-            DOWNLOAD <span data-feather="chevrons-right"></span>
-        </button>
-        </div>
-        <input type="hidden" id="stage" value="6" />
-    `);
   $('#yesSimulation').on('click', function () {
     $('#startSimulation').modal('hide');
     showCandidates();
-  });
-
-  $('#download-pdf').on('click', function () {
-    console.log('download');
-    downloadCandidates();
   });
 
   // insert modal
@@ -59,10 +33,6 @@ let CandidatesSettings = () => {
       });
     },
   });
-
-  $('#retryModal').on('click', function () {
-    $('#retrySimulation').modal('show');
-  });
 };
 
 function showCandidates() {
@@ -73,6 +43,7 @@ function showCandidates() {
     dataType: 'html',
     success: function (res) {
       // show page
+      showButton();
       $('#content').html(res);
       // for menu active
       $('.nav-link').removeClass('active');
@@ -91,6 +62,39 @@ function downloadCandidates() {
   localStorage.setItem('failedCandidates', JSON.stringify(failedCandidates));
   localStorage.setItem('finalCandidates', JSON.stringify(finalCandidates));
   window.open('finalprint.html', '_blank');
+}
+
+function showButton() {
+  $('#button-stage').html(`
+        <div class="col-md-6">&nbsp;</div>
+        <div class="col-md-6">
+        <button
+            type="button"
+            class="btn bg-button nav-btn btn-stage-active"
+            id="retryModal"
+        >
+            <span data-feather="chevrons-left"></span> RETRY
+        </button>
+        
+        <button
+            type="button"
+            class="btn bg-button nav-btn btn-stage-active"
+            id="download-pdf"
+        >
+            DOWNLOAD <span data-feather="chevrons-right"></span>
+        </button>
+        </div>
+        <input type="hidden" id="stage" value="6" />
+    `);
+
+  $('#download-pdf').on('click', function () {
+    console.log('download');
+    downloadCandidates();
+  });
+
+  $('#retryModal').on('click', function () {
+    $('#retrySimulation').modal('show');
+  });
 }
 
 export default CandidatesSettings;
