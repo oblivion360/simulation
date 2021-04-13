@@ -278,7 +278,14 @@ $('.h-block').on('click', res => {
           <h3>How do I use the simulation?</h3>
         </div>
         <div class="col-md-12" id="help-a">
-          <p>video</p>
+          <img
+            src="includes/images/video.png"
+            class="video"
+            alt="video"
+            data-toggle="modal"
+            data-target="#video"
+            data-dismiss="modal"
+          />
         </div>
         <div class="col-md-12" id="help-b">
           <ol>
@@ -378,7 +385,3 @@ $('.h-block').on('click', res => {
     `);
   }
 });
-
-function videos() {
-  this.width = document.getElementsByClassName('help-content').offsetWidth;
-}
