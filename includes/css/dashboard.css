@@ -173,7 +173,8 @@ p {
   color: #ffffff !important;
 }
 
-.subBtn-active {
+.subBtn-active,
+.subBtn-active:disabled {
   background-color: #4faba0 !important;
   color: #ffffff !important;
 }
