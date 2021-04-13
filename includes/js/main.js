@@ -378,3 +378,7 @@ $('.h-block').on('click', res => {
     `);
   }
 });
+
+function videos() {
+  this.width = document.getElementsByClassName('help-content').offsetWidth;
+}
