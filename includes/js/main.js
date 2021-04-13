@@ -266,3 +266,115 @@ $('#prev').on('click', function () {
     // $('.next').attr('id', 'next');
   }
 });
+
+$('.h-block').on('click', res => {
+  let id = res.target['id'];
+  $('.h-block').removeClass('h-block-active');
+  $('#' + id).addClass('h-block-active');
+  if (id == 'hb1') {
+    $('#help-a').html(`
+      <div class="row">
+        <div class="col-md-12" id="help-title">
+          <h3>How do I use the simulation?</h3>
+        </div>
+        <div class="col-md-12" id="help-a">
+          <p>video</p>
+        </div>
+        <div class="col-md-12" id="help-b">
+          <ol>
+            <li>
+              Select between “Single Predictor” and “Multiple Predictors”. If you
+              select “Multiple Predictors”, decide if you’re using “Multi-Hurdle
+              Model” or “Compensatory Model”.
+            </li>
+            <li>Drag and drop the Predictor(s) into the empty box.</li>
+            <li>If you are using “Compensatory Model”, select the weightage.</li>
+            <li>Select the Scoring Method, then select the passing score.</li>
+            <li>
+              Check before continuing to the next page. You are also free to continue
+              without selecting a Predictor.
+            </li>
+          </ol>
+        </div>
+      </div>
+    `);
+  } else if (id == 'hb2') {
+    $('#help-a').html(`
+      <div class="row">
+        <div class="col-md-12" id="help-title">
+          <h3>What are the “Multi-Hurdle Model” and “Compensatory Model”?</h3>
+        </div>
+        <div class="col-md-12" id="help-b">
+          <h4>Multi-Hurdle Model</h4>
+          <ul>
+            <li>
+              With multiple hurdles approach, an applicant must achieve a passing
+              score on each predictor before advancing in the selection process. This
+              approach is useful when each predictor is critical to job success.
+            </li>
+          </ul>
+          <h4>Compensatory Model</h4>
+          <ul>
+            <li>
+              Predictor scores are simply added together to yield a combined score.
+              This allows high score on one predictor to compensate for low score of
+              another predictor.
+            </li>
+          </ul>
+        </div>
+      </div>
+    `);
+  } else if (id == 'hb3') {
+    $('#help-a').html(`
+      <div class="row">
+        <div class="col-md-12" id="help-title">
+          <h3>What are the “Minimum Competency Method” and “Top-Down Method”?</h3>
+        </div>
+        <div class="col-md-12" id="help-b">
+          <h4>Minimum Competency Method</h4>
+          <ul>
+            <li>
+              The cut score is determined based on the minimum requirement deemed
+              critical to perform the job.
+            </li>
+          </ul>
+          <h4>Top-Down Method</h4>
+          <ul>
+            <li>
+              The cut score is determined by the proportion of applicants required to
+              move to the next stage,
+            </li>
+          </ul>
+        </div>
+      </div>
+    `);
+  } else if (id == 'hb4') {
+    $('#help-a').html(`
+      <div class="row">
+        <div class="col-md-12" id="help-title">
+          <h3>What do the four stages mean?</h3>
+        </div>
+        <div class="col-md-12" id="help-b">
+          <ol>
+            <li>
+              <b>Initial</b> assessment methods are used to choose candidates from
+              applicants.
+            </li>
+            <li>
+              <b>Substantiative</b> assessment methods are used to make precise
+              assessments of the candidates and determine who should be finalists.
+            </li>
+            <li>
+              <b>Discretionary</b> assessment methods may be used to determine who
+              among the finalists will get the job offer.
+            </li>
+            <li>
+              <b>Contingent</b> assessment methods may be used depending on the nature
+              of the job and legal requirements.
+            </li>
+          </ol>
+        </div>
+      </div>
+    `);
+  }
+});

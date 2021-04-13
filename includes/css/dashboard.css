@@ -366,6 +366,32 @@ p.short-title.w-100.text-white {
   padding: 30px 0px;
 }
 
+.divider-left {
+  border-color: #1b4e9d !important;
+  border-left: 2px solid;
+}
+.h-block {
+  padding: 10px 10px;
+  display: block;
+}
+.h-block:hover {
+  color: #ffffff;
+  background-color: #1b4e9d !important;
+  cursor: pointer;
+}
+.h-block-active {
+  color: #ffffff;
+  background-color: #1b4e9d !important;
+}
+#help-content {
+  -webkit-border-radius: 30px !important;
+  -moz-border-radius: 30px !important;
+  border-radius: 30px !important;
+  border-color: #1b4e9d !important;
+  color: #1b4e9d !important;
+  padding: 30px 10px;
+}
+
 #simulation-body p {
   font-size: 30px !important;
   text-align: center;
