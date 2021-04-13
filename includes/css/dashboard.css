@@ -168,13 +168,13 @@ p {
   color: #fff;
 }
 
-.subPred-btn {
+.subPred-btn,
+.subPred-btn:disabled {
   background-color: #9dd7c4 !important;
   color: #ffffff !important;
 }
 
-.subBtn-active,
-.subBtn-active:disabled {
+.subBtn-active {
   background-color: #4faba0 !important;
   color: #ffffff !important;
 }
