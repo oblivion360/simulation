@@ -7,7 +7,26 @@ import SummarySettings from './imports/sub/final/summary-settings.js';
 import CandidatesSettings from './imports/sub/final/candidates-settings.js';
 
 $(function () {
-  stageActive();
+  let user = Set.user,
+    userLocal = JSON.parse(localStorage.getItem('user'));
+
+  if (user.length != 0) {
+    $('#welcome').html('Welcome! ' + user);
+    stageActive();
+  } else {
+    // window.open('introduction.html', '_self');
+    if (userLocal) {
+      if (userLocal.length == 0) {
+        window.open('introduction.html', '_self');
+      } else {
+        user = userLocal;
+        $('#welcome').html('Welcome! ' + user);
+        stageActive();
+      }
+    } else {
+      window.open('introduction.html', '_self');
+    }
+  }
 });
 
 function stageActive() {
@@ -384,4 +403,11 @@ $('.h-block').on('click', res => {
       </div>
     `);
   }
+});
+
+$('#logout').on('click', function () {
+  let user = Set.user;
+  user = [];
+  localStorage.setItem('user', JSON.stringify(user));
+  location.reload();
 });

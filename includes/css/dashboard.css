@@ -528,3 +528,14 @@ select.weight {
 .help:hover {
   cursor: pointer;
 }
+
+.btn-logout {
+  background: #1b4e9d;
+  color: #ffffff;
+  width: 40%;
+}
+
+.btn-logout:hover {
+  background: #1b4e9d;
+  color: #ffffff;
+}

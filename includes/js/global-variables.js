@@ -503,6 +503,8 @@ class Settings {
 
   failedCandidates = [];
 
+  user = [];
+
   Stages = [
     {
       stageId: 1,
