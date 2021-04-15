@@ -25,7 +25,7 @@ function animationa() {
 
   setTimeout(function () {
     onFinish();
-  }, 2500);
+  }, 5000);
 }
 
 function onFinish() {
@@ -89,7 +89,7 @@ function animationb() {
 
   setTimeout(function () {
     onFinishB();
-  }, 2500);
+  }, 5000);
 }
 
 function onFinishB() {
