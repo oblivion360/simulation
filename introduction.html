@@ -125,6 +125,80 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="videoModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      data-backdrop="static"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="simulation-content">
+          <div class="modal-body" id="simulation-body">
+            <div class="row">
+              <div class="col-md-12">
+                <p>New to Simulation?</p>
+                <br />
+                <p>Watch a short video to learn</p>
+                <p>how to use the simulation.</p>
+                <br />
+                <p>You may rewatch this video any</p>
+                <p>time.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12" id="simulation-button">
+                <button type="button" class="btn btn-info btn-lg" id="proceed">
+                  Skip
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-lg"
+                  data-toggle="modal"
+                  data-target="#video"
+                  id="watch"
+                >
+                  Watch
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="video"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" id="help-content">
+          <div class="modal-body help-content">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <video class="embed-responsive-item" controls autoplay>
+                    <source
+                      src="includes/videos/instruction.mp4"
+                      type="video/mp4"
+                    />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /. Modal -->
+
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
       <header class="masthead mb-auto"></header>
       <main role="main" class="inner cover">

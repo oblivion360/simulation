@@ -9,15 +9,12 @@ function animationa() {
     <div class="row">
         <div class="col-md-12">
             <div class="embed-responsive embed-responsive-21by9" id="animationa">
-                <iframe src="includes/videos/animationa.mp4"
-                    class="embed-responsive-item mx-auto"
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0" 
-                    width="auto" 
-                    height="auto" 
-                    scrolling="auto">
-                </iframe>
+              <video class="embed-responsive-item" autoplay>
+                <source
+                  src="includes/videos/animationa.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
         </div>
     </div>
@@ -70,22 +67,19 @@ $(document).on('keypress', function (res) {
 
 function animationb() {
   $('.cover').html(`
-      <div class="row">
-          <div class="col-md-12">
-              <div class="embed-responsive embed-responsive-21by9" id="animationa">
-                  <iframe src="includes/videos/animationb.mp4"
-                      class="embed-responsive-item mx-auto"
-                      frameborder="0" 
-                      marginheight="0" 
-                      marginwidth="0" 
-                      width="100%" 
-                      height="100%" 
-                      scrolling="auto">
-                  </iframe>
-              </div>
-          </div>
-      </div>
-    `);
+    <div class="row">
+        <div class="col-md-12">
+            <div class="embed-responsive embed-responsive-21by9" id="animationa">
+              <video class="embed-responsive-item" autoplay>
+                <source
+                  src="includes/videos/animationb.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+        </div>
+    </div>
+  `);
 
   setTimeout(function () {
     onFinishB();
@@ -96,5 +90,10 @@ function onFinishB() {
   // Put the object into storage
   let user = Set.user;
   localStorage.setItem('user', JSON.stringify(user));
-  window.open('index.html', '_self');
+  // window.open('index.html', '_self');
+  $('#videoModal').modal('show');
 }
+
+$('#proceed').on('click', function () {
+  window.open('index.html', '_self');
+});
