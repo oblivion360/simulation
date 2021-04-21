@@ -17,6 +17,9 @@ function animationa() {
               </video>
             </div>
         </div>
+        <div class="col-md-12 mt-5 text-center">
+          <button class="btn btn-login rounded-pill" onclick="onFinish()">SKIP VIDEO</button>
+        </div>
     </div>
   `);
 
@@ -77,6 +80,9 @@ function animationb() {
                 />
               </video>
             </div>
+        </div>
+        <div class="col-md-12 mt-5 text-center">
+          <button class="btn btn-login rounded-pill" onclick="onFinishB()">SKIP VIDEO</button>
         </div>
     </div>
   `);
