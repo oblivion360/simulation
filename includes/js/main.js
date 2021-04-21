@@ -70,6 +70,7 @@ function stageActive() {
             // display predictor table
             displayPredTable(0);
             // Settings();
+            disabledBtn();
 
             // feather.replace();
             if (stageId == 1) {
@@ -411,3 +412,8 @@ $('#logout').on('click', function () {
   localStorage.setItem('user', JSON.stringify(user));
   location.reload();
 });
+
+function disabledBtn() {
+  // let data = $('.btn-method').data();
+  // console.log(data);
+}

@@ -26,7 +26,7 @@ const Single = () => {
 
   //choosing top-down
   $('#topdown').on('click', function () {
-    $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+    $('.method').html(`<option value="0" selected>Select the Score</option>`);
     let start = 10,
       add = 10,
       stage = $('#stage').val(),
@@ -67,7 +67,7 @@ const Single = () => {
 
 function showMethod(predId) {
   $('.method').attr('data-predid', predId);
-  $('.method').html(`<option value="0" selected>Pls Choose</option>`);
+  $('.method').html(`<option value="0" selected>Select the Score</option>`);
   Set.Predictors[0].map(res => {
     if (res.predId == predId) {
       // console.log(typeof res.start);
