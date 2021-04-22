@@ -9,7 +9,7 @@ const Compensatory = () => {
       a = 0,
       totalWeight,
       value = Number($('#' + id).val());
-    console.log(id);
+
     for (let z = 1; z <= 4; z++) {
       totalWeight = $('#weight' + z).val();
       if (typeof totalWeight !== 'undefined') {
@@ -17,10 +17,26 @@ const Compensatory = () => {
       }
     }
 
-    if (a < 100 || a > 100) {
+    if (a < 100) {
       $('#percentage').removeClass('text-primary');
       $('#percentage').addClass('text-danger');
       $('#percentage').html(a + '%');
+      $('#compBody').html(`
+        <h4 class="text-danger">WARNING</h4>
+        <p>Weightage is less than 100%</p>
+        <p>It must be exactly 100%</p>
+      `);
+      $('#compModal').modal('show');
+    } else if (a > 100) {
+      $('#percentage').removeClass('text-primary');
+      $('#percentage').addClass('text-danger');
+      $('#percentage').html(a + '%');
+      $('#compBody').html(`
+        <h4 class="text-danger">WARNING</h4>
+        <p>Weightage is greater than 100%</p>
+        <p>It must be exactly 100%</p>
+      `);
+      $('#compModal').modal('show');
     } else {
       $('#percentage').removeClass('text-danger');
       $('#percentage').addClass('text-primary');
@@ -63,7 +79,7 @@ const Compensatory = () => {
         a = a + Number($('#weight' + z).val());
       }
     }
-    console.log('a: ' + a);
+
     if (a == 100) {
       if (counter > 2) {
         if (stage == 1) {
@@ -73,8 +89,6 @@ const Compensatory = () => {
         }
       }
     }
-
-    console.log(Set.dropped);
   });
 
   //choosing top-down
@@ -85,7 +99,7 @@ const Compensatory = () => {
 
     if (type == 'minimum') {
       // let predId = $('.' + method).attr('data-predid');
-      console.log('other1');
+
       $('.btn-method-comp').removeClass('btn-active');
       $('.comp').html(`<option value="0" selected>Select the Score</option>`);
       $('#' + id).addClass('btn-active');
@@ -103,7 +117,6 @@ const Compensatory = () => {
         }
       }
     } else if (type == 'topdown') {
-      console.log('other2');
       $('.comp').html(`<option value="0" selected>Select the Score</option>`);
       let start = 10,
         add = 10,

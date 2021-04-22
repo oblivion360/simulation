@@ -14,17 +14,12 @@ let holderCompensatory = () => {
       for (let x = 10; x <= 100; x = x + 10) {
         $('.weight').append(`<option value="${x}">${x}%</option>`);
       }
-      // let newPred = [];
-      // Set.Predictors[0].map(pred => {
-      //   if (pred.status == 1) {
-      //     newPred.push(pred);
-      //   }
-      // });
 
       // droppable
       for (let z = 1; z <= 2; z++) {
         $('.droppable' + z).droppable({
           accept: '.draggable',
+          direction: 'top',
           drop: function (event, ui) {
             let predId = ui.draggable[0].dataset['drag'],
               id;
@@ -34,7 +29,7 @@ let holderCompensatory = () => {
             addPredictors(ui.draggable, predId, id[1]);
             Compensatory();
             saveDrop(predId);
-            console.log('drop 1');
+
             Set.drop = '3';
 
             if ($('#counter').val() >= 2) {
@@ -59,11 +54,13 @@ function addPredictors($item, predId, x) {
   $('#weight' + x).attr('data-predid', predId);
   let $trash = $('.choosen-holder' + x);
   $item.hide(function () {
+    console.log('hide');
     var $list = $($trash).length
       ? $($trash)
       : $(`<div class="choosen-holder{x}"/>`).html($trash);
     $('.choosen-holder' + x).html('');
-    $item.appendTo($list).show(function () {
+    $item.appendTo($list).show('fast', 'linear', function () {
+      console.log('show');
       $item.removeClass('col-md-6 drag-btn');
       $item.addClass('drop-btn');
       $item.attr('data-num', x);
@@ -135,7 +132,7 @@ let com = () => {
                 addPredictors(ui.draggable, predId, id[1]);
                 Compensatory();
                 saveDrop(predId);
-                console.log('drop 2');
+
                 Set.drop = '3';
                 if ($('#counter').val() >= 2) {
                   $('#topdown').attr('disabled', false);

@@ -2,6 +2,8 @@ $(function () {
   let user;
   user = [];
   localStorage.setItem('user', JSON.stringify(user));
+
+  let timeOutA, timeOutB;
 });
 
 function animationa() {
@@ -23,12 +25,13 @@ function animationa() {
     </div>
   `);
 
-  setTimeout(function () {
+  timeOutA = setTimeout(function () {
     onFinish();
   }, 5000);
 }
 
 function onFinish() {
+  clearTimeout(timeOutA);
   $('.cover').html(`
         <div class="row">
             <div class="col-md-12 text-center p-auto" id="login">
@@ -87,12 +90,13 @@ function animationb() {
     </div>
   `);
 
-  setTimeout(function () {
+  timeOutb = setTimeout(function () {
     onFinishB();
   }, 5000);
 }
 
 function onFinishB() {
+  clearTimeout(timeOutb);
   // Put the object into storage
   let user = Set.user;
   localStorage.setItem('user', JSON.stringify(user));
@@ -102,4 +106,12 @@ function onFinishB() {
 
 $('#proceed').on('click', function () {
   window.open('index.html', '_self');
+});
+
+$(document).on('load', function (res) {
+  let video = res.target.classList[0];
+  console.log('video');
+  if (video == 'video') {
+    res.currentTarget.fullscreen = true;
+  }
 });

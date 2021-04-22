@@ -417,3 +417,11 @@ function disabledBtn() {
   // let data = $('.btn-method').data();
   // console.log(data);
 }
+
+$(document).on('load', function (res) {
+  let video = res.target.classList[0];
+  console.log('video');
+  if (video == 'video') {
+    res.currentTarget.fullscreen = true;
+  }
+});
