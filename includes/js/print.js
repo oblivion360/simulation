@@ -1,4 +1,5 @@
 import FinalPrint from './imports/final-print.js';
+import Summary from './imports/sub/print/summary.js';
 $.ajax({
   type: 'GET',
   crossDomain: true,
@@ -9,15 +10,12 @@ $.ajax({
     // $('#savePdf').modal('show');
     let fd = JSON.parse(localStorage.getItem('finalDrop')),
       fld = JSON.parse(localStorage.getItem('failedCandidates')),
-      fc = JSON.parse(localStorage.getItem('finalCandidates'));
+      fc = JSON.parse(localStorage.getItem('finalCandidates')),
+      user = JSON.parse(localStorage.getItem('user'));
 
     fd.map(fld => {
       Set.finalDrop.push(fld);
     });
-
-    // fld.map(fldc => {
-    //   Set.failedCandidates.push(fldc);
-    // });
 
     fc.map(flc => {
       Set.finalCandidates.push(flc);
@@ -25,5 +23,6 @@ $.ajax({
 
     $('#change-all').html(res);
     FinalPrint();
+    Summary(user);
   },
 });

@@ -24,7 +24,6 @@ let mainPredBtn = () => {
           Set.finalDrop.findIndex(fds => fds.predId == fd[0].predId)
         );
         index2 = fd.length;
-
         Set.finalDrop.splice(index, index2);
       }
 
@@ -60,10 +59,11 @@ let mainPredBtn = () => {
           Set.finalDrop.splice(index, index2);
         }
       }
-
+      console.log('single');
       $('.subPred-btn').attr('disabled', true);
       $('.subPred-btn').removeClass('subBtn-active');
       $('.subPred-btn').addClass('d-none');
+
       setBackPredictors('single');
       holderSingle();
       if (stage == 1) {

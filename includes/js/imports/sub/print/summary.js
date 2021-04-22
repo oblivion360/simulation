@@ -1,4 +1,8 @@
-let Summary = () => {
+let Summary = user => {
+  console.log(user[0]);
+  $('#greeting').html(`
+    Welcome! ${user[0]}
+  `);
   let predName,
     method,
     score,
@@ -85,7 +89,7 @@ let Summary = () => {
         } else {
           method = 'Top-Down Method';
         }
-        $('#resultInitial').append(`
+        $('#resultInitial1').append(`
             <div class="row mb-4">
               <div class="col-md-10">
                 <div class="row">
@@ -138,7 +142,7 @@ let Summary = () => {
         }
 
         if (x1 > 1) {
-          $('#resultInitial').append(`
+          $('#resultInitial1').append(`
             <div class="row mb-4">
               <div class="col-md-10">
                 <div class="row">
@@ -168,7 +172,7 @@ let Summary = () => {
             </div>
           `);
         } else {
-          $('#resultInitial').append(`
+          $('#resultInitial1').append(`
             <div class="row mb-4">
               <div class="col-md-10">
                 <div class="row">
@@ -218,7 +222,7 @@ let Summary = () => {
         } else {
           method = 'Top-Down Method';
         }
-        $('#resultSubstantive').append(`
+        $('#resultSubstantive1').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
                       <div class="row">
@@ -271,7 +275,7 @@ let Summary = () => {
         }
 
         if (x2 > 1) {
-          $('#resultSubstantive').append(`
+          $('#resultSubstantive1').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
                       <div class="row">
@@ -301,7 +305,7 @@ let Summary = () => {
                   </div>
                 `);
         } else {
-          $('#resultSubstantive').append(`
+          $('#resultSubstantive1').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
                       <div class="row">
@@ -351,7 +355,7 @@ let Summary = () => {
         } else {
           method = 'Top-Down Method';
         }
-        $('#resultDiscretionary').append(`
+        $('#resultDiscretionary1').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
                       <div class="row">
@@ -404,7 +408,7 @@ let Summary = () => {
         }
 
         if (x3 > 1) {
-          $('#resultDiscretionary').append(`
+          $('#resultDiscretionary1').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
                       <div class="row">
@@ -434,7 +438,7 @@ let Summary = () => {
                   </div>
                 `);
         } else {
-          $('#resultDiscretionary').append(`
+          $('#resultDiscretionary1').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
                       <div class="row">
@@ -484,7 +488,7 @@ let Summary = () => {
         } else {
           method = 'Top-Down Method';
         }
-        $('#resultContingent').append(`
+        $('#resultContingent1').append(`
             <div class="row mb-4">
               <div class="col-md-10">
                 <div class="row">
@@ -537,7 +541,7 @@ let Summary = () => {
         }
 
         if (x4 > 1) {
-          $('#resultContingent').append(`
+          $('#resultContingent1').append(`
             <div class="row mb-4">
               <div class="col-md-10">
                 <div class="row">
@@ -567,7 +571,7 @@ let Summary = () => {
             </div>
           `);
         } else {
-          $('#resultContingent').append(`
+          $('#resultContingent1').append(`
             <div class="row mb-4">
               <div class="col-md-10">
                 <div class="row">

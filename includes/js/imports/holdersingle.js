@@ -10,6 +10,7 @@ let holderSingle = () => {
     success: function (res) {
       // show page
       $('#predictor-holder').html(res);
+      // $('.btn-method').addClass('method-disabled');
       $('.droppable').droppable({
         accept: '.draggable',
         drop: function (event, ui) {
@@ -52,6 +53,7 @@ function showMethod(predId) {
   console.log(btn);
   if (btn.valueType == 2) {
     $('#topdown').attr('disabled', 'true');
+
     $('#minimum').removeAttr('disabled');
     $('#minimum').addClass('btn-active');
   } else {

@@ -185,7 +185,7 @@ p {
 }
 
 .bg-button.btn-method {
-  background-color: #2979ce !important;
+  background-color: #2979ce;
 }
 
 .btn-method.btn-active {
@@ -555,4 +555,7 @@ select.weight {
 
 .btn-yes:hover {
   background-color: #ffd966 !important;
+}
+.method-disabled {
+  background-color: #70869e !important;
 }

@@ -21,7 +21,6 @@ const Single = () => {
     } else {
       $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
     }
-    console.log(Set.dropped);
   });
 
   //choosing top-down
