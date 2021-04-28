@@ -18,10 +18,15 @@ let Summary = () => {
   x3 = st3.length;
   x4 = st4.length;
   // summary display
-  let stage1 = Set.finalDrop.some(fd => fd.stage == 1);
-  let stage2 = Set.finalDrop.some(fd => fd.stage == 2);
-  let stage3 = Set.finalDrop.some(fd => fd.stage == 3);
-  let stage4 = Set.finalDrop.some(fd => fd.stage == 4);
+  let stage1 = Set.finalDrop.some(fd => fd.stage == 1),
+    stage2 = Set.finalDrop.some(fd => fd.stage == 2),
+    stage3 = Set.finalDrop.some(fd => fd.stage == 3),
+    stage4 = Set.finalDrop.some(fd => fd.stage == 4);
+
+  let pred1 = Set.finalDrop.find(fd => fd.stage == 1),
+    pred2 = Set.finalDrop.find(fd => fd.stage == 2),
+    pred3 = Set.finalDrop.find(fd => fd.stage == 3),
+    pred4 = Set.finalDrop.find(fd => fd.stage == 4);
 
   if (stage1 == false) {
     $('#resultInitial').html(`
@@ -53,6 +58,46 @@ let Summary = () => {
            No Predictor was selected.
       </p>
     `);
+  }
+
+  if (pred1) {
+    if (pred1.predType == 1) {
+      $('#pred1').html('Single Predictor');
+    } else if (pred1.predType == 2) {
+      $('#pred1').html('Multiple Predictors: Multi-Hurdle Model');
+    } else if (pred1.predType == 3) {
+      $('#pred1').html('Multiple Predictors: Compensatory Model');
+    }
+  }
+
+  if (pred2) {
+    if (pred2.predType == 1) {
+      $('#pred2').html('Single Predictor');
+    } else if (pred2.predType == 2) {
+      $('#pred2').html('Multiple Predictors: Multi-Hurdle Model');
+    } else if (pred2.predType == 3) {
+      $('#pred2').html('Multiple Predictors: Compensatory Model');
+    }
+  }
+
+  if (pred3) {
+    if (pred3.predType == 1) {
+      $('#pred3').html('Single Predictor');
+    } else if (pred3.predType == 2) {
+      $('#pred3').html('Multiple Predictors: Multi-Hurdle Model');
+    } else if (pred3.predType == 3) {
+      $('#pred3').html('Multiple Predictors: Compensatory Model');
+    }
+  }
+
+  if (pred4) {
+    if (pred4.predType == 1) {
+      $('#pred4').html('Single Predictor');
+    } else if (pred4.predType == 2) {
+      $('#pred4').html('Multiple Predictors: Multi-Hurdle Model');
+    } else if (pred4.predType == 3) {
+      $('#pred4').html('Multiple Predictors: Compensatory Model');
+    }
   }
 
   Set.finalDrop.map(fd => {
@@ -137,7 +182,7 @@ let Summary = () => {
           method = 'Top-Down Method';
         }
 
-        if (x1 > 1) {
+        if (x1 == st1.length) {
           $('#resultInitial').append(`
             <div class="row mb-4">
               <div class="col-md-10">
@@ -270,7 +315,7 @@ let Summary = () => {
           method = 'Top-Down Method';
         }
 
-        if (x2 > 1) {
+        if (x2 == st2.length) {
           $('#resultSubstantive').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
@@ -403,7 +448,7 @@ let Summary = () => {
           method = 'Top-Down Method';
         }
 
-        if (x3 > 1) {
+        if (x3 == st3.length) {
           $('#resultDiscretionary').append(`
                   <div class="row mb-4">
                     <div class="col-md-10">
@@ -536,7 +581,7 @@ let Summary = () => {
           method = 'Top-Down Method';
         }
 
-        if (x4 > 1) {
+        if (x4 == st4.length) {
           $('#resultContingent').append(`
             <div class="row mb-4">
               <div class="col-md-10">

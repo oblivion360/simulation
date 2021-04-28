@@ -1,7 +1,7 @@
 let Summary = user => {
   console.log(user[0]);
   $('#greeting').html(`
-    Welcome! ${user[0]}
+    Name: ${user[0]}
   `);
   let predName,
     method,

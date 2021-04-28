@@ -39,7 +39,7 @@
     {
       "predId": 4,
       "status": 1,
-      "name": "Cognitive Ability test",
+      "name": "Cognitive Ability Test",
       "type": 2,
       "start": 1,
       "end": 10,

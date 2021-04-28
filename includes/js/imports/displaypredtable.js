@@ -102,6 +102,7 @@ let displayPredTable = val => {
         id = ui.draggable[0].dataset['num'],
         ndrop = Set.drop;
       $('#methodType').val(1);
+
       //set drop
       if (ndrop == 1) {
         $('#multiple-predictor').attr('disabled', false);
@@ -125,76 +126,83 @@ let displayPredTable = val => {
           }
         }
       } else if (ndrop == 2) {
-        let counter = $('#counter').val();
-        counter = counter - 1;
-        $('.choosen-holder' + id).html('Drag Predictor Here');
-        if (counter == 1) {
-          $('#single-predictor').attr('disabled', false);
-          $('#compensatory').attr('disabled', false);
-          $('#next').attr('disabled', false);
-        } else if (counter == 2) {
-          $('#next').attr('disabled', true);
-        }
-        $('#counter').val(counter);
+        if (id) {
+          let counter = $('#counter').val();
+          counter = counter - 1;
+          $('#holder' + dataNum).droppable('enable');
+          $('.choosen-holder' + id).html('Drag Predictor Here');
+          if (counter == 1) {
+            $('#single-predictor').attr('disabled', false);
+            $('#compensatory').attr('disabled', false);
+            $('#next').attr('disabled', false);
+          } else if (counter == 2) {
+            $('#next').attr('disabled', true);
+          }
+          $('#counter').val(counter);
 
-        let fdtrue = Set.finalDrop.some(fd => fd.stage == stage),
-          fd = Set.finalDrop.find(fd => fd.stage == stage),
-          index,
-          index2;
+          let fdtrue = Set.finalDrop.some(fd => fd.stage == stage),
+            fd = Set.finalDrop.find(fd => fd.stage == stage),
+            index,
+            index2;
 
-        if (fdtrue) {
-          index = Number(Set.finalDrop.findIndex(fds => fds.predId == predId));
-          index2 = index + 1;
-          if (index != 0) {
-            Set.finalDrop.splice(index, index);
-          } else {
-            Set.finalDrop.splice(index, index2);
+          if (fdtrue) {
+            index = Number(
+              Set.finalDrop.findIndex(fds => fds.predId == predId)
+            );
+            index2 = index + 1;
+            if (index != 0) {
+              Set.finalDrop.splice(index, index);
+            } else {
+              Set.finalDrop.splice(index, index2);
+            }
           }
         }
       } else if (ndrop == 3) {
-        console.log(id);
-        let counter = $('#counter').val(),
-          totalWeight,
-          a = 0,
-          cdId;
-        cdId = counter;
-        counter = counter - 1;
-        // console.log('.choosen-holder' + id);
-        $('.choosen-holder' + id).html('Drag Predictor Here');
-        console.log(counter);
-        if (counter == 1) {
-          // delete pred
+        if (id) {
+          $('#holder' + dataNum).droppable('enable');
+          let counter = $('#counter').val(),
+            totalWeight,
+            a = 0,
+            cdId;
+          cdId = counter;
+          counter = counter - 1;
+          // console.log('.choosen-holder' + id);
+          $('.choosen-holder' + id).html('Drag Predictor Here');
+          console.log(counter);
+          if (counter == 1) {
+            // delete pred
 
-          $('#single-predictor').attr('disabled', false);
-          $('#multi-hurdle').attr('disabled', false);
-          $('#next').attr('disabled', false);
-          // $('#weight' + counter).val(0);
-        } else {
-          $('#next').attr('disabled', true);
-          // $('#weight' + counter).val(0);
-        }
-
-        for (let z = 1; z <= 4; z++) {
-          totalWeight = $('#weight' + z).val();
-          if (typeof totalWeight !== 'undefined') {
-            a = a + Number($('#weight' + z).val());
+            $('#single-predictor').attr('disabled', false);
+            $('#multi-hurdle').attr('disabled', false);
+            $('#next').attr('disabled', false);
+            // $('#weight' + counter).val(0);
+          } else {
+            $('#next').attr('disabled', true);
+            // $('#weight' + counter).val(0);
           }
-        }
-        a = a - Number($('#weight' + id).val());
 
-        if (a < 100 || a > 100) {
-          $('#percentage').removeClass('text-primary');
-          $('#percentage').addClass('text-danger');
-          $('#percentage').html(a + '%');
-        } else {
-          $('#percentage').removeClass('text-danger');
-          $('#percentage').addClass('text-primary');
-          $('#percentage').html(a + '%');
-        }
+          for (let z = 1; z <= 4; z++) {
+            totalWeight = $('#weight' + z).val();
+            if (typeof totalWeight !== 'undefined') {
+              a = a + Number($('#weight' + z).val());
+            }
+          }
+          a = a - Number($('#weight' + id).val());
 
-        $('#weight' + id).val(0);
-        $('.method').val(0);
-        $('#counter').val(counter);
+          if (a < 100 || a > 100) {
+            $('#percentage').removeClass('text-primary');
+            $('#percentage').addClass('text-danger');
+            $('#percentage').html(a + '%');
+          } else {
+            $('#percentage').removeClass('text-danger');
+            $('#percentage').addClass('text-primary');
+            $('#percentage').html(a + '%');
+          }
+
+          $('#weight' + id).val(0);
+          $('.method').val(0);
+          $('#counter').val(counter);
+        }
       }
 
       Set.Predictors[0][predId - 1].status = 1;
@@ -251,40 +259,41 @@ function revertPredictor($item) {
 function setBack(id) {
   let drop = Set.drop,
     counter = id;
+  if (id) {
+    //for single method
+    if (drop == 1) {
+      console.log('drop1 ' + id);
+      $('.method').html(`<option value="0" selected>Select the Score</option>`);
 
-  //for single method
-  if (drop == 1) {
-    console.log('drop1 ' + id);
-    $('.method').html(`<option value="0" selected>Select the Score</option>`);
+      //set method btn to not active
+      $('.btn-method').removeClass('btn-active');
+      $('.btn-method').attr('disabled', true);
+    } else if (drop == 2) {
+      console.log('drop2 ' + id);
+      $('.method' + counter).html(
+        `<option value="0" selected>Select the Score</option>`
+      );
 
-    //set method btn to not active
-    $('.btn-method').removeClass('btn-active');
-    $('.btn-method').attr('disabled', true);
-  } else if (drop == 2) {
-    console.log('drop2 ' + id);
-    $('.method' + counter).html(
-      `<option value="0" selected>Select the Score</option>`
-    );
-
-    //set method btn to not active
-    $('#topdown' + counter)
-      .removeClass('btn-active')
-      .attr('disabled', true);
-    $('#minimum' + counter)
-      .removeClass('btn-active')
-      .attr('disabled', true);
-  } else if (drop == 3) {
-    console.log('drop3 ' + id);
-    $('.btn-method').removeClass('btn-active');
-    $('.method').html(`<option value="0" selected>Select the Score</option>`);
-    $('.weight' + counter).html(
-      `<option value="0" selected>Select the Weightage</option>`
-    );
-    //set method btn to not active
-    console.log($('#counter').val());
-    if ($('#counter').val() <= 2) {
-      $('#topdown').removeClass('btn-active').attr('disabled', true);
-      $('#minimum').removeClass('btn-active').attr('disabled', true);
+      //set method btn to not active
+      $('#topdown' + counter)
+        .removeClass('btn-active')
+        .attr('disabled', true);
+      $('#minimum' + counter)
+        .removeClass('btn-active')
+        .attr('disabled', true);
+    } else if (drop == 3) {
+      console.log('drop3 ' + id);
+      $('.btn-method').removeClass('btn-active');
+      $('.method').html(`<option value="0" selected>Select the Score</option>`);
+      $('.weight' + counter).html(
+        `<option value="0" selected>Select the Weightage</option>`
+      );
+      //set method btn to not active
+      console.log($('#counter').val());
+      if ($('#counter').val() <= 2) {
+        $('#topdown').removeClass('btn-active').attr('disabled', true);
+        $('#minimum').removeClass('btn-active').attr('disabled', true);
+      }
     }
   }
 }

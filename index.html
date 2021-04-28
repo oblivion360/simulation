@@ -53,9 +53,9 @@
                   <p>Would you like to</p>
                   <p>start the simulation?</p>
                   <br />
-                  <p>You will not be able to make any</p>
-                  <p>changes once</p>
-                  <p>it starts.</p>
+                  <p>You will not be able to</p>
+                  <p>make any changes</p>
+                  <p>once it starts.</p>
                 </div>
               </div>
               <div class="row">
@@ -95,7 +95,7 @@
           <div class="modal-content" id="help-content">
             <div class="modal-body" id="help-body">
               <div class="row">
-                <div class="col-md-6" id="help-a">
+                <div class="col-md-8" id="help-a">
                   <div class="row">
                     <div class="col-md-12" id="help-title">
                       <h3>How do I use the simulation?</h3>
@@ -114,9 +114,9 @@
                       <ol>
                         <li>
                           Select between “Single Predictor” and “Multiple
-                          Predictors”. If you select “Multiple Predictors”,
-                          decide if you’re using “Multi-Hurdle Model” or
-                          “Compensatory Model”.
+                          Predictors” at each stage. If you select “Multiple
+                          Predictors”, decide if you’re using “Multi-Hurdle
+                          Model” or “Compensatory Model”.
                         </li>
                         <li>
                           Drag and drop the Predictor(s) into the empty box.
@@ -137,7 +137,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 divider-left">
+                <div class="col-md-4 divider-left">
                   <div class="row">
                     <div class="col-md-12 h-block h-block-active" id="hb1">
                       How do I use the simulation?
@@ -153,6 +153,9 @@
                     <div class="col-md-12 h-block" id="hb4">
                       What do the four stages mean?
                     </div>
+                    <div class="col-md-12 h-block" id="hb5">
+                      Why are some buttons deactivated?
+                    </div>
                   </div>
                 </div>
               </div>
@@ -166,15 +169,31 @@
       <div
         class="modal fade"
         id="compModal"
+        data-backdrop="static"
+        data-keyboard="false"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content" id="help-content">
-            <div class="modal-body" id="help-body">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content bg-danger" id="error-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-warning" id="staticBackdropLabel">
+                ERROR!
+              </h5>
+              <button
+                type="button"
+                class="close text-white"
+                data-dismiss="modal"
+                aria-label="Close"
+                id="errorClose"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="error-body">
               <div class="row text-center">
-                <div class="col-md-12" id="compBody"></div>
+                <div class="col-md-12 text-white" id="compBody"></div>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ $(function () {
     userLocal = JSON.parse(localStorage.getItem('user'));
 
   if (user.length != 0) {
-    $('#welcome').html('Welcome! ' + user);
+    $('#welcome').html('Welcome, ' + user + '!');
     stageActive();
   } else {
     // window.open('introduction.html', '_self');
@@ -20,7 +20,7 @@ $(function () {
         window.open('introduction.html', '_self');
       } else {
         user = userLocal;
-        $('#welcome').html('Welcome! ' + user);
+        $('#welcome').html('Welcome, ' + user + '!');
         stageActive();
       }
     } else {
@@ -335,7 +335,7 @@ $('.h-block').on('click', res => {
           <h4>Multi-Hurdle Model</h4>
           <ul>
             <li>
-              With multiple hurdles approach, an applicant must achieve a passing
+              With the multiple hurdles approach, an applicant must achieve a passing
               score on each predictor before advancing in the selection process. This
               approach is useful when each predictor is critical to job success.
             </li>
@@ -344,7 +344,7 @@ $('.h-block').on('click', res => {
           <ul>
             <li>
               Predictor scores are simply added together to yield a combined score.
-              This allows high score on one predictor to compensate for low score of
+              This allows a high score on one predictor to compensate for a low score of
               another predictor.
             </li>
           </ul>
@@ -400,6 +400,29 @@ $('.h-block').on('click', res => {
               of the job and legal requirements.
             </li>
           </ol>
+        </div>
+      </div>
+    `);
+  } else if (id == 'hb5') {
+    $('#help-a').html(`
+      <div class="row">
+        <div class="col-md-12" id="help-title">
+          <h3>Why are some buttons deactivated?</h3>
+          <p>Some buttons will be deactivated due to certain conditions.</p>
+        </div>
+        <div class="col-md-12" id="help-b">
+          <ol>
+            <li>
+            	For <b>non-numerical Predictors</b>, the scoring method “Top-Down Method” will be automatically deactivated, as they do not apply.
+            </li>
+            <li>
+              For <b>Compensatory Model</b>, non-numerical Predictors will be automatically deactivated, as they do not apply.
+            </li>
+            <li>
+              For <b>Compensatory Model</b>, if the total Weightage does not add up to 100%, you will not be able to proceed.
+            </li>            
+          </ol>
+          <p>If you find yourself unable to click “Next”, please check and make sure that all the fields have been filled. The “Next” button will automatically activate once all the required fields have been filled.</p>
         </div>
       </div>
     `);

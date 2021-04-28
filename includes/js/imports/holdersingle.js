@@ -13,6 +13,16 @@ let holderSingle = () => {
       // $('.btn-method').addClass('method-disabled');
       $('.droppable').droppable({
         accept: '.draggable',
+        over: function (event, ui) {
+          // Enable all the .droppable elements
+          // $('.droppable').droppable('enable');
+
+          // If the droppable element we're hovered over already contains a .draggable element,
+          // don't allow another one to be dropped on it
+          if ($(this).has('.draggable').length) {
+            $(this).droppable('disable');
+          }
+        },
         drop: function (event, ui) {
           let predId = ui.draggable[0].dataset['drag'];
           Set.Predictors[0][predId - 1].status = 2;

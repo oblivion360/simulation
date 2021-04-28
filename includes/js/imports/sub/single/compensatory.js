@@ -21,22 +21,10 @@ const Compensatory = () => {
       $('#percentage').removeClass('text-primary');
       $('#percentage').addClass('text-danger');
       $('#percentage').html(a + '%');
-      $('#compBody').html(`
-        <h4 class="text-danger">WARNING</h4>
-        <p>Weightage is less than 100%</p>
-        <p>It must be exactly 100%</p>
-      `);
-      $('#compModal').modal('show');
     } else if (a > 100) {
       $('#percentage').removeClass('text-primary');
       $('#percentage').addClass('text-danger');
       $('#percentage').html(a + '%');
-      $('#compBody').html(`
-        <h4 class="text-danger">WARNING</h4>
-        <p>Weightage is greater than 100%</p>
-        <p>It must be exactly 100%</p>
-      `);
-      $('#compModal').modal('show');
     } else {
       $('#percentage').removeClass('text-danger');
       $('#percentage').addClass('text-primary');
@@ -78,6 +66,18 @@ const Compensatory = () => {
       if (typeof totalWeight !== 'undefined') {
         a = a + Number($('#weight' + z).val());
       }
+    }
+
+    if (a < 100) {
+      $('#compBody').html(`        
+        <p>Please make sure that the total weightage is 100%</p>        
+      `);
+      $('#compModal').modal('show');
+    } else if (a > 100) {
+      $('#compBody').html(`
+        <p>Please make sure that the total weightage is 100%</p>       
+      `);
+      $('#compModal').modal('show');
     }
 
     if (a == 100) {
@@ -137,6 +137,26 @@ const Compensatory = () => {
           $('#prev').attr('disabled', false);
           $('#next').attr('disabled', true);
         }
+      }
+    }
+  });
+
+  $('#errorClose').on('click', function () {
+    let counter = $('#counter').val();
+    $('.btn-method-comp').removeClass('btn-active');
+    $('.comp').html(`<option value="0" selected>Select the Score</option>`);
+    $('#minimum').addClass('btn-active');
+    $('#methodType').val(1);
+    for (let x = 1; x <= 10; x++) {
+      $('.comp').append(`<option value="${x}">${x}</option>`);
+    }
+    if (counter > 2) {
+      if (stage == 1) {
+        $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
+      } else {
+        $('.nav-btn').removeClass('btn-stage-active');
+        $('#prev').attr('disabled', false);
+        $('#next').attr('disabled', true);
       }
     }
   });

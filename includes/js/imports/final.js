@@ -97,8 +97,8 @@ function stage(num) {
 }
 
 function finalResult() {
-  Set.Predictors[0].map(pred => {
-    Set.finalDrop.map(fd => {
+  Set.finalDrop.map(fd => {
+    Set.Predictors[0].map(pred => {
       if (fd.predId == pred.predId) {
         $('#finalistHead').append(`  
           <th class='text-align-center'>${pred.name}</th>

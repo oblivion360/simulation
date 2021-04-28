@@ -20,6 +20,16 @@ let holderCompensatory = () => {
         $('.droppable' + z).droppable({
           accept: '.draggable',
           direction: 'top',
+          over: function (event, ui) {
+            // Enable all the .droppable elements
+            // $('.droppable').droppable('enable');
+
+            // If the droppable element we're hovered over already contains a .draggable element,
+            // don't allow another one to be dropped on it
+            if ($(this).has('.draggable').length) {
+              $(this).droppable('disable');
+            }
+          },
           drop: function (event, ui) {
             let predId = ui.draggable[0].dataset['drag'],
               id;

@@ -40,6 +40,16 @@ let holderMultiple = () => {
             $('#single-predictor').attr('disabled', true);
             $('#compensatory').attr('disabled', true);
           },
+          over: function (event, ui) {
+            // Enable all the .droppable elements
+            // $('.droppable').droppable('enable');
+
+            // If the droppable element we're hovered over already contains a .draggable element,
+            // don't allow another one to be dropped on it
+            if ($(this).has('.draggable').length) {
+              $(this).droppable('disable');
+            }
+          },
         });
       }
       multiHurdle();
@@ -166,6 +176,16 @@ let multiHurdle = () => {
           for (let z = 1; z <= 8; z++) {
             $('.droppable' + z).droppable({
               accept: '.draggable',
+              over: function (event, ui) {
+                // Enable all the .droppable elements
+                // $('.droppable').droppable('enable');
+
+                // If the droppable element we're hovered over already contains a .draggable element,
+                // don't allow another one to be dropped on it
+                if ($(this).has('.draggable').length) {
+                  $(this).droppable('disable');
+                }
+              },
               drop: function (event, ui) {
                 let predId = ui.draggable[0].dataset['drag'],
                   id,
