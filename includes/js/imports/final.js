@@ -132,4 +132,16 @@ function finalResult() {
   });
 }
 
+$(document).on('click', function (res) {
+  if (res.target.dataset.hasOwnProperty('btn')) {
+    let id = res.target.dataset.btn,
+      x = document.getElementById('' + id);
+    if (x.innerHTML === '-') {
+      x.innerHTML = '+';
+    } else {
+      x.innerHTML = '-';
+    }
+  }
+});
+
 export default Final;

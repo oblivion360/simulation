@@ -11,13 +11,7 @@ let holderMultiple = () => {
       // show page
       $('#predictor-holder').html(res);
       $('#methodType').val(1);
-      // let newPred = [];
-      // Set.Predictors[0].map(pred => {
-      //   if (pred.status == 1) {
-      //     newPred.push(pred);
-      //   }
-      // });
-      // console.log('Pred Length: ' + newPred.length);
+
       for (let z = 1; z <= 2; z++) {
         $('.droppable' + z).droppable({
           accept: '.draggable',
@@ -28,22 +22,19 @@ let holderMultiple = () => {
             Set.Predictors[0][predId - 1].status = 2;
             id = event.target.id;
             id = id.split(/([0-9]+)/);
-            console.log(id[1]);
+
             addPredictors(ui.draggable, id[1]);
             Multiple();
             showMethod(predId, id[1]);
             saveDrop(predId, id[1]);
             navBtn();
-            console.log('drop 1');
+
             Set.drop = '2';
 
             $('#single-predictor').attr('disabled', true);
             $('#compensatory').attr('disabled', true);
           },
           over: function (event, ui) {
-            // Enable all the .droppable elements
-            // $('.droppable').droppable('enable');
-
             // If the droppable element we're hovered over already contains a .draggable element,
             // don't allow another one to be dropped on it
             if ($(this).has('.draggable').length) {

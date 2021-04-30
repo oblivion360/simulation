@@ -104,7 +104,7 @@ function onFinishB() {
   $('#videoModal').modal('show');
 }
 
-$('#proceed').on('click', function () {
+$('.proceed').on('click', function () {
   window.open('index.html', '_self');
 });
 

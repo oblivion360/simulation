@@ -5,11 +5,20 @@ const Multiple = () => {
     let predId = res.target.dataset['predid'],
       stage = $('#stage').val(),
       y = $('#methodType').val(),
+      x = Number($('#methodCounter').val()),
       counter = $('#counter').val(),
       clss = res.target.dataset['class'],
       value = Number($('.' + clss).val());
     if (isNaN(value)) {
       value = $('.' + clss).val();
+    }
+
+    if (value != 0) {
+      x = x + 1;
+      $('#methodCounter').val(x);
+    } else {
+      x = x - 1;
+      $('#methodCounter').val(x);
     }
 
     Set.dropped.map(drop => {
@@ -20,7 +29,7 @@ const Multiple = () => {
       }
       drop.predType = 2;
     });
-    if (counter > 2) {
+    if (counter > 2 && x == counter) {
       if (stage == 1) {
         $('#next').addClass('btn-stage-active').attr('disabled', false);
       } else {

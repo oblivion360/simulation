@@ -4,10 +4,16 @@
   </div>
   <div class="col-md-12">
     <p class="text-summary">
-      Please right-click and select <span class="start">“Print”</span>, then
-      select <span class="ammend">“Print to PDF”</span> to download the page as
-      a PDF document for submission.
+      Please click <span class="start">“Print”</span> button, then select
+      <span class="ammend">Save to PDF”</span> to download the page as a PDF
+      document for submission.
     </p>
+  </div>
+  <div class="col-md-12">
+    <button class="btn btn-light d-print-none btn-sm" onclick="print()">
+      <span data-feather="printer"></span>
+      PRINT
+    </button>
   </div>
   <div class="col-md-12">
     <h2><b>Stage 1:</b> Initial</h2>
@@ -97,4 +103,18 @@
       <tbody id="finalistBody"></tbody>
     </table>
   </div>
+  <div class="col-md-12">
+    <button class="btn btn-light d-print-none btn-sm" onclick="print()">
+      <span data-feather="printer"></span>
+      PRINT
+    </button>
+  </div>
 </div>
+
+<script>
+  'use strict';
+  (function () {
+    'use strict';
+    feather.replace();
+  })();
+</script>
