@@ -6,11 +6,12 @@ const Compensatory = () => {
       id = res.target.id,
       predType = $('#predType').val(),
       counter = $('#counter').val(),
+      b = Number($('#addCounter').val()),
       a = 0,
       totalWeight,
       value = Number($('#' + id).val());
-
-    for (let z = 1; z <= 4; z++) {
+    b = b - 1;
+    for (let z = 1; z <= b; z++) {
       totalWeight = $('#weight' + z).val();
       if (typeof totalWeight !== 'undefined') {
         a = a + Number($('#weight' + z).val());

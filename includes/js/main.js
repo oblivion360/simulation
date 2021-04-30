@@ -27,6 +27,27 @@ $(function () {
       window.open('introduction.html', '_self');
     }
   }
+
+  // $.Shortcuts.start('default');
+  // $.Shortcuts.add({
+  //   type: 'down',
+  //   mask: 'CTRL + F5',
+  //   handler: function () {
+  //     $('#compWarning').modal('show');
+  //     // warningTitle compBody
+  //     $('#warningTitle').html('WARNING!');
+  //   },
+  // });
+  // $.Shortcuts.add({
+  //   type: 'down',
+  //   mask: 'F5',
+  //   handler: function () {
+  //     $('#compWarning').modal('show');
+  //     // warningTitle compBody
+  //     $('#warningTitle').html('WARNING!');
+  //   },
+  // });
+  // $.Shortcuts.start();
 });
 
 function stageActive() {

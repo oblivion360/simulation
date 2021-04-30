@@ -133,8 +133,8 @@ function finalResult() {
 }
 
 $(document).on('click', function (res) {
-  if (res.target.dataset.hasOwnProperty('btn')) {
-    let id = res.target.dataset.btn,
+  if (res.target.dataset.hasOwnProperty('btnmp')) {
+    let id = res.target.dataset.btnmp,
       x = document.getElementById('' + id);
     if (x.innerHTML === '-') {
       x.innerHTML = '+';

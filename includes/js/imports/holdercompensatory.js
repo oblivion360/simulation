@@ -123,9 +123,9 @@ let com = () => {
         success: function (res) {
           // show page
           $('#holder-button').append(res);
-          for (let x = 10; x <= 100; x = x + 10) {
-            $('.weight').append(`<option value="${x}">${x}%</option>`);
-          }
+          let a = Number($('#addCounter').val());
+
+          console.log(a);
 
           addSetting();
           for (let z = 1; z <= 8; z++) {
@@ -197,6 +197,10 @@ function addSetting() {
     .addClass('rmb' + x)
     .attr('data-remove', 'holder' + x + '*' + 'selector' + x)
     .removeClass('rmb');
+
+  for (let z = 10; z <= 100; z = z + 10) {
+    $('#weight' + x).append(`<option value="${z}">${z}%</option>`);
+  }
 }
 
 let removeHolder = () => {
@@ -204,11 +208,12 @@ let removeHolder = () => {
     let allClass = $(this).attr('data-remove'),
       ndrop = Set.drop,
       predId = $(this).attr('data-predid'),
+      b = Number($('#addCounter').val()),
       totalWeight,
       a = 0,
       y,
       id;
-
+    b = b - 1;
     if (allClass != '') {
       id = allClass;
       id = id.split('*');
@@ -216,13 +221,17 @@ let removeHolder = () => {
       y = id[0];
       y = y.split(/([0-9]+)/);
 
-      for (let z = 1; z <= 4; z++) {
+      for (let z = 1; z <= b; z++) {
         totalWeight = $('#weight' + z).val();
         if (typeof totalWeight !== 'undefined') {
           a = a + Number($('#weight' + z).val());
         }
       }
-      a = a - Number($('#weight' + y[1]).val());
+
+      let wVal = $('#weight' + y[1]).val();
+      if (typeof wVal !== 'undefined') {
+        a = a - Number($('#weight' + y[1]).val());
+      }
 
       if (a < 100 || a > 100) {
         $('#percentage').removeClass('text-primary');
