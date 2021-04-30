@@ -34,6 +34,18 @@ $(function () {
     mask: 'CTRL + F5',
     handler: function () {
       $('#compWarning').modal('show');
+      $('#warningFooter').html(`
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Stay
+        </button>
+        <button type="button" class="btn btn-warning" id="wrefresh">
+          Continue
+        </button>      
+      `);
     },
   });
   $.Shortcuts.add({
@@ -41,6 +53,18 @@ $(function () {
     mask: 'F5',
     handler: function () {
       $('#compWarning').modal('show');
+      $('#warningFooter').html(`
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Stay
+        </button>
+        <button type="button" class="btn btn-warning" id="wrefresh">
+          Continue
+        </button>      
+      `);
     },
   });
   $.Shortcuts.start();
@@ -464,4 +488,11 @@ $(document).on('load', function (res) {
   if (video == 'video') {
     res.currentTarget.fullscreen = true;
   }
+});
+
+$(document).on('click', function (res) {
+  if (res.target.id == 'wrefresh') {
+    location.reload();
+  }
+  console.log(res);
 });
