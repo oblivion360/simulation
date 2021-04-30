@@ -28,26 +28,22 @@ $(function () {
     }
   }
 
-  // $.Shortcuts.start('default');
-  // $.Shortcuts.add({
-  //   type: 'down',
-  //   mask: 'CTRL + F5',
-  //   handler: function () {
-  //     $('#compWarning').modal('show');
-  //     // warningTitle compBody
-  //     $('#warningTitle').html('WARNING!');
-  //   },
-  // });
-  // $.Shortcuts.add({
-  //   type: 'down',
-  //   mask: 'F5',
-  //   handler: function () {
-  //     $('#compWarning').modal('show');
-  //     // warningTitle compBody
-  //     $('#warningTitle').html('WARNING!');
-  //   },
-  // });
-  // $.Shortcuts.start();
+  $.Shortcuts.start('default');
+  $.Shortcuts.add({
+    type: 'down',
+    mask: 'CTRL + F5',
+    handler: function () {
+      $('#compWarning').modal('show');
+    },
+  });
+  $.Shortcuts.add({
+    type: 'down',
+    mask: 'F5',
+    handler: function () {
+      $('#compWarning').modal('show');
+    },
+  });
+  $.Shortcuts.start();
 });
 
 function stageActive() {

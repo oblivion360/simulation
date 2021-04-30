@@ -54,6 +54,7 @@ const Compensatory = () => {
       stage = $('#stage').val(),
       a = 0,
       totalWeight,
+      b = Number($('#addCounter').val()),
       counter = $('#counter').val(),
       value = $('.method').val();
 
@@ -62,21 +63,16 @@ const Compensatory = () => {
 
       drop.methodType = y;
     });
-    for (let z = 1; z <= 4; z++) {
+    for (let z = 1; z <= b; z++) {
       totalWeight = $('#weight' + z).val();
       if (typeof totalWeight !== 'undefined') {
         a = a + Number($('#weight' + z).val());
       }
     }
-
-    if (a < 100) {
+    console.log('totalW: ' + a);
+    if (a != 100) {
       $('#compBody').html(`        
         <p>Please make sure that the total weightage is 100%</p>        
-      `);
-      $('#compModal').modal('show');
-    } else if (a > 100) {
-      $('#compBody').html(`
-        <p>Please make sure that the total weightage is 100%</p>       
       `);
       $('#compModal').modal('show');
     }
@@ -87,6 +83,14 @@ const Compensatory = () => {
           $('#next').addClass('btn-stage-active').attr('disabled', false);
         } else {
           $('.nav-btn').attr('disabled', false).addClass('btn-stage-active');
+        }
+      }
+    } else {
+      if (counter > 2) {
+        if (stage == 1) {
+          $('#next').removeClass('btn-stage-active').attr('disabled', true);
+        } else {
+          $('.nav-btn').attr('disabled', true).removeClass('btn-stage-active');
         }
       }
     }
